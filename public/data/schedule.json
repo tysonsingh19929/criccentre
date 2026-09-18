@@ -92,21 +92,28 @@
   },
   {
     "month": "Upcoming Schedule",
-    "series_name": "Australia tour of Zimbabwe 2026Zimbabwe vs Australia2nd ODI",
+    "series_name": "Australia tour of Zimbabwe 2026Australia vs ZimbabweLIVE2nd ODI",
     "category": "International",
     "dates": "September - October 2026",
     "status": "Scheduled"
   },
   {
     "month": "Upcoming Schedule",
-    "series_name": "Zimbabwe vs Australia2nd ODI",
+    "series_name": "Australia vs ZimbabweLIVE2nd ODI",
     "category": "International",
     "dates": "September - October 2026",
     "status": "Scheduled"
   },
   {
     "month": "Upcoming Schedule",
-    "series_name": "Zimbabwe vs Australia",
+    "series_name": "Australia vs ZimbabweLIVE",
+    "category": "International",
+    "dates": "September - October 2026",
+    "status": "Scheduled"
+  },
+  {
+    "month": "Upcoming Schedule",
+    "series_name": "Australia vs Zimbabwe",
     "category": "International",
     "dates": "September - October 2026",
     "status": "Scheduled"
@@ -317,13 +324,6 @@
   {
     "month": "Upcoming Schedule",
     "series_name": "Sri Lanka Women vs Malaysia Women",
-    "category": "International",
-    "dates": "September - October 2026",
-    "status": "Scheduled"
-  },
-  {
-    "month": "Upcoming Schedule",
-    "series_name": "Japan Women vs India WomenLIVE",
     "category": "International",
     "dates": "September - October 2026",
     "status": "Scheduled"

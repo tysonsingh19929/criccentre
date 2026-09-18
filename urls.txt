@@ -11,3 +11,7 @@ https://www.cricinfo.com/series/caribbean-premier-league-2026-1534175/antigua-an
 # CPL 2026 - Eliminator
 https://www.cricinfo.com/series/caribbean-premier-league-2026-1534175/barbados-tridents-vs-jamaica-kingsmen-eliminator-1534214/ball-by-ball-commentary
 
+# Asian Games Women's Competition - Japan Women vs India Women (Mapped to 13Q2 / M-WOM-13Q2)
+https://www.cricinfo.com/series/asian-games-women-s-cricket-competition-2026-1550472/japan-women-vs-india-women-4th-quarter-final-1550477/live-cricket-score
+
+

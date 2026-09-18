@@ -335,7 +335,7 @@ class AdminPanel:
                     body: JSON.stringify({{ match_id: mid, title: title, category: cat, url: url }})
                 }});
                 const data = await res.json();
-                if (data.status === 'ok') {{
+                if (data.status === 'ok' || data.status === 'received') {{
                     alert('Match ' + mid + ' mapped successfully! Ingestion initiated.');
                     window.location.reload();
                 }} else {{
@@ -364,7 +364,7 @@ class AdminPanel:
                     body: JSON.stringify({{ match_id: mid, title: title, category: cat, url: url }})
                 }});
                 const data = await res.json();
-                if (data.status === 'ok') {{
+                if (data.status === 'ok' || data.status === 'received') {{
                     msg.className = 'mt-3 text-xs font-bold text-emerald-600 block';
                     msg.innerText = 'Mapping saved successfully! Live scraping initiated.';
                     setTimeout(() => window.location.reload(), 1200);

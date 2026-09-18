@@ -54,5 +54,33 @@
     "title": "Antigua and Barbuda Falcons vs Guyana Amazon Warriors - Qualifier 1",
     "category": "league",
     "updated_at": "2026-09-18 01:00:00"
+  },
+  "13Q2": {
+    "match_id": "13Q2",
+    "url": "https://www.cricinfo.com/series/asian-games-women-s-cricket-competition-2026-1550472/japan-women-vs-india-women-4th-quarter-final-1550477/live-cricket-score",
+    "platform": "ESPNcricinfo",
+    "title": "India Women vs Japan Women",
+    "category": "women",
+    "updated_at": "2026-09-18 13:30:00"
+  },
+  "M-WOM-13Q2": {
+    "match_id": "13Q2",
+    "unique_match_id": "M-WOM-13Q2",
+    "cricinfo_id": "1550477",
+    "url": "https://www.cricinfo.com/series/asian-games-women-s-cricket-competition-2026-1550472/japan-women-vs-india-women-4th-quarter-final-1550477/live-cricket-score",
+    "platform": "ESPNcricinfo",
+    "title": "India Women vs Japan Women - 4th Quarter Final",
+    "category": "women",
+    "updated_at": "2026-09-18 13:30:00"
+  },
+  "1550477": {
+    "match_id": "13Q2",
+    "unique_match_id": "M-WOM-13Q2",
+    "cricinfo_id": "1550477",
+    "url": "https://www.cricinfo.com/series/asian-games-women-s-cricket-competition-2026-1550472/japan-women-vs-india-women-4th-quarter-final-1550477/live-cricket-score",
+    "platform": "ESPNcricinfo",
+    "title": "India Women vs Japan Women - 4th Quarter Final",
+    "category": "women",
+    "updated_at": "2026-09-18 13:30:00"
   }
 }
