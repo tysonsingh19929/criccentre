@@ -7,12 +7,6 @@
       "url": "/series/1534175"
     },
     {
-      "series_id": "12973",
-      "title": "Afg vs Ind in India 2026",
-      "category": "international",
-      "url": "/series/12973"
-    },
-    {
       "series_id": "10576",
       "title": "England vs Sri Lanka, 2026",
       "category": "international",
@@ -65,15 +59,15 @@
       "title": "CSA Four-Day Series Division One 2026-27",
       "category": "domestic",
       "url": "/series/13140"
+    },
+    {
+      "series_id": "11416",
+      "title": "County Championship Division Two 2026",
+      "category": "domestic",
+      "url": "/series/11416"
     }
   ],
   "international": [
-    {
-      "series_id": "12973",
-      "title": "Afg vs Ind in India 2026",
-      "category": "international",
-      "url": "/series/12973"
-    },
     {
       "series_id": "10576",
       "title": "England vs Sri Lanka, 2026",
@@ -105,6 +99,12 @@
       "url": "/series/12191"
     },
     {
+      "series_id": "12973",
+      "title": "Afghanistan vs India in India 2026Sep 13-Sep 17",
+      "category": "international",
+      "url": "/series/12973"
+    },
+    {
       "series_id": "13131",
       "title": "United Arab Emirates tour of Malaysia, 2026Sep 14-Sep 17",
       "category": "international",
@@ -117,28 +117,28 @@
       "url": "/series/13053"
     },
     {
-      "series_id": "12184",
-      "title": "Australia A tour of India 2026Sep 22-Oct 11",
-      "category": "international",
-      "url": "/series/12184"
-    },
-    {
       "series_id": "13110",
       "title": "India tour of Japan, 2026Sep 22-Sep 22",
       "category": "international",
       "url": "/series/13110"
     },
     {
-      "series_id": "11595",
-      "title": "Australia tour of South Africa, 2026Sep 24-Oct 31",
+      "series_id": "12184",
+      "title": "Australia A tour of India 2026Sep 22-Oct 11",
       "category": "international",
-      "url": "/series/11595"
+      "url": "/series/12184"
     },
     {
       "series_id": "12563",
       "title": "Asian Games 2026Sep 24-Oct 03",
       "category": "international",
       "url": "/series/12563"
+    },
+    {
+      "series_id": "11595",
+      "title": "Australia tour of South Africa, 2026Sep 24-Oct 31",
+      "category": "international",
+      "url": "/series/11595"
     },
     {
       "series_id": "11902",
@@ -153,16 +153,16 @@
       "url": "/series/12387"
     },
     {
-      "series_id": "13187",
-      "title": "Afghanistan vs Bangladesh in UAE, 2026Oct 09-Oct 13",
-      "category": "international",
-      "url": "/series/13187"
-    },
-    {
       "series_id": "13037",
       "title": "Sri Lanka tour of Pakistan, 2026Oct 09-Nov 21",
       "category": "international",
       "url": "/series/13037"
+    },
+    {
+      "series_id": "13187",
+      "title": "Afghanistan vs Bangladesh in UAE, 2026Oct 09-Oct 13",
+      "category": "international",
+      "url": "/series/13187"
     },
     {
       "series_id": "12747",
@@ -219,16 +219,16 @@
       "url": "/series/11876"
     },
     {
-      "series_id": "12431",
-      "title": "Syed Mushtaq Ali Trophy Plate 2026Nov 14-Nov 24",
-      "category": "international",
-      "url": "/series/12431"
-    },
-    {
       "series_id": "12420",
       "title": "Syed Mushtaq Ali Trophy Elite 2026Nov 14-Dec 06",
       "category": "international",
       "url": "/series/12420"
+    },
+    {
+      "series_id": "12431",
+      "title": "Syed Mushtaq Ali Trophy Plate 2026Nov 14-Nov 24",
+      "category": "international",
+      "url": "/series/12431"
     },
     {
       "series_id": "11606",
@@ -243,16 +243,16 @@
       "url": "/series/13097"
     },
     {
-      "series_id": "12923",
-      "title": "India A tour of Nepal, 2026Dec 09-Dec 13",
-      "category": "international",
-      "url": "/series/12923"
-    },
-    {
       "series_id": "11858",
       "title": "New Zealand tour of Australia, 2026-27Dec 09-Jan 08",
       "category": "international",
       "url": "/series/11858"
+    },
+    {
+      "series_id": "12923",
+      "title": "India A tour of Nepal, 2026Dec 09-Dec 13",
+      "category": "international",
+      "url": "/series/12923"
     },
     {
       "series_id": "11913",
@@ -457,16 +457,16 @@
       "url": "/series/12717"
     },
     {
-      "series_id": "12398",
-      "title": "Ranji Trophy Elite 2026-27Oct 11-Mar 02",
-      "category": "domestic",
-      "url": "/series/12398"
-    },
-    {
       "series_id": "12409",
       "title": "Ranji Trophy Plate 2026-27Oct 11-Jan 28",
       "category": "domestic",
       "url": "/series/12409"
+    },
+    {
+      "series_id": "12398",
+      "title": "Ranji Trophy Elite 2026-27Oct 11-Mar 02",
+      "category": "domestic",
+      "url": "/series/12398"
     },
     {
       "series_id": "13170",
@@ -477,28 +477,34 @@
   ],
   "women": [
     {
-      "series_id": "12210",
-      "title": "Australia A Women tour of India 2026",
-      "category": "women",
-      "url": "/series/12210"
-    },
-    {
       "series_id": "12602",
       "title": "Women's Asian Games 2026",
       "category": "women",
       "url": "/series/12602"
     },
     {
-      "series_id": "12595",
-      "title": "WCPL 2026",
-      "category": "women",
-      "url": "/series/12595"
-    },
-    {
       "series_id": "12475",
       "title": "Zimbabwe Women v South Africa Women, 2026",
       "category": "women",
       "url": "/series/12475"
+    },
+    {
+      "series_id": "12595",
+      "title": "Womens Caribbean Premier League 2026Sep 05-Sep 17",
+      "category": "women",
+      "url": "/series/12595"
+    },
+    {
+      "series_id": "12210",
+      "title": "Australia A Women tour of India 2026Sep 12-Oct 02",
+      "category": "women",
+      "url": "/series/12210"
+    },
+    {
+      "series_id": "13217",
+      "title": "West Indies Women tour of Zimbabwe, 2026Sep 24-Oct 07",
+      "category": "women",
+      "url": "/series/13217"
     },
     {
       "series_id": "11898",

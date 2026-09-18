@@ -5,6 +5,7 @@ import time
 import urllib.request
 from bs4 import BeautifulSoup
 from typing import Dict, Any, List, Optional, Tuple
+from datetime import datetime
 
 class CricketFeedEngine:
     """
@@ -94,12 +95,25 @@ class CricketFeedEngine:
     # 1. Matches Directory & Mega Drawer
     # -------------------------------------------------------------------------
     @classmethod
+    def _parse_cricbuzz_slug(cls, slug: str) -> Tuple[str, str]:
+        """Extracts (stage, series_name) cleanly from a Cricbuzz slug."""
+        if not slug:
+            return "Match", "Cricket Tournament"
+        stage_pattern = r'-(?:(\d+(?:st|nd|rd|th)?-(?:match|t20i|odi|test|quarter-final|semi-final|final|eliminator|qualifier|playoff|warm-up))|((?:qualifier|eliminator|playoff)-\d+)|(final|semi-final|eliminator|qualifier|playoff|1st-quarter-final|2nd-quarter-final|3rd-quarter-final|4th-quarter-final))-(.+)$'
+        m = re.search(stage_pattern, slug, re.I)
+        if m:
+            stage = (m.group(1) or m.group(2) or m.group(3)).replace('-', ' ').title()
+            series = m.group(4).replace('-', ' ').title()
+            return stage, series
+        return "Match", "Cricket Tournament"
+
+    @classmethod
     def fetch_matches_directory(cls) -> Dict[str, Any]:
         """
-        Parses Cricbuzz live scores page to extract:
+        Parses Cricbuzz live scores, upcoming, and recent pages to extract:
         - Top Carousel strip matches
-        - Mega Drawer categorized into INTERNATIONAL, LEAGUE, DOMESTIC, WOMEN
-        - Main Match Cards categorized into Live, Recent, Upcoming
+        - Mega Drawer categorized cleanly into international, league, domestic, women
+        - Main Match Cards categorized into Live, Recent, Upcoming with exact series & timing
         """
         url = "https://www.cricbuzz.com/cricket-match/live-scores"
         categories = {
@@ -125,11 +139,10 @@ class CricketFeedEngine:
                 text = a.get_text(strip=True)
                 if not text or len(text) > 60:
                     continue
-                # Format: "BBT vs JKM - JKM won" or "AFG vs IND - Preview"
                 status_pill = "Preview"
                 if "won" in text.lower() or "win" in text.lower():
                     status_pill = "Result"
-                elif "live" in text.lower() or "opt to" in text.lower():
+                elif "live" in text.lower() or "opt to" in text.lower() or "stumps" in text.lower():
                     status_pill = "LIVE"
                 elif "abandon" in text.lower() or "postpone" in text.lower():
                     status_pill = "Abandoned"
@@ -142,136 +155,281 @@ class CricketFeedEngine:
                         "href": f"/match/{mid}"
                     })
 
-            # 2. Extract Mega Drawer Matches & Categories
-            match_links = soup.find_all("a", href=re.compile(r'/live-cricket-scores/(\d+)/([^/?#]+)'))
-            for a in match_links:
-                m_href = a["href"]
-                mid = re.search(r'/live-cricket-scores/(\d+)/', m_href).group(1)
-                txt = a.get_text(strip=True)
-                if re.search(r'^[A-Z0-9]+vs[A-Z0-9]+', txt, re.I) or 'cb-mat-mnu' in ' '.join(a.get('class', [])):
+            # 2. Extract Mega Drawer Matches strictly isolated by Category & Series containers
+            for cat_div in soup.find_all('div', class_=lambda c: c and 'mb-3' in c):
+                header = cat_div.find('div', recursive=False)
+                if header and header.get_text(strip=True).upper() in ['INTERNATIONAL', 'LEAGUE', 'DOMESTIC', 'WOMEN']:
+                    cat_key = header.get_text(strip=True).lower()
+                    for s_div in cat_div.find_all('div', class_=lambda c: c and 'mb-3' in c):
+                        s_link = s_div.find('a', href=lambda h: h and '/cricket-series/' in h)
+                        block_series = s_link.get_text(strip=True) if s_link else ""
+                        
+                        for a in s_div.find_all('a', href=re.compile(r'/live-cricket-scores/(\d+)/([^/?#]+)')):
+                            if 'block' in a.get('class', []):
+                                href = a['href']
+                                mid = re.search(r'/live-cricket-scores/(\d+)/', href).group(1)
+                                slug_match = re.search(r'/live-cricket-scores/\d+/([^/?#]+)', href)
+                                slug = slug_match.group(1) if slug_match else ""
+                                slug_stage, slug_series = cls._parse_cricbuzz_slug(slug)
+                                series_name = block_series or slug_series or "Cricket Tournament"
+                                
+                                title_attr = a.get('title', '').strip()
+                                teams = ""
+                                stage = slug_stage
+                                raw_stat = "Match Preview"
+                                
+                                if title_attr and ',' in title_attr:
+                                    t_part, rest = title_attr.split(',', 1)
+                                    teams = t_part.strip()
+                                    if ' - ' in rest:
+                                        stg_p, stat_p = rest.split(' - ', 1)
+                                        stage = stg_p.strip() or stage
+                                        raw_stat = stat_p.strip()
+                                    else:
+                                        stage = rest.strip() or stage
+                                else:
+                                    teams = a.get_text(strip=True)
+
+                                if not teams or teams.lower().startswith("live score"):
+                                    teams = f"Match {mid}"
+
+                                is_live = False
+                                is_completed = False
+                                low_stat = raw_stat.lower()
+                                if any(w in low_stat for w in ['won', 'win', 'complete', 'result', 'tied', 'abandoned']):
+                                    is_completed = True
+                                    if low_stat == 'complete':
+                                        raw_stat = 'Match Completed'
+                                elif any(w in low_stat for w in ['live', 'opt to', 'need', 'require', 'stumps', 'trail by', 'lead by', 'in progress']):
+                                    is_live = True
+                                elif any(w in low_stat for w in ['preview', 'upcoming', 'scheduled']):
+                                    raw_stat = 'Match Preview'
+
+                                clean_status, balls_rem_badge = cls._format_status_and_balls_rem(raw_stat)
+                                
+                                item = {
+                                    "match_id": mid,
+                                    "title": teams,
+                                    "series": series_name,
+                                    "stage": stage,
+                                    "category": cat_key,
+                                    "status": clean_status,
+                                    "balls_remaining": balls_rem_badge,
+                                    "is_live": is_live,
+                                    "is_completed": is_completed,
+                                    "url": f"/match/{mid}"
+                                }
+                                if not any(x["match_id"] == mid for x in categories["drawer"][cat_key]):
+                                    categories["drawer"][cat_key].append(item)
+
+            # 3. Ingest Live Matches from main page
+            for a in soup.find_all('a', class_=lambda c: c and 'bg-cbWhite' in c and 'p-3' in c):
+                href = a.get('href', '')
+                m_match = re.search(r'/live-cricket-scores/(\d+)/([^/?#]+)', href)
+                if not m_match:
                     continue
-
-                parent_txt = ""
-                p = a.parent
-                for _ in range(4):
-                    if p:
-                        parent_txt += " " + p.get_text()
-                        p = p.parent
-                parent_txt = parent_txt.lower()
-
-                cat = "league"
-                if any(w in parent_txt for w in ["women", "wom", "wbbl", "wpl", "wcpl"]):
-                    cat = "women"
-                elif any(w in parent_txt for w in ["afg vs ind", "eng vs sl", "international", "t20i", "odi", "test"]):
-                    cat = "international"
-                elif any(w in parent_txt for w in ["county", "ranji", "domestic", "csa", "sheffield"]):
-                    cat = "domestic"
-
-                m_stage = "Match"
-                m_teams = txt
-                slug_match = re.search(r'/live-cricket-scores/\d+/([^/?#]+)', m_href)
-                slug = slug_match.group(1) if slug_match else ""
-
-                if "vs" in txt and not txt.lower().startswith("live score") and len(txt) < 60:
-                    parts = txt.split("vs")
-                    t1 = parts[0].strip()
-                    t2_stage = parts[1].strip()
-                    m_stage_match = re.search(r'(\d+(?:st|nd|rd|th)?\s*(?:T20I|ODI|Test|Match|Quarter Final|Semi Final|Final|Eliminator|Qualifier))', t2_stage, re.I)
-                    if m_stage_match:
-                        m_stage = m_stage_match.group(1)
-                        t2 = t2_stage.replace(m_stage, "").strip()
-                    else:
-                        t2 = t2_stage
-                    m_teams = f"{t1} vs {t2}"
-                elif slug and "-vs-" in slug:
-                    s_parts = slug.split("-vs-")
-                    t1 = s_parts[0].replace("-", " ").title()
-                    t2_raw = s_parts[1]
-                    m_stage_match = re.search(r'(\d+(?:st|nd|rd|th)?-(?:t20i|odi|test|match|quarter-final|semi-final|final|eliminator|qualifier))', t2_raw, re.I)
-                    if m_stage_match:
-                        m_stage = m_stage_match.group(1).replace("-", " ").title()
-                        t2 = t2_raw.split(m_stage_match.group(1))[0].strip("-").replace("-", " ").title()
-                    else:
-                        t2 = t2_raw.split("-")[0].title()
-                    m_teams = f"{t1} vs {t2}"
+                mid = m_match.group(1)
+                slug = m_match.group(2)
+                l_stage, l_series = cls._parse_cricbuzz_slug(slug)
+                card_txt = a.get_text(separator=' | ', strip=True)
+                
+                # Extract clean team names from title attribute or spans
+                title_attr = a.get('title', '').strip()
+                t1 = "Team 1"
+                t2 = "Team 2"
+                if title_attr and ' vs ' in title_attr.split(',')[0]:
+                    t_parts = title_attr.split(',')[0].split(' vs ', 1)
+                    t1, t2 = t_parts[0].strip(), t_parts[1].strip()
                 else:
-                    m_teams = re.sub(r'(\d+(?:st|nd|rd|th)?\s*(?:T20I|ODI|Test|Match))', r' \1', txt).strip()[:40]
+                    t_spans = a.find_all('span', class_=lambda c: c and 'truncate' in c)
+                    teams_list = [sp.get_text(strip=True) for sp in t_spans if sp.get_text(strip=True) and not sp.get_text(strip=True).isdigit()]
+                    if len(teams_list) >= 2:
+                        t1 = teams_list[0]
+                        t2 = teams_list[1]
 
-                m_teams = re.sub(r'\s+', ' ', m_teams).strip()
-                if m_teams.lower().startswith("live score") or not m_teams:
-                    m_teams = "Match " + mid
+                # Status element
+                stat_elem = a.find('span', class_=lambda c: c and ('cbLive' in c or 'text-red' in c or 'text-emerald' in c))
+                status_txt = stat_elem.get_text(strip=True) if stat_elem else "Live In Progress"
+                
+                cat_l = "international"
+                low_s = (l_series + " " + t1 + " " + t2).lower()
+                if "women" in low_s: cat_l = "women"
+                elif any(w in low_s for w in ["cpl", "ipl", "bbl", "league"]): cat_l = "league"
+                elif any(w in low_s for w in ["county", "ranji", "domestic", "csa"]): cat_l = "domestic"
 
-                # Accurate Match Status & Lifecycle Classification
-                completed_words = ["won by", "won", "result", "tied", "abandoned", "postponed", "no result"]
-                live_words = ["opt to bat", "opt to bowl", "require ", "need ", "trail by", "lead by", "in progress", "stumps", "innings break", "lunch", "tea", "drinks"]
-                scheduled_words = ["match begins", "starts at", "starts in", "am ", "pm ", "gmt", "ist", "preview", "scheduled", "today,", "tomorrow,"]
-
-                is_completed = any(w in parent_txt for w in completed_words)
-                is_scheduled = any(w in parent_txt for w in scheduled_words)
-                has_live_indicator = any(w in parent_txt for w in live_words)
-
-                # Check if card has Cricbuzz live class
-                cb_live_elem = a.parent.find(class_=lambda c: c and ("cb-text-live" in c or "text-live" in c)) if a.parent else None
-                if cb_live_elem:
-                    has_live_indicator = True
-
-                is_live = has_live_indicator and not is_completed and not is_scheduled
-
-                status_text = "Match Preview"
-                if is_completed:
-                    m_win = re.search(r'([A-Za-z0-9\s]+?won by \d+\s*(?:runs|wkts|wickets)[A-Za-z0-9\s]*?)(?:\||\n|live score|$)', parent_txt, re.I)
-                    if not m_win:
-                        m_win = re.search(r'([A-Za-z\s]+?won by [^\n\|]+)', parent_txt, re.I)
-                    if m_win:
-                        status_text = m_win.group(1).strip()
-                        if len(status_text) > 40:
-                            status_text = status_text[:40].strip()
-                    else:
-                        status_text = "Match Completed"
-                elif is_live:
-                    m_sit = re.search(r'([A-Za-z0-9\s]+?(?:opt to (?:bat|bowl)|need \d+ runs|trail by \d+|lead by \d+|require \d+ runs)[A-Za-z0-9\s]*?)(?:\||\n|$)', parent_txt, re.I)
-                    if m_sit:
-                        status_text = m_sit.group(1).strip()[:40]
-                    else:
-                        status_text = "Live In Progress"
-                elif is_scheduled:
-                    m_time = re.search(r'(?:starts at|match begins at|starts in)\s*([^\n\|]+)', parent_txt, re.I)
-                    if m_time:
-                        status_text = f"Starts at {m_time.group(1).strip()[:25]}"
-                    else:
-                        status_text = "Match Scheduled"
-
-                clean_status, balls_rem_badge = cls._format_status_and_balls_rem(status_text)
-
-                item = {
+                clean_stat, b_rem = cls._format_status_and_balls_rem(status_txt)
+                live_item = {
                     "match_id": mid,
-                    "title": m_teams,
-                    "stage": m_stage,
-                    "category": cat,
-                    "status": clean_status,
-                    "balls_remaining": balls_rem_badge,
-                    "is_live": is_live,
-                    "is_completed": is_completed,
+                    "title": f"{t1} vs {t2}",
+                    "team_1": t1,
+                    "team_2": t2,
+                    "series": l_series,
+                    "stage": l_stage,
+                    "category": cat_l,
+                    "status": clean_stat,
+                    "balls_remaining": b_rem,
+                    "is_live": True,
+                    "is_completed": False,
                     "url": f"/match/{mid}"
                 }
+                if not any(x["match_id"] == mid for x in categories["live"]):
+                    categories["live"].append(live_item)
+                if not any(x["match_id"] == mid for x in categories["drawer"][cat_l]):
+                    categories["drawer"][cat_l].append(live_item)
 
-                drawer_list = categories["drawer"][cat]
-                if not any(x["match_id"] == mid for x in drawer_list):
-                    drawer_list.append(item)
+            # 4. Ingest Upcoming Matches with exact scheduled timings
+            try:
+                up_url = "https://www.cricbuzz.com/cricket-match/live-scores/upcoming-matches"
+                up_html = cls._fetch_html(up_url)
+                up_soup = BeautifulSoup(up_html, "html.parser")
+                
+                up_json_items = []
+                for s in up_soup.find_all('script', type='application/ld+json'):
+                    try:
+                        s_data = json.loads(s.string)
+                        if 'itemListElement' in s_data.get('mainEntity', {}):
+                            up_json_items = s_data.get('mainEntity', {}).get('itemListElement', [])
+                            break
+                    except Exception:
+                        pass
 
-                if is_live:
-                    categories["recent"] = [x for x in categories["recent"] if x["match_id"] != mid]
-                    categories["upcoming"] = [x for x in categories["upcoming"] if x["match_id"] != mid]
-                    if not any(x["match_id"] == mid for x in categories["live"]):
-                        categories["live"].append(item)
-                elif is_completed:
-                    if not any(x["match_id"] == mid for x in categories["live"]):
-                        if not any(x["match_id"] == mid for x in categories["recent"]):
-                            categories["recent"].append(item)
-                else:
-                    if not any(x["match_id"] == mid for x in categories["live"]) and not any(x["match_id"] == mid for x in categories["recent"]):
-                        if not any(x["match_id"] == mid for x in categories["upcoming"]):
-                            categories["upcoming"].append(item)
+                up_cards = []
+                for a in up_soup.find_all('a', href=re.compile(r'/live-cricket-scores/(\d+)/([^/?#]+)')):
+                    if 'bg-cbWhite' in ' '.join(a.get('class', [])):
+                        up_mid = re.search(r'/live-cricket-scores/(\d+)/', a['href']).group(1)
+                        up_slug = re.search(r'/live-cricket-scores/\d+/([^/?#]+)', a['href']).group(1)
+                        up_cards.append((up_mid, up_slug, a.get('title', '')))
+
+                for idx, (u_mid, u_slug, u_title) in enumerate(up_cards):
+                    u_stage, u_series = cls._parse_cricbuzz_slug(u_slug)
+                    t1 = "Team 1"
+                    t2 = "Team 2"
+                    venue = ""
+                    sched_timing = ""
+                    status_msg = "Match Scheduled"
+                    
+                    if idx < len(up_json_items):
+                        j_item = up_json_items[idx]
+                        j_comps = j_item.get('competitor', [])
+                        if len(j_comps) >= 2:
+                            t1 = j_comps[0].get('name', 'Team 1')
+                            t2 = j_comps[1].get('name', 'Team 2')
+                        venue = j_item.get('location', '').strip().rstrip(',')
+                        status_msg = j_item.get('eventStatus', 'Match Scheduled')
+                        start_dt = j_item.get('startDate')
+                        if start_dt:
+                            try:
+                                dt = datetime.fromisoformat(start_dt.replace('Z', '+00:00'))
+                                sched_timing = dt.strftime("%b %d, %I:%M %p GMT")
+                            except Exception:
+                                sched_timing = start_dt
+                    elif u_title and ',' in u_title:
+                        t_part = u_title.split(',', 1)[0].strip()
+                        if ' vs ' in t_part:
+                            t1, t2 = t_part.split(' vs ', 1)
+
+                    u_cat = "international"
+                    low_s = (u_series + " " + t1 + " " + t2).lower()
+                    if "women" in low_s: u_cat = "women"
+                    elif any(w in low_s for w in ["cpl", "ipl", "bbl", "league"]): u_cat = "league"
+                    elif any(w in low_s for w in ["county", "ranji", "domestic", "cup", "csa"]): u_cat = "domestic"
+
+                    clean_stat, b_rem = cls._format_status_and_balls_rem(status_msg)
+                    up_item = {
+                        "match_id": u_mid,
+                        "title": f"{t1} vs {t2}",
+                        "team_1": t1,
+                        "team_2": t2,
+                        "series": u_series,
+                        "stage": u_stage,
+                        "venue": venue,
+                        "category": u_cat,
+                        "status": clean_stat,
+                        "scheduled_timing": sched_timing or clean_stat,
+                        "date_str": sched_timing,
+                        "balls_remaining": b_rem,
+                        "is_live": False,
+                        "is_completed": False,
+                        "url": f"/match/{u_mid}"
+                    }
+                    if not any(x["match_id"] == u_mid for x in categories["upcoming"]):
+                        categories["upcoming"].append(up_item)
+                    if not any(x["match_id"] == u_mid for x in categories["drawer"][u_cat]):
+                        categories["drawer"][u_cat].append(up_item)
+            except Exception as e:
+                print(f"[FeedEngine] Error fetching upcoming matches: {e}")
+
+            # 5. Ingest Recent Matches with real results
+            try:
+                rec_url = "https://www.cricbuzz.com/cricket-match/live-scores/recent-matches"
+                rec_html = cls._fetch_html(rec_url)
+                rec_soup = BeautifulSoup(rec_html, "html.parser")
+                
+                rec_json_items = []
+                for s in rec_soup.find_all('script', type='application/ld+json'):
+                    try:
+                        s_data = json.loads(s.string)
+                        if 'itemListElement' in s_data.get('mainEntity', {}):
+                            rec_json_items = s_data.get('mainEntity', {}).get('itemListElement', [])
+                            break
+                    except Exception:
+                        pass
+
+                rec_cards = []
+                for a in rec_soup.find_all('a', href=re.compile(r'/live-cricket-scores/(\d+)/([^/?#]+)')):
+                    if 'bg-cbWhite' in ' '.join(a.get('class', [])):
+                        r_mid = re.search(r'/live-cricket-scores/(\d+)/', a['href']).group(1)
+                        r_slug = re.search(r'/live-cricket-scores/\d+/([^/?#]+)', a['href']).group(1)
+                        rec_cards.append((r_mid, r_slug, a.get('title', '')))
+
+                for idx, (r_mid, r_slug, r_title) in enumerate(rec_cards[:25]):
+                    r_stage, r_series = cls._parse_cricbuzz_slug(r_slug)
+                    t1 = "Team 1"
+                    t2 = "Team 2"
+                    res_text = "Match Completed"
+                    venue = ""
+                    
+                    if idx < len(rec_json_items):
+                        j_item = rec_json_items[idx]
+                        j_comps = j_item.get('competitor', [])
+                        if len(j_comps) >= 2:
+                            t1 = j_comps[0].get('name', 'Team 1')
+                            t2 = j_comps[1].get('name', 'Team 2')
+                        res_text = j_item.get('eventStatus', 'Match Completed')
+                        venue = j_item.get('location', '').strip().rstrip(',')
+                    elif r_title and ',' in r_title:
+                        t_part = r_title.split(',', 1)[0].strip()
+                        if ' vs ' in t_part:
+                            t1, t2 = t_part.split(' vs ', 1)
+
+                    r_cat = "international"
+                    low_s = (r_series + " " + t1 + " " + t2).lower()
+                    if "women" in low_s: r_cat = "women"
+                    elif any(w in low_s for w in ["cpl", "ipl", "bbl", "league"]): r_cat = "league"
+                    elif any(w in low_s for w in ["county", "ranji", "domestic", "cup", "csa"]): r_cat = "domestic"
+
+                    clean_stat, b_rem = cls._format_status_and_balls_rem(res_text)
+                    rec_item = {
+                        "match_id": r_mid,
+                        "title": f"{t1} vs {t2}",
+                        "team_1": t1,
+                        "team_2": t2,
+                        "series": r_series,
+                        "stage": r_stage,
+                        "venue": venue,
+                        "category": r_cat,
+                        "status": clean_stat,
+                        "balls_remaining": b_rem,
+                        "is_live": False,
+                        "is_completed": True,
+                        "url": f"/match/{r_mid}"
+                    }
+                    if not any(x["match_id"] == r_mid for x in categories["recent"]):
+                        categories["recent"].append(rec_item)
+                    if not any(x["match_id"] == r_mid for x in categories["drawer"][r_cat]):
+                        categories["drawer"][r_cat].append(rec_item)
+            except Exception as e:
+                print(f"[FeedEngine] Error fetching recent matches: {e}")
 
         except Exception as e:
             print(f"[FeedEngine] Error in fetch_matches_directory: {e}")
@@ -334,7 +492,7 @@ class CricketFeedEngine:
     # -------------------------------------------------------------------------
     @classmethod
     def fetch_schedule(cls) -> List[Dict[str, Any]]:
-        """Extracts upcoming tournaments, series, dates, and fixtures."""
+        """Extracts upcoming tournaments, series, dates, and fixtures cleanly."""
         url = "https://www.cricbuzz.com/cricket-schedule/upcoming-series/international"
         schedule = []
         try:
@@ -342,16 +500,27 @@ class CricketFeedEngine:
             soup = BeautifulSoup(html, "html.parser")
 
             current_month = "Upcoming Schedule"
-            for h in soup.find_all(["h1", "h2", "h3", "div"]):
-                t = h.get_text(strip=True)
-                if any(m in t.upper() for m in ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"]) and len(t) < 30:
-                    current_month = t
-                elif ("tour of" in t.lower() or " vs " in t.lower() or "premier league" in t.lower() or "trophy" in t.lower() or "cup" in t.lower()) and len(t) > 10 and len(t) < 80:
-                    if not any(s["series_name"] == t for s in schedule):
+            # Extract month headers and clean series links
+            for el in soup.find_all(["h1", "h2", "h3", "div", "a"]):
+                if el.name in ["h1", "h2", "h3"] or (el.name == "div" and "hdr" in " ".join(el.get("class", []))):
+                    t = el.get_text(strip=True)
+                    if any(m in t.upper() for m in ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"]) and len(t) < 30:
+                        current_month = t
+                elif el.name == "a" and el.get("href", "").startswith("/cricket-series/"):
+                    title = el.get_text(strip=True)
+                    if not title or len(title) > 70 or "schedule" in title.lower():
+                        continue
+                    if not any(s["series_name"] == title for s in schedule):
+                        cat = "International"
+                        low_t = title.lower()
+                        if "women" in low_t: cat = "Women"
+                        elif any(w in low_t for w in ["league", "cpl", "ipl", "bbl"]): cat = "League"
+                        elif any(w in low_t for w in ["county", "ranji", "domestic", "csa"]): cat = "Domestic"
+
                         schedule.append({
                             "month": current_month,
-                            "series_name": t,
-                            "category": "International" if "tour of" in t.lower() or "vs" in t.lower() else "League",
+                            "series_name": title,
+                            "category": cat,
                             "dates": "September - October 2026",
                             "status": "Scheduled"
                         })

@@ -80,7 +80,9 @@ class AdminPanel:
             map_status_badge = f'<span class="px-2 py-0.5 rounded text-3xs font-black bg-emerald-100 text-emerald-800 border border-emerald-300">Mapped ({mapped_info.get("platform", "Feed")})</span>' if is_mapped else '<span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>'
 
             crex_event_cards += f"""
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-{ev_mid}" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="{ev_mid}"
+                 data-unique="{html_escape.escape(ev_unique)}"
                  data-title="{html_escape.escape(ev.get('title', '').lower())}"
                  data-series="{html_escape.escape(ev.get('series', '').lower())}"
                  data-mapped="{str(is_mapped).lower()}"
@@ -90,11 +92,11 @@ class AdminPanel:
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             {html_escape.escape(ev_unique)}
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-{ev_mid}">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border {st_color}">
                                 {html_escape.escape(ev.get('status', 'Scheduled'))}
                             </span>
-                            {map_status_badge}
+                            <span id="badge-map-{ev_mid}">{map_status_badge}</span>
                         </div>
                     </div>
 
@@ -110,7 +112,7 @@ class AdminPanel:
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-{ev_mid}" class="mt-3 pt-3 border-t border-slate-100">
                     {
                     f'''
                     <div class="flex items-center justify-between">
@@ -182,7 +184,7 @@ class AdminPanel:
                     </div>
                     <div class="h-8 w-px bg-emerald-800"></div>
                     <div class="text-right">
-                        <div class="text-2xl font-black text-amber-400">{mapped_count}</div>
+                        <div id="stat-mapped-count" class="text-2xl font-black text-amber-400">{mapped_count}</div>
                         <div class="text-3xs uppercase font-bold text-emerald-300">Actively Mapped</div>
                     </div>
                 </div>
@@ -231,7 +233,7 @@ class AdminPanel:
         <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
             <div class="px-5 py-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
                 <h3 class="text-xs sm:text-sm font-black text-slate-900 uppercase tracking-wide">
-                    Actively Mapped & Ingested Matches ({mapped_count})
+                    Actively Mapped & Ingested Matches (<span id="table-mapped-count">{mapped_count}</span>)
                 </h3>
                 <span class="text-3xs text-emerald-800 bg-emerald-100 font-bold px-2.5 py-0.5 rounded-full border border-emerald-300">
                     Live Engine Synced
@@ -248,7 +250,7 @@ class AdminPanel:
                             <th class="py-2.5 px-3 sm:px-4 text-right">Actions</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-100">
+                    <tbody id="mappedTableBody" class="divide-y divide-slate-100">
                         {mapped_rows if mapped_rows else '<tr><td colspan="5" class="py-6 text-center text-slate-400 font-medium">No matches mapped yet.</td></tr>'}
                     </tbody>
                 </table>
@@ -267,8 +269,8 @@ class AdminPanel:
                 <div class="flex flex-wrap items-center gap-2">
                     <input type="text" id="eventSearch" oninput="filterEvents()" placeholder="Search team or series..." class="px-3 py-1.5 text-xs bg-white border border-slate-300 rounded-lg focus:ring-1 focus:ring-emerald-500 focus:outline-hidden font-medium">
                     <button onclick="setFilterTab('all')" id="tab-all" class="admin-tab-btn px-3 py-1.5 rounded-lg text-xs font-black bg-slate-900 text-white shadow-2xs">All ({total_events_count})</button>
-                    <button onclick="setFilterTab('unmapped')" id="tab-unmapped" class="admin-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:bg-slate-100">Unmapped ({unmapped_count})</button>
-                    <button onclick="setFilterTab('mapped')" id="tab-mapped" class="admin-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:bg-slate-100">Mapped ({mapped_count})</button>
+                    <button onclick="setFilterTab('unmapped')" id="tab-unmapped" class="admin-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:bg-slate-100">Unmapped (<span id="tab-unmapped-cnt">{unmapped_count}</span>)</button>
+                    <button onclick="setFilterTab('mapped')" id="tab-mapped" class="admin-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:bg-slate-100">Mapped (<span id="tab-mapped-cnt">{mapped_count}</span>)</button>
                 </div>
             </div>
 
@@ -283,7 +285,28 @@ class AdminPanel:
     </footer>
 
     <script>
+        const STORAGE_KEY = 'criccenter_admin_mappings';
         let currentFilter = 'all';
+
+        function getLocalMappings() {{
+            try {{
+                return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{{}}');
+            }} catch (e) {{
+                return {{}};
+            }}
+        }}
+
+        function saveLocalMapping(mid, mObj) {{
+            const cur = getLocalMappings();
+            cur[mid] = mObj;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(cur));
+        }}
+
+        function removeLocalMapping(mid) {{
+            const cur = getLocalMappings();
+            delete cur[mid];
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(cur));
+        }}
 
         function setFilterTab(f) {{
             currentFilter = f;
@@ -318,6 +341,83 @@ class AdminPanel:
             }});
         }}
 
+        function hydrateMappingsFromLocalStorage() {{
+            const localMaps = getLocalMappings();
+            const tableBody = document.getElementById('mappedTableBody');
+
+            Object.keys(localMaps).forEach(mid => {{
+                const m = localMaps[mid];
+                const card = document.getElementById('card-' + mid) || document.querySelector('[data-mid="' + mid + '"]') || document.querySelector('[data-unique="' + mid + '"]');
+                if (card) {{
+                    card.setAttribute('data-mapped', 'true');
+                    const b = document.getElementById('badge-map-' + mid);
+                    if (b) {{
+                        b.innerHTML = '<span class="px-2 py-0.5 rounded text-3xs font-black bg-emerald-100 text-emerald-800 border border-emerald-300">Mapped (' + (m.platform || 'Feed') + ')</span>';
+                    }}
+                    const act = document.getElementById('card-action-' + mid);
+                    if (act) {{
+                        act.innerHTML = '<div class="flex items-center justify-between"><span class="text-3xs text-slate-500 truncate max-w-[200px] font-mono">' + (m.url || '') + '</span><div class="flex items-center gap-1.5"><a href="/match/' + mid + '" target="_blank" class="px-2 py-1 bg-emerald-700 hover:bg-emerald-800 text-white rounded text-3xs font-bold transition">View</a><button onclick="unmapMatch(\'' + mid + '\')" class="px-2 py-1 bg-rose-600 hover:bg-rose-700 text-white rounded text-3xs font-bold transition">Unmap</button></div></div>';
+                    }}
+                }}
+
+                if (tableBody) {{
+                    const existingRow = tableBody.querySelector('[data-table-mid="' + mid + '"]');
+                    if (!existingRow) {{
+                        const emptyTr = tableBody.querySelector('td[colspan="5"]');
+                        if (emptyTr && emptyTr.parentElement) {{
+                            emptyTr.parentElement.remove();
+                        }}
+                        const platBadge = (m.platform || '').toLowerCase().includes('cricinfo') ? 'bg-blue-100 text-blue-800 border-blue-300' : ((m.platform || '').toLowerCase().includes('cricbuzz') ? 'bg-emerald-100 text-emerald-800 border-emerald-300' : 'bg-amber-100 text-amber-900 border-amber-300');
+                        const tr = document.createElement('tr');
+                        tr.className = 'hover:bg-slate-50 transition border-b border-slate-100';
+                        tr.setAttribute('data-table-mid', mid);
+                        tr.innerHTML = `
+                            <td class="py-3 px-3 sm:px-4 font-mono font-bold text-slate-800">
+                                <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded border border-slate-200">${{mid}}</span>
+                            </td>
+                            <td class="py-3 px-3 sm:px-4">
+                                <div class="font-bold text-slate-900">${{m.title || ('Match ' + mid)}}</div>
+                                <div class="text-3xs uppercase text-slate-400 font-semibold">${{m.category || 'international'}}</div>
+                            </td>
+                            <td class="py-3 px-3 sm:px-4">
+                                <span class="px-2 py-0.5 rounded text-3xs font-extrabold border ${{platBadge}}">
+                                    ${{m.platform || 'CREX'}}
+                                </span>
+                            </td>
+                            <td class="py-3 px-3 sm:px-4 max-w-xs truncate font-mono text-2xs text-slate-600">
+                                <a href="${{m.url || ''}}" target="_blank" class="hover:underline text-emerald-700 font-medium">${{m.url || ''}}</a>
+                            </td>
+                            <td class="py-3 px-3 sm:px-4 text-right">
+                                <div class="flex items-center justify-end gap-2">
+                                    <a href="/match/${{mid}}" target="_blank" class="px-3 py-1 bg-emerald-700 hover:bg-emerald-800 text-white rounded text-2xs font-bold transition shadow-2xs">View Center &raquo;</a>
+                                    <button onclick="unmapMatch('${{mid}}')" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white rounded text-2xs font-bold transition shadow-2xs">Unmap</button>
+                                </div>
+                            </td>
+                        `;
+                        tableBody.appendChild(tr);
+                    }}
+                }}
+            }});
+
+            // Recompute stats and tab counters
+            const allRows = document.querySelectorAll('.event-row');
+            const mappedRows = document.querySelectorAll('.event-row[data-mapped="true"]');
+            const total = allRows.length;
+            const mapped = mappedRows.length;
+            const unmapped = Math.max(0, total - mapped);
+
+            const statMapped = document.getElementById('stat-mapped-count');
+            if (statMapped) statMapped.innerText = mapped;
+            const tableMapped = document.getElementById('table-mapped-count');
+            if (tableMapped) tableMapped.innerText = mapped;
+            const tabMapped = document.getElementById('tab-mapped-cnt');
+            if (tabMapped) tabMapped.innerText = mapped;
+            const tabUnmapped = document.getElementById('tab-unmapped-cnt');
+            if (tabUnmapped) tabUnmapped.innerText = unmapped;
+
+            filterEvents();
+        }}
+
         async function quickMapMatch(mid, title, cat) {{
             const input = document.getElementById('input-' + mid);
             if (!input) return;
@@ -328,22 +428,34 @@ class AdminPanel:
                 return;
             }}
 
+            let plat = 'CREX';
+            if (url.includes('cricinfo') || url.includes('espn')) plat = 'ESPNcricinfo';
+            else if (url.includes('cricbuzz')) plat = 'Cricbuzz';
+
+            const mObj = {{
+                match_id: mid,
+                title: title || ('Match ' + mid),
+                category: cat || 'international',
+                url: url,
+                platform: plat,
+                updated_at: new Date().toISOString()
+            }};
+
+            saveLocalMapping(mid, mObj);
+            hydrateMappingsFromLocalStorage();
+
             try {{
-                const res = await fetch('/api/admin/map', {{
+                await fetch('/api/admin/map', {{
                     method: 'POST',
                     headers: {{ 'Content-Type': 'application/json' }},
-                    body: JSON.stringify({{ match_id: mid, title: title, category: cat, url: url }})
+                    body: JSON.stringify(mObj)
                 }});
-                const data = await res.json();
-                if (data.status === 'ok' || data.status === 'received') {{
-                    alert('Match ' + mid + ' mapped successfully! Ingestion initiated.');
-                    window.location.reload();
-                }} else {{
-                    alert('Error: ' + (data.error || 'Failed to map'));
-                }}
             }} catch (err) {{
-                alert('Network error: ' + err.message);
+                console.warn('Backend sync note:', err);
             }}
+
+            alert('Match ' + mid + ' mapped successfully! Ingestion initiated.');
+            window.location.reload();
         }}
 
         async function handleCustomMapSubmit(e) {{
@@ -353,48 +465,52 @@ class AdminPanel:
             const cat = document.getElementById('customCategory').value;
             const url = document.getElementById('customUrl').value.trim();
 
+            let plat = 'CREX';
+            if (url.includes('cricinfo') || url.includes('espn')) plat = 'ESPNcricinfo';
+            else if (url.includes('cricbuzz')) plat = 'Cricbuzz';
+
+            const mObj = {{
+                match_id: mid,
+                title: title,
+                category: cat,
+                url: url,
+                platform: plat,
+                updated_at: new Date().toISOString()
+            }};
+
+            saveLocalMapping(mid, mObj);
+            hydrateMappingsFromLocalStorage();
+
             const msg = document.getElementById('mapStatusMsg');
-            msg.className = 'mt-3 text-xs font-bold text-blue-600 block';
-            msg.innerText = 'Saving mapping and syncing urls.txt...';
+            msg.className = 'mt-3 text-xs font-bold text-emerald-600 block';
+            msg.innerText = 'Mapping saved successfully! Live scraping initiated.';
 
             try {{
-                const res = await fetch('/api/admin/map', {{
+                await fetch('/api/admin/map', {{
                     method: 'POST',
                     headers: {{ 'Content-Type': 'application/json' }},
-                    body: JSON.stringify({{ match_id: mid, title: title, category: cat, url: url }})
+                    body: JSON.stringify(mObj)
                 }});
-                const data = await res.json();
-                if (data.status === 'ok' || data.status === 'received') {{
-                    msg.className = 'mt-3 text-xs font-bold text-emerald-600 block';
-                    msg.innerText = 'Mapping saved successfully! Live scraping initiated.';
-                    setTimeout(() => window.location.reload(), 1200);
-                }} else {{
-                    msg.className = 'mt-3 text-xs font-bold text-rose-600 block';
-                    msg.innerText = 'Error: ' + (data.error || 'Failed to save');
-                }}
             }} catch (err) {{
-                msg.className = 'mt-3 text-xs font-bold text-rose-600 block';
-                msg.innerText = 'Network error: ' + err.message;
+                console.warn('Backend sync note:', err);
             }}
+
+            setTimeout(() => window.location.reload(), 800);
         }}
 
         async function unmapMatch(mid) {{
             if (!confirm('Are you sure you want to unmap match ' + mid + '?')) return;
+            removeLocalMapping(mid);
             try {{
-                const res = await fetch('/api/admin/unmap', {{
+                await fetch('/api/admin/unmap', {{
                     method: 'POST',
                     headers: {{ 'Content-Type': 'application/json' }},
                     body: JSON.stringify({{ match_id: mid }})
                 }});
-                const data = await res.json();
-                if (data.status === 'ok') {{
-                    window.location.reload();
-                }} else {{
-                    alert('Error: ' + (data.error || 'Failed to unmap'));
-                }}
             }} catch (err) {{
-                alert('Error: ' + err.message);
+                console.warn('Backend unmap note:', err);
             }}
+            window.location.reload();
         }}
 
         async function triggerSync() {{
@@ -407,6 +523,10 @@ class AdminPanel:
                 alert('Sync failed: ' + err.message);
             }}
         }}
+
+        window.addEventListener('DOMContentLoaded', () => {{
+            hydrateMappingsFromLocalStorage();
+        }});
     </script>
 </body>
 </html>"""

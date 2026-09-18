@@ -22,7 +22,7 @@
 <body class="text-slate-800 pb-16">
 
     
-        <!-- CRICBUZZ MAIN TOP NAVIGATION -->
+        <!-- PUBLIC CRIC CENTER NAVIGATION (ADMIN RESTRICTED & HIDDEN) -->
         <header class="bg-[#186047] text-white sticky top-0 z-50 shadow-md">
             <div class="max-w-6xl mx-auto px-3 sm:px-4 flex items-center justify-between h-12">
                 <div class="flex items-center space-x-6">
@@ -41,43 +41,11 @@
                                 <span>Series</span>
                                 <span class="text-3xs">&#9662;</span>
                             </a>
-                            <div class="absolute left-0 top-full hidden group-hover:block w-64 bg-white rounded-xl shadow-xl border border-slate-200 py-2 z-50">
+                            <div class="absolute left-0 top-full hidden group-hover:block w-72 bg-white rounded-xl shadow-xl border border-slate-200 py-2 z-50">
                                 
-            <a href="/series/1534175" class="block px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 transition">
-                Caribbean Premier League 2026
-            </a>
-            
-            <a href="/series/12973" class="block px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 transition">
-                Afg vs Ind in India 2026
-            </a>
-            
-            <a href="/series/10576" class="block px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 transition">
-                England vs Sri Lanka, 2026
-            </a>
-            
-            <a href="/series/13121" class="block px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 transition">
-                Africa Continental Cup 2026
-            </a>
-            
-            <a href="/series/13131" class="block px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 transition">
-                United Arab Emirates tour of Malaysia, 2026
-            </a>
-            
-            <a href="/series/11997" class="block px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 transition">
-                Australia tour of Zimbabwe 2026
-            </a>
-            
-            <a href="/series/12123" class="block px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 transition">
-                CPL 2026
-            </a>
-            
-            <a href="/series/12870" class="block px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 transition">
-                ETPL 2026
-            </a>
-            
         <div class="border-t border-slate-100 mt-1 pt-1">
             <a href="/series" class="block px-4 py-2 text-xs font-bold text-emerald-700 hover:bg-emerald-50 transition">
-                All Series &raquo;
+                View All Series &raquo;
             </a>
         </div>
         
@@ -86,298 +54,377 @@
                         <a href="/teams" class="text-emerald-100 hover:text-white transition font-medium pb-1">Teams</a>
                         <a href="/news" class="text-emerald-100 hover:text-white transition font-medium pb-1">News</a>
                         <a href="/rankings" class="text-emerald-100 hover:text-white transition font-medium pb-1">Rankings</a>
-                        <a href="/admin" class="text-emerald-100 hover:text-white transition font-medium pb-1 text-amber-300 hover:text-white">Admin</a>
                     </nav>
                 </div>
 
                 <div class="flex items-center space-x-2.5 text-xs">
-                    <a href="/admin" class="px-2.5 py-1 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-400/40 rounded-full font-black text-3xs uppercase tracking-wider transition">
-                        Admin Mapper
-                    </a>
-                    <a href="/schedule" class="hidden sm:inline-block px-3 py-1 bg-[#124d38] hover:bg-[#0d3b2c] border border-emerald-700/60 rounded-full font-semibold text-emerald-200 hover:text-white transition">
+                    <a href="/schedule" class="px-3 py-1 bg-[#124d38] hover:bg-[#0d3b2c] border border-emerald-700/60 rounded-full font-semibold text-emerald-200 hover:text-white transition">
                         Cricket Schedule &raquo;
                     </a>
                 </div>
             </div>
 
-            <!-- CREX + CRICBUZZ HORIZONTAL MATCH STRIP WITH CAROUSEL & MEGA DRAWER TRIGGER -->
+            <!-- CAROUSEL STRIP & MEGA-DRAWER TOGGLE -->
             <div class="bg-[#4a4a4a] text-white border-t border-emerald-950 relative">
                 <div class="max-w-6xl mx-auto px-2 sm:px-3 flex items-center justify-between h-10 gap-2">
                     <div class="text-3xs font-black tracking-wider uppercase text-slate-300 px-2 py-1 bg-black/30 rounded shrink-0 hidden sm:block">
                         MATCHES
                     </div>
 
-                    <!-- Carousel Controls & Scroll Container -->
                     <div class="flex items-center gap-1 flex-1 overflow-hidden relative">
                         <button onclick="scrollCarousel(-250)" class="w-6 h-6 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center text-xs shrink-0 transition" title="Scroll Left">
                             &#10094;
                         </button>
                         <div id="matchStripCarousel" class="flex items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth flex-1 py-1 px-1">
                             
-            <a href="/match/1534214" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
+            <a href="/match/1550477" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-900 text-emerald-200 flex items-center">
                     Result
                 </span>
-                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">BBT vs JKM - JKM won</span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">JW vs IW - IND Women won by 8 w</span>
+            </a>
+            
+            <a href="/match/1534214" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-900 text-emerald-200 flex items-center">
+                    Result
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">BT vs JK - Kingsmen won by 9 wk</span>
+            </a>
+            
+            <a href="/match/1534215" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-900 text-emerald-200 flex items-center">
+                    Result
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">GA vs AA - Falcons won by 9 wkt</span>
+            </a>
+            
+            <a href="/match/154689" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-900 text-emerald-200 flex items-center">
+                    Result
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">GA vs AA - Antigua and Barbuda </span>
+            </a>
+            
+            <a href="/match/11UW" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-900 text-emerald-200 flex items-center">
+                    Result
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">GA vs A&amp; - Antigua &amp;a; Barbuda </span>
+            </a>
+            
+            <a href="/match/13Q2" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-900 text-emerald-200 flex items-center">
+                    Result
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">JW vs IW - IND Women won by 8 w</span>
+            </a>
+            
+            <a href="/match/1540220" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-900 text-emerald-200 flex items-center">
+                    Result
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">TK vs GA - Warriors won by 2 wk</span>
+            </a>
+            
+            <a href="/match/1496586" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-900 text-emerald-200 flex items-center">
+                    Result
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">SL vs E - England won by 6 wkt</span>
+            </a>
+            
+            <a href="/match/12LV" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-900 text-emerald-200 flex items-center">
+                    Result
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">BT vs GA - Guyana Amazon Warrio</span>
+            </a>
+            
+            <a href="/match/13Q1" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-900 text-emerald-200 flex items-center">
+                    Result
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">SL vs MW - Sri Lanka Women won </span>
+            </a>
+            
+            <a href="/match/161802" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-900 text-emerald-200 flex items-center">
+                    Result
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">BT vs  - Guyana Amazon Warrio</span>
+            </a>
+            
+            <a href="/match/1540219" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-900 text-emerald-200 flex items-center">
+                    Result
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">BT vs GA - Warriors won by 7 wk</span>
+            </a>
+            
+            <a href="/match/1549533" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-900 text-emerald-200 flex items-center">
+                    Result
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">N vs SA - South Africa won by </span>
+            </a>
+            
+            <a href="/match/1540217" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-900 text-emerald-200 flex items-center">
+                    Result
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">BT vs JE - Tridents won by 3 ru</span>
+            </a>
+            
+            <a href="/match/96842" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-900 text-emerald-200 flex items-center">
+                    Result
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">TK vs GA - Guyana Amazon Warrio</span>
+            </a>
+            
+            <a href="/match/97830" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
+                    Preview
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">BT vs  - BT-W elected to bat</span>
+            </a>
+            
+            <a href="/match/99481" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-900 text-emerald-200 flex items-center">
+                    Result
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">SL vs EL - England Lions won by</span>
+            </a>
+            
+            <a href="/match/129916" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
+                    Preview
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white"> vs  - </span>
+            </a>
+            
+            <a href="/match/95255" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
+                    Preview
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">P1 vs E1 - Stumps : Day 3 - Pak</span>
+            </a>
+            
+            <a href="/match/154700" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-red-500 text-white flex items-center">
+                    <span class="w-2 h-2 rounded-full bg-red-400 animate-ping mr-1 inline-block"></span>LIVE
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">GAWvsJKM-JKM opt to bowl</span>
+            </a>
+            
+            <a href="/match/152742" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-900 text-emerald-200 flex items-center">
+                    Result
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">AUSvsZIM-AUS won</span>
+            </a>
+            
+            <a href="/match/170933" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-900 text-emerald-200 flex items-center">
+                    Result
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">JPNWvsINDW-INDW won</span>
             </a>
             
             <a href="/match/170120" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-900 text-emerald-200 flex items-center">
                     Result
                 </span>
                 <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">INDvsAFG-IND won</span>
             </a>
             
-            <a href="/match/129618" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+            <a href="/match/129623" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
                 <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
-                    Result
-                </span>
-                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">SLvsENG-ENG won</span>
-            </a>
-            
-            <a href="/match/154689" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
                     Preview
                 </span>
-                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">GAWvsABF-Preview</span>
-            </a>
-            
-            <a href="/match/169427" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
-                    Result
-                </span>
-                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">RDDvsDBG-DBG won</span>
-            </a>
-            
-            <a href="/match/170933" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
-                    Preview
-                </span>
-                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">JPNWvsINDW-Preview</span>
-            </a>
-            
-            <a href="/match/171627" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
-                    Preview
-                </span>
-                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Uganda vs Rwanda17th Match</span>
-            </a>
-            
-            <a href="/match/171637" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
-                    Preview
-                </span>
-                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Kenya vs Botswana18th Match</span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">ENGvsSL-Preview</span>
             </a>
             
             <a href="/match/171647" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
-                    Preview
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-900 text-emerald-200 flex items-center">
+                    Result
                 </span>
-                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Kenya vs Uganda19th Match</span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Uganda vs Kenya19th Match</span>
             </a>
             
             <a href="/match/171657" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
-                    Preview
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-900 text-emerald-200 flex items-center">
+                    Result
                 </span>
-                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Sierra Leone vs Botswana20th Match</span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Botswana vs Sierra Leone20th Match</span>
             </a>
             
-            <a href="/match/171691" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+            <a href="/match/171667" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
-                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">United Arab Emirates vs Malaysia3rd Match</span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Uganda vs KenyaFinal</span>
             </a>
             
-            <a href="/match/152742" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+            <a href="/match/171257" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
-                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Zimbabwe vs Australia2nd ODI</span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Japan vs Hong Kong, China1st T20I</span>
             </a>
             
-            <a href="/match/154682" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+            <a href="/match/169433" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
-                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Barbados Tridents vs Jamaica KingsmenEliminator</span>
-            </a>
-            
-            <a href="/match/169420" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
-                    Preview
-                </span>
-                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Belfast Wolves vs Edinburgh Castle Rockers29th Match</span>
-            </a>
-            
-            <a href="/match/142684" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
-                    Preview
-                </span>
-                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Nottinghamshire vs Sussex65th Match</span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Amsterdam Flames vs Belfast WolvesQualifier</span>
             </a>
             
             <a href="/match/142640" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
                 <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Essex vs Warwickshire61st Match</span>
             </a>
             
             <a href="/match/142651" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
                 <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Hampshire vs Leicestershire62nd Match</span>
             </a>
             
             <a href="/match/142662" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
                 <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Yorkshire vs Somerset63rd Match</span>
             </a>
             
             <a href="/match/142673" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
                 <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Glamorgan vs Surrey64th Match</span>
             </a>
             
+            <a href="/match/142684" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
+                    Preview
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Nottinghamshire vs Sussex65th Match</span>
+            </a>
+            
             <a href="/match/167050" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
                 <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Western Australia vs South Australia1st Match</span>
             </a>
             
+            <a href="/match/167053" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
+                    Preview
+                </span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Queensland vs Victoria2nd Match</span>
+            </a>
+            
             <a href="/match/171727" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
                 <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">North West - Eastvaal Renault Dragons vs Boland5th Match</span>
             </a>
             
             <a href="/match/171737" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
                 <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Western Province vs Dolphins6th Match</span>
             </a>
             
             <a href="/match/171747" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
                 <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Knights vs Lions7th Match</span>
             </a>
             
             <a href="/match/171757" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
                 <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Warriors vs Titans8th Match</span>
             </a>
             
             <a href="/match/143240" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
                 <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Durham vs Worcestershire49th Match</span>
             </a>
             
             <a href="/match/143251" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
                 <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Derbyshire vs Northamptonshire50th Match</span>
             </a>
             
             <a href="/match/143262" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
                 <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Middlesex vs Gloucestershire51st Match</span>
             </a>
             
             <a href="/match/143273" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
                 <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Lancashire vs Kent52nd Match</span>
             </a>
             
             <a href="/match/172037" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
                 <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Northern Cape vs Limpopo4th Match</span>
             </a>
             
             <a href="/match/172047" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
                 <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Eastern Storm vs Border5th Match</span>
             </a>
             
             <a href="/match/172057" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
                 <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Mpumalanga Rhinos vs South Western Districts6th Match</span>
             </a>
             
             <a href="/match/155466" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
                 <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">India U19 vs Australia U191st unofficial ODI</span>
             </a>
             
-            <a href="/match/155606" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
-                    Preview
-                </span>
-                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Australia A Women vs India A Women3rd unofficial T20</span>
-            </a>
-            
-            <a href="/match/170911" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
-                    Preview
-                </span>
-                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Bangladesh Women vs China Women1st Quarter Final</span>
-            </a>
-            
-            <a href="/match/170920" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
-                    Preview
-                </span>
-                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Thailand Women vs Pakistan Women2nd Quarter Final</span>
-            </a>
-            
             <a href="/match/170930" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
-                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Malaysia Women vs Sri Lanka Women3rd Quarter Final</span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Sri Lanka Women vs Malaysia Women3rd Quarter Final</span>
             </a>
             
-            <a href="/match/160007" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-emerald-800 text-emerald-200 flex items-center">
+            <a href="/match/160018" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
+                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 flex items-center">
                     Preview
                 </span>
-                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">South Africa Women vs Zimbabwe Women4th T20I</span>
-            </a>
-            
-            <a href="/match/161813" class="carousel-card shrink-0 px-3 py-1.5 rounded-lg bg-[#383838] hover:bg-[#2e2e2e] border border-slate-600 text-white text-xs flex items-center gap-2 transition shadow-xs">
-                <span class="text-3xs uppercase font-extrabold px-1.5 py-0.5 rounded bg-red-500 text-white flex items-center">
-                    <span class="w-2 h-2 rounded-full bg-red-400 animate-ping mr-1 inline-block"></span>LIVE
-                </span>
-                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Live Score|</span>
+                <span class="font-semibold whitespace-nowrap text-slate-200 hover:text-white">Zimbabwe Women vs South Africa Women5th T20I</span>
             </a>
             
                         </div>
@@ -386,22 +433,24 @@
                         </button>
                     </div>
 
-                    <!-- Mega Drawer Expand Toggle -->
-                    <button onclick="toggleMegaDrawer()" id="drawerToggleBtn" class="px-2.5 py-1 bg-[#333333] hover:bg-[#222222] text-xs font-extrabold uppercase tracking-wider rounded border border-slate-600 shrink-0 flex items-center gap-1 transition">
-                        <span id="drawerToggleText">ALL</span>
+                    <!-- Mega Drawer Button -->
+                    <button onclick="toggleMegaDrawer()" id="drawerToggleBtn" class="px-3 py-1 bg-[#333333] hover:bg-[#222222] text-xs font-extrabold uppercase tracking-wider rounded border border-slate-600 shrink-0 flex items-center gap-1.5 transition">
+                        <span id="drawerToggleText">ALL (109)</span>
                         <span id="drawerToggleIcon" class="text-3xs">&#9662;</span>
                     </button>
                 </div>
 
-                <!-- CRICBUZZ MEGA-DRAWER (Slides Down When ALL is Clicked) -->
-                <div id="megaDrawer" class="hidden bg-[#242424] border-b-2 border-emerald-600 shadow-2xl transition-all duration-200">
+                <!-- CRICINFO/CRICBUZZ HIGH-VISIBILITY MEGA-DRAWER -->
+                <div id="megaDrawer" class="hidden bg-[#222222] border-b-2 border-emerald-600 shadow-2xl transition-all duration-200">
                     <div class="max-w-6xl mx-auto p-4 sm:p-6">
-                        <div class="flex items-center justify-between border-b border-slate-700 pb-3 mb-4">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xs uppercase font-bold text-slate-400 mr-2">Filter:</span>
-                                <button onclick="filterDrawer('all')" id="drawerPill-all" class="drawer-filter-pill px-3 py-1 rounded-full text-xs font-bold bg-[#009270] text-white shadow-2xs">All</button>
-                                <button onclick="filterDrawer('live')" id="drawerPill-live" class="drawer-filter-pill px-3 py-1 rounded-full text-xs font-medium bg-[#333] text-slate-300 hover:bg-[#444]">Live Now</button>
-                                <button onclick="filterDrawer('today')" id="drawerPill-today" class="drawer-filter-pill px-3 py-1 rounded-full text-xs font-medium bg-[#333] text-slate-300 hover:bg-[#444]">Today</button>
+                        <!-- Drawer Tabs Header -->
+                        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-700 pb-3 mb-4">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <button onclick="filterMegaDrawer('all')" id="tab-draw-all" class="drawer-cat-btn px-3 py-1 rounded-full text-xs font-bold bg-[#009270] text-white shadow-2xs">All (109)</button>
+                                <button onclick="filterMegaDrawer('international')" id="tab-draw-international" class="drawer-cat-btn px-3 py-1 rounded-full text-xs font-medium bg-[#333] text-slate-300 hover:bg-[#444]">International (23)</button>
+                                <button onclick="filterMegaDrawer('league')" id="tab-draw-league" class="drawer-cat-btn px-3 py-1 rounded-full text-xs font-medium bg-[#333] text-slate-300 hover:bg-[#444]">League (43)</button>
+                                <button onclick="filterMegaDrawer('domestic')" id="tab-draw-domestic" class="drawer-cat-btn px-3 py-1 rounded-full text-xs font-medium bg-[#333] text-slate-300 hover:bg-[#444]">Domestic (37)</button>
+                                <button onclick="filterMegaDrawer('women')" id="tab-draw-women" class="drawer-cat-btn px-3 py-1 rounded-full text-xs font-medium bg-[#333] text-slate-300 hover:bg-[#444]">Women (6)</button>
                             </div>
                             <button onclick="toggleMegaDrawer()" class="text-xs font-bold text-slate-400 hover:text-white uppercase flex items-center gap-1">
                                 <span>CLOSE</span>
@@ -409,424 +458,566 @@
                             </button>
                         </div>
 
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                        <!-- Spacious Match Cards Grid -->
+                        <div id="drawerGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 max-h-[70vh] overflow-y-auto pr-1">
                             
-            <div>
-                <div class="text-3xs font-black uppercase tracking-widest text-emerald-400 border-b border-emerald-900 pb-1 mb-2">
-                    INTERNATIONAL
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/129623'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">England vs Sri Lanka, 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-bold bg-slate-700 text-slate-300">Preview</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/129623">England vs Sri Lanka</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">3rd T20I</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">Match Preview</span>
+                            
+                        </div>
+                    </div>
                 </div>
-                <ul class="space-y-1">
-                    
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="false" data-is-today="false">
-                    <a href="/match/170120" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">India vs Afghanistan</span>
-                            
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>3rd T20I</span>
-                            <span class="text-emerald-300 font-medium">Match Preview</span>
-                        </div>
-                    </a>
-                </li>
                 
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="false" data-is-today="false">
-                    <a href="/match/129618" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Sri Lanka vs England</span>
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/171647'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">Africa Continental Cup 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-extrabold bg-emerald-800 text-emerald-200">Result</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/171647">Uganda vs Kenya</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">19th Match</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">Match Completed</span>
                             
                         </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>2nd T20I</span>
-                            <span class="text-emerald-300 font-medium">Match Preview</span>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="false" data-is-today="false">
-                    <a href="/match/171627" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Uganda vs Rwanda</span>
-                            
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>17th Match</span>
-                            <span class="text-emerald-300 font-medium">Match Preview</span>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="false" data-is-today="false">
-                    <a href="/match/171637" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Kenya vs Botswana</span>
-                            
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>18th Match</span>
-                            <span class="text-emerald-300 font-medium">Match Preview</span>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="false" data-is-today="false">
-                    <a href="/match/171647" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Kenya vs Uganda</span>
-                            
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>19th Match</span>
-                            <span class="text-emerald-300 font-medium">Match Preview</span>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="false" data-is-today="false">
-                    <a href="/match/171657" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Sierra Leone vs Botswana</span>
-                            
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>20th Match</span>
-                            <span class="text-emerald-300 font-medium">Match Preview</span>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="false" data-is-today="false">
-                    <a href="/match/171691" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">United Arab Emirates vs Malaysia</span>
-                            
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>3rd Match</span>
-                            <span class="text-emerald-300 font-medium">Match Preview</span>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="false" data-is-today="false">
-                    <a href="/match/152742" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Zimbabwe vs Australia</span>
-                            
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>2nd ODI</span>
-                            <span class="text-emerald-300 font-medium">Match Preview</span>
-                        </div>
-                    </a>
-                </li>
-                
-                </ul>
-            </div>
-            
-                            
-            <div>
-                <div class="text-3xs font-black uppercase tracking-widest text-emerald-400 border-b border-emerald-900 pb-1 mb-2">
-                    LEAGUE
+                    </div>
                 </div>
-                <ul class="space-y-1">
-                    
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="false" data-is-today="true">
-                    <a href="/match/1534214" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Barbados Tridents vs Jamaica Kingsmen</span>
-                            
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>Eliminator</span>
-                            <span class="text-emerald-300 font-medium">Result — Kingsmen won by 9 wkts</span>
-                        </div>
-                    </a>
-                </li>
                 
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="false" data-is-today="false">
-                    <a href="/match/154682" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Barbados Tridents vs Jamaica KingsmenEliminator</span>
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/171657'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">Africa Continental Cup 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-extrabold bg-emerald-800 text-emerald-200">Result</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/171657">Botswana vs Sierra Leone</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">20th Match</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">Match Completed</span>
                             
                         </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>Match</span>
-                            <span class="text-emerald-300 font-medium">Match Preview</span>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="false" data-is-today="false">
-                    <a href="/match/154689" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Gaw vs Abf</span>
-                            
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>Match</span>
-                            <span class="text-emerald-300 font-medium">Match Preview</span>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="false" data-is-today="false">
-                    <a href="/match/169420" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Belfast Wolves vs Edinburgh Castle Rockers</span>
-                            
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>29th Match</span>
-                            <span class="text-emerald-300 font-medium">Match Preview</span>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="false" data-is-today="false">
-                    <a href="/match/169427" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Rotterdam Dockers vs Dublin Guardians</span>
-                            
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>30th Match</span>
-                            <span class="text-emerald-300 font-medium">Match Preview</span>
-                        </div>
-                    </a>
-                </li>
-                
-                </ul>
-            </div>
-            
-                            
-            <div>
-                <div class="text-3xs font-black uppercase tracking-widest text-emerald-400 border-b border-emerald-900 pb-1 mb-2">
-                    DOMESTIC
+                    </div>
                 </div>
-                <ul class="space-y-1">
-                    
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="true" data-is-today="true">
-                    <a href="/match/142662" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Yorks vs Som</span>
-                            <span class="text-3xs font-extrabold text-red-400 bg-red-950/60 px-1 py-0.5 rounded ml-1">LIVE</span>
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>63Rd Match</span>
-                            <span class="text-emerald-300 font-medium">Live In Progress</span>
-                        </div>
-                    </a>
-                </li>
                 
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="true" data-is-today="true">
-                    <a href="/match/142673" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Glam vs Sur</span>
-                            <span class="text-3xs font-extrabold text-red-400 bg-red-950/60 px-1 py-0.5 rounded ml-1">LIVE</span>
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/171667'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">Africa Continental Cup 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-bold bg-slate-700 text-slate-300">Preview</span>
                         </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>64Th Match</span>
-                            <span class="text-emerald-300 font-medium">Live In Progress</span>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="true" data-is-today="true">
-                    <a href="/match/142651" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Ham vs Leic</span>
-                            <span class="text-3xs font-extrabold text-red-400 bg-red-950/60 px-1 py-0.5 rounded ml-1">LIVE</span>
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>62Nd Match</span>
-                            <span class="text-emerald-300 font-medium">Live In Progress</span>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="true" data-is-today="true">
-                    <a href="/match/142684" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Notts vs Sus</span>
-                            <span class="text-3xs font-extrabold text-red-400 bg-red-950/60 px-1 py-0.5 rounded ml-1">LIVE</span>
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>65Th Match</span>
-                            <span class="text-emerald-300 font-medium">Live In Progress</span>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="true" data-is-today="true">
-                    <a href="/match/171737" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Wpr vs Dol</span>
-                            <span class="text-3xs font-extrabold text-red-400 bg-red-950/60 px-1 py-0.5 rounded ml-1">LIVE</span>
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>6Th Match</span>
-                            <span class="text-emerald-300 font-medium">Live In Progress</span>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="true" data-is-today="true">
-                    <a href="/match/171747" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Kng vs Lions</span>
-                            <span class="text-3xs font-extrabold text-red-400 bg-red-950/60 px-1 py-0.5 rounded ml-1">LIVE</span>
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>7Th Match</span>
-                            <span class="text-emerald-300 font-medium">Live In Progress</span>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="true" data-is-today="true">
-                    <a href="/match/171727" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Nwest vs Bol</span>
-                            <span class="text-3xs font-extrabold text-red-400 bg-red-950/60 px-1 py-0.5 rounded ml-1">LIVE</span>
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>5Th Match</span>
-                            <span class="text-emerald-300 font-medium">Live In Progress</span>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="true" data-is-today="true">
-                    <a href="/match/171757" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">War vs Tit</span>
-                            <span class="text-3xs font-extrabold text-red-400 bg-red-950/60 px-1 py-0.5 rounded ml-1">LIVE</span>
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>8Th Match</span>
-                            <span class="text-emerald-300 font-medium">Live In Progress</span>
-                        </div>
-                    </a>
-                </li>
-                
-                </ul>
-            </div>
-            
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/171667">Uganda vs Kenya</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">Final</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">Match Preview</span>
                             
-            <div>
-                <div class="text-3xs font-black uppercase tracking-widest text-emerald-400 border-b border-emerald-900 pb-1 mb-2">
-                    WOMEN
+                        </div>
+                    </div>
                 </div>
-                <ul class="space-y-1">
+                
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/171257'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">Hong Kong, China tour of Japan 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-bold bg-slate-700 text-slate-300">Preview</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/171257">Japan vs Hong Kong</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">China, 1st T20I</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">Match Preview</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/152742'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">Australia tour of Zimbabwe 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-extrabold bg-emerald-800 text-emerald-200">Result</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/152742">Australia vs Zimbabwe</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">2nd ODI</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">Match Completed</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/170120'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">Afghanistan Vs India In India 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-extrabold bg-emerald-800 text-emerald-200">Result</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/170120">India vs Afghanistan</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">3Rd T20I</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">India won by 127 runs</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/170110'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">Afghanistan Vs India In India 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-extrabold bg-emerald-800 text-emerald-200">Result</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/170110">Afghanistan vs India</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">2Nd T20I</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">India won by 7 wkts</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/170103'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">Afghanistan Vs India In India 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-extrabold bg-emerald-800 text-emerald-200">Result</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/170103">Afghanistan vs India</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">1St T20I</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">India won by 7 wkts</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/129618'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">Sri Lanka Tour Of England 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-extrabold bg-emerald-800 text-emerald-200">Result</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/129618">Sri Lanka vs England</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">2Nd T20I</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">England won by 6 wkts</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/129607'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">Sri Lanka Tour Of England 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-extrabold bg-emerald-800 text-emerald-200">Result</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/129607">England vs Sri Lanka</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">1St T20I</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">England won by 119 runs</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/129596'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">Pakistan Tour Of England 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-extrabold bg-emerald-800 text-emerald-200">Result</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/129596">Pakistan vs England</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">3Rd Test</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">England won by 8 wkts</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/171691'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">United Arab Emirates Tour Of Malaysia 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-extrabold bg-emerald-800 text-emerald-200">Result</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/171691">United Arab Emirates vs Malaysia</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">3Rd Match</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">United Arab Emirates won by 59 runs</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/171681'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">United Arab Emirates Tour Of Malaysia 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-extrabold bg-emerald-800 text-emerald-200">Result</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/171681">Malaysia vs United Arab Emirates</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">2Nd T20I</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">United Arab Emirates won by 7 wkts</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/171671'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">United Arab Emirates Tour Of Malaysia 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-extrabold bg-emerald-800 text-emerald-200">Result</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/171671">Malaysia vs United Arab Emirates</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">1St T20I</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">United Arab Emirates won by 6 wkts</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/170020'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">South Africa Tour Of Namibia 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-extrabold bg-emerald-800 text-emerald-200">Result</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/170020">Namibia vs South Africa</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">3Rd Odi</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">South Africa won by 9 wkts</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/152731'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">Australia Tour Of Zimbabwe 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-extrabold bg-emerald-800 text-emerald-200">Result</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/152731">Australia vs Zimbabwe</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">1St Odi</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">Australia won by 59 runs</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/126Y'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">Australia U19 Tour Of India 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-bold bg-slate-700 text-slate-300">Preview</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/126Y">India U19 vs Australia U19</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">1St Odi</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">Scheduled</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/11FL'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">Australia Tour Of Zimbabwe 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-bold bg-slate-700 text-slate-300">Preview</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/11FL">Zimbabwe vs Australia</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">2Nd Odi</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">Scheduled</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/13TA'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">Africa Continental Cup 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-bold bg-slate-700 text-slate-300">Preview</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/13TA">Kenya vs Uganda</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">19Th Match</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">Scheduled</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/13TB'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">Africa Continental Cup 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-bold bg-slate-700 text-slate-300">Preview</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/13TB">Sierra Leone vs Botswana</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">20Th Match</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">Scheduled</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/13SQ'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">Hong Kong Tour Of Japan 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-bold bg-slate-700 text-slate-300">Preview</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/13SQ">Japan vs Hong Kong</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">1St T20</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">Scheduled</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="international"
+                     data-live="false"
+                     onclick="window.location.href='/match/13TC'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">Africa Continental Cup 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-bold bg-slate-700 text-slate-300">Preview</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/13TC">Team 1 (TBC) vs Team 2 (TBC)</a>
+                        </h4>
+                        
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">Final</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">Scheduled</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
+                     data-cat="league"
+                     data-live="false"
+                     onclick="window.location.href='/match/1534214'">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
+                            <span class="truncate uppercase text-emerald-400">Caribbean Premier League 2026</span>
+                            <span class="px-1.5 py-0.5 rounded text-3xs font-extrabold bg-emerald-800 text-emerald-200">Result</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white leading-snug hover:text-emerald-300 transition">
+                            <a href="/match/1534214">Barbados Tridents vs Jamaica Kingsmen</a>
+                        </h4>
+                        
+                    <div class="mt-1 flex items-center justify-between text-xs font-black text-slate-200">
+                        <span>144/6 (20.0 ov)</span>
+                        <span>145/1 (14.1 ov)</span>
+                    </div>
                     
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="false" data-is-today="false">
-                    <a href="/match/155606" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Australia A Women vs India A Women3rd unofficial T20</span>
-                            
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                        <span class="text-3xs text-slate-400">Eliminator</span>
+                        <div class="text-right">
+                            <span class="text-3xs font-semibold text-emerald-400">Result — Kingsmen won by 9 wkts</span>
+                            <div class="text-3xs text-emerald-300 font-medium mt-0.5">35 balls remaining</div>
                         </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>Match</span>
-                            <span class="text-emerald-300 font-medium">Match Preview</span>
-                        </div>
-                    </a>
-                </li>
+                    </div>
+                </div>
                 
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="false" data-is-today="false">
-                    <a href="/match/170911" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Bangladesh Women vs China Women</span>
-                            
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>1st Quarter Final</span>
-                            <span class="text-emerald-300 font-medium">Match Preview</span>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="false" data-is-today="false">
-                    <a href="/match/170920" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Thailand Women vs Pakistan Women</span>
-                            
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>2nd Quarter Final</span>
-                            <span class="text-emerald-300 font-medium">Match Preview</span>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="false" data-is-today="false">
-                    <a href="/match/170930" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Malaysia Women vs Sri Lanka Women</span>
-                            
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>3rd Quarter Final</span>
-                            <span class="text-emerald-300 font-medium">Match Preview</span>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="false" data-is-today="false">
-                    <a href="/match/170933" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Japan Women vs India Women</span>
-                            
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>4th Quarter Final</span>
-                            <span class="text-emerald-300 font-medium">Match Preview</span>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="false" data-is-today="false">
-                    <a href="/match/161813" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Tkrw vs Gaww</span>
-                            
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>Match</span>
-                            <span class="text-emerald-300 font-medium">Match Preview</span>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="false" data-is-today="false">
-                    <a href="/match/160007" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">South Africa Women vs Zimbabwe Women</span>
-                            
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>4th T20I</span>
-                            <span class="text-emerald-300 font-medium">Match Preview</span>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="drawer-item py-1.5 border-b border-slate-800 last:border-0" data-is-live="true" data-is-today="true">
-                    <a href="/match/129618" class="block hover:text-emerald-400 transition">
-                        <div class="text-xs font-bold text-slate-100 flex items-center justify-between">
-                            <span class="truncate">Sl vs Eng</span>
-                            <span class="text-3xs font-extrabold text-red-400 bg-red-950/60 px-1 py-0.5 rounded ml-1">LIVE</span>
-                        </div>
-                        <div class="text-3xs text-slate-400 flex items-center justify-between mt-0.5">
-                            <span>2Nd T20I</span>
-                            <span class="text-emerald-300 font-medium">england won by 6 wkts</span>
-                        </div>
-                    </a>
-                </li>
-                
-                </ul>
-            </div>
-            
                         </div>
                     </div>
                 </div>
@@ -843,7 +1034,7 @@
                     <span class="text-3xs uppercase font-black tracking-widest text-emerald-300">Tracked Matches:</span>
                 </div>
                 <div class="flex items-center gap-2 overflow-x-auto no-scrollbar text-xs">
-                    <a href="/match/129916" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Sri Lanka tour of England</a><a href="/match/12LV" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Guyana Amazon WarriorsW v ...</a><a href="/match/1496586" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> England v Sri Lanka</a><a href="/match/1534214" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Barbados Tridents v Jamaic...</a><a href="/match/1540217" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Barbados TridentsW v Jamai...</a><a href="/match/1540219" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Barbados TridentsW v Guyan...</a><a href="/match/1540220" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Guyana Amazon WarriorsW v ...</a><a href="/match/1549533" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Namibia v South Africa</a><a href="/match/161802" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Barbados TridentsW v Guyan...</a><a href="/match/95255" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> England v Pakistan, 3rd Ma...</a><a href="/match/96842" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Guyana Amazon Warriors v T...</a><a href="/match/97830" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Barbados TridentsW v Jamai...</a><span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-black bg-[#009270] text-white border border-emerald-400 shadow-2xs whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> England Lions v Sri Lanka,... (Current)</span>
+                    <a href="/match/11UW" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Antigua &amp;a; Barbuda Falcon...</a><a href="/match/129916" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Sri Lanka tour of England</a><a href="/match/12LV" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Guyana Amazon WarriorsW v ...</a><a href="/match/13Q1" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> MalaysiaW v Sri LankaW</a><a href="/match/13Q2" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> JapanW v IndiaW</a><a href="/match/1496586" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> England v Sri Lanka</a><a href="/match/1534214" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Barbados Tridents v Jamaic...</a><a href="/match/1534215" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Antigua and Barbuda Falcon...</a><a href="/match/1540217" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Barbados TridentsW v Jamai...</a><a href="/match/1540219" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Barbados TridentsW v Guyan...</a><a href="/match/1540220" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Guyana Amazon WarriorsW v ...</a><a href="/match/154689" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Guyana Amazon Warriors v A...</a><a href="/match/1549533" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Namibia v South Africa</a><a href="/match/1550477" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> JapanW v IndiaW</a><a href="/match/161802" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Barbados TridentsW v Guyan...</a><a href="/match/95255" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> England v Pakistan, 3rd Ma...</a><a href="/match/96842" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Guyana Amazon Warriors v T...</a><a href="/match/97830" class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> Barbados TridentsW v Jamai...</a><span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-black bg-[#009270] text-white border border-emerald-400 shadow-2xs whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-slate-400 mr-1 inline-block"></span> England Lions v Sri Lanka,... (Current)</span>
                 </div>
             </div>
             
@@ -859,7 +1050,7 @@
                 <div class="flex items-center gap-2 self-start sm:self-center">
                     <div class="bg-emerald-800/80 border border-emerald-600/50 rounded-xl px-3.5 sm:px-5 py-1.5 sm:py-2.5 text-center shadow-xs">
                         <div class="text-3xs uppercase text-emerald-300 font-bold">Total Impact Overs</div>
-                        <div class="text-lg sm:text-2xl font-black text-amber-300 mt-0.5">11 Overs</div>
+                        <div class="text-lg sm:text-2xl font-black text-amber-300 mt-0.5">0 Overs</div>
                     </div>
                 </div>
             </div>
@@ -929,6 +1120,37 @@
         <!-- SECTION 1: LIVE HUB -->
         
         <div id="section-live" class="tab-content mb-6">
+            
+        <div class="bg-gradient-to-r from-slate-900 via-[#0a2318] to-slate-900 rounded-2xl p-4 sm:p-5 text-white border border-emerald-900/60 shadow-md mb-3.5 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4 w-full sm:w-auto">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex flex-col items-center justify-center shadow-lg border-2 border-white/20 bg-emerald-100 text-emerald-800 font-bold border border-emerald-300 shrink-0">
+                    <span class="text-2xl sm:text-3xl font-black">1</span>
+                    <span class="text-4xs uppercase tracking-widest font-black opacity-80 -mt-1">Last Ball</span>
+                </div>
+                <div class="min-w-0">
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs sm:text-sm font-black text-emerald-400 font-mono tracking-tight">7.2 Ov</span>
+                        
+                    </div>
+                    <div class="flex items-center gap-1.5 mt-1.5 flex-wrap">
+                        <span class="w-6 h-6 rounded-full inline-flex items-center justify-center text-2xs font-black bg-[#009270] text-white font-black shadow-xs ring-1 ring-emerald-400 shadow-2xs">6</span> <span class="w-6 h-6 rounded-full inline-flex items-center justify-center text-2xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300 shadow-2xs">1</span> 
+                    </div>
+                    <div class="text-3xs text-emerald-200/80 font-medium mt-1 truncate">Toss: England Lions elected to bowl</div>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 sm:gap-6 self-end sm:self-center border-t sm:border-t-0 sm:border-l border-white/10 pt-3 sm:pt-0 sm:pl-6 w-full sm:w-auto justify-between sm:justify-end">
+                <div class="text-center sm:text-right">
+                    <div class="text-3xs uppercase font-bold text-slate-400 tracking-wider">Current RR</div>
+                    <div class="text-base sm:text-xl font-black text-emerald-400 mt-0.5">0.00</div>
+                </div>
+                <div class="text-center sm:text-right">
+                    <div class="text-3xs uppercase font-bold text-slate-400 tracking-wider">Match Status</div>
+                    <div class="text-xs sm:text-sm font-bold text-amber-300 mt-0.5 max-w-[220px] truncate">England Lions won by 9 wickets</div>
+                </div>
+            </div>
+        </div>
+        
+
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3.5 mb-3.5">
                 
             <div class="bg-white p-3 sm:p-3.5 rounded-xl border border-slate-200 shadow-2xs flex items-center justify-between">
@@ -1002,7 +1224,7 @@
                 </div>
                 <div class="text-right shrink-0 pl-2">
                     <div class="text-lg sm:text-xl font-black text-red-600">1-25</div>
-                    <div class="text-2xs sm:text-xs font-semibold text-slate-500">2.0 ov • <span class="text-emerald-700 font-bold">2 Dots</span></div>
+                    <div class="text-2xs sm:text-xs font-semibold text-slate-500">2.0 ov • <span class="text-emerald-700 font-bold">0 Dots</span></div>
                 </div>
             </div>
             
@@ -1053,7 +1275,7 @@
                         Over 3 <span class="text-2xs font-normal text-slate-500">(Nuwan Thushara)</span>
                     </div>
                     <div class="flex items-center gap-1">
-                        <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-blue-600 text-white font-black shadow-xs ring-1 ring-blue-400">4</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">2</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-blue-600 text-white font-black shadow-xs ring-1 ring-blue-400">4</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-blue-600 text-white font-black shadow-xs ring-1 ring-blue-400">4</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">2</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-amber-100 text-amber-900 border border-amber-300 font-bold">Wd</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-blue-600 text-white font-black shadow-xs ring-1 ring-blue-400">4</span> 
+                        <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-blue-600 text-white font-black shadow-xs ring-1 ring-blue-400">4</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-amber-100 text-amber-900 border border-amber-300 font-bold">Wd</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">2</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-blue-600 text-white font-black shadow-xs ring-1 ring-blue-400">4</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-blue-600 text-white font-black shadow-xs ring-1 ring-blue-400">4</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">2</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-blue-600 text-white font-black shadow-xs ring-1 ring-blue-400">4</span> 
                     </div>
                     <div class="text-xs font-black text-slate-800 whitespace-nowrap">
                         = 20 Runs 
@@ -1065,7 +1287,7 @@
                         Over 4 <span class="text-2xs font-normal text-slate-500">(Dunith Wellalage)</span>
                     </div>
                     <div class="flex items-center gap-1">
-                        <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-slate-200 text-slate-600 font-semibold">0</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-blue-600 text-white font-black shadow-xs ring-1 ring-blue-400">4</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">2</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-slate-200 text-slate-600 font-semibold">0</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-blue-600 text-white font-black shadow-xs ring-1 ring-blue-400">4</span> 
+                        <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-blue-600 text-white font-black shadow-xs ring-1 ring-blue-400">4</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-slate-200 text-slate-600 font-semibold">0</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">2</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-blue-600 text-white font-black shadow-xs ring-1 ring-blue-400">4</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-slate-200 text-slate-600 font-semibold">0</span> 
                     </div>
                     <div class="text-xs font-black text-slate-800 whitespace-nowrap">
                         = 10 Runs 
@@ -1077,7 +1299,7 @@
                         Over 5 <span class="text-2xs font-normal text-slate-500">(Tharindu Ratnayake)</span>
                     </div>
                     <div class="flex items-center gap-1">
-                        <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-[#009270] text-white font-black shadow-xs ring-1 ring-emerald-400">6</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-[#009270] text-white font-black shadow-xs ring-1 ring-emerald-400">6</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">1</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-[#009270] text-white font-black shadow-xs ring-1 ring-emerald-400">6</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-slate-200 text-slate-600 font-semibold">0</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-slate-200 text-slate-600 font-semibold">0</span> 
+                        <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-slate-200 text-slate-600 font-semibold">0</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-slate-200 text-slate-600 font-semibold">0</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-[#009270] text-white font-black shadow-xs ring-1 ring-emerald-400">6</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">1</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-[#009270] text-white font-black shadow-xs ring-1 ring-emerald-400">6</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-[#009270] text-white font-black shadow-xs ring-1 ring-emerald-400">6</span> 
                     </div>
                     <div class="text-xs font-black text-slate-800 whitespace-nowrap">
                         = 19 Runs 
@@ -1089,7 +1311,7 @@
                         Over 6 <span class="text-2xs font-normal text-slate-500">(Eshan Malinga)</span>
                     </div>
                     <div class="flex items-center gap-1">
-                        <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-[#009270] text-white font-black shadow-xs ring-1 ring-emerald-400">6</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-blue-600 text-white font-black shadow-xs ring-1 ring-blue-400">4</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-slate-200 text-slate-600 font-semibold">0</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-slate-200 text-slate-600 font-semibold">0</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">1</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">1</span> 
+                        <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">1</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">1</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-slate-200 text-slate-600 font-semibold">0</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-slate-200 text-slate-600 font-semibold">0</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-blue-600 text-white font-black shadow-xs ring-1 ring-blue-400">4</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-[#009270] text-white font-black shadow-xs ring-1 ring-emerald-400">6</span> 
                     </div>
                     <div class="text-xs font-black text-slate-800 whitespace-nowrap">
                         = 12 Runs 
@@ -1101,7 +1323,7 @@
                         Over 7 <span class="text-2xs font-normal text-slate-500">(Dunith Wellalage)</span>
                     </div>
                     <div class="flex items-center gap-1">
-                        <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-[#009270] text-white font-black shadow-xs ring-1 ring-emerald-400">6</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">1</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">1</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-blue-600 text-white font-black shadow-xs ring-1 ring-blue-400">4</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">1</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">2</span> 
+                        <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">2</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">1</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-blue-600 text-white font-black shadow-xs ring-1 ring-blue-400">4</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">1</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">1</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-[#009270] text-white font-black shadow-xs ring-1 ring-emerald-400">6</span> 
                     </div>
                     <div class="text-xs font-black text-slate-800 whitespace-nowrap">
                         = 15 Runs 
@@ -1113,7 +1335,7 @@
                         Over 8 <span class="text-2xs font-normal text-slate-500">(Dushmantha Chameera)</span>
                     </div>
                     <div class="flex items-center gap-1">
-                        <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">1</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-[#009270] text-white font-black shadow-xs ring-1 ring-emerald-400">6</span> 
+                        <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-[#009270] text-white font-black shadow-xs ring-1 ring-emerald-400">6</span> <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full inline-flex items-center justify-center text-2xs sm:text-xs font-black bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">1</span> 
                     </div>
                     <div class="text-xs font-black text-slate-800 whitespace-nowrap">
                         = 7 Runs 
@@ -4836,8 +5058,8 @@
 
         <!-- SECTION 2: FULL SCORECARD (With Team Switcher & Extras) -->
         
-        <div id="section-scorecard" class="tab-content mb-6 hidden">
-            <div class="flex items-center gap-2 mb-4 overflow-x-auto no-scrollbar">
+            <div id="section-scorecard" class="tab-content mb-6 hidden">
+                <div class="flex items-center gap-2 mb-4 overflow-x-auto no-scrollbar">
             <button onclick="switchScorecardInn(0)" id="scInnBtn-0" class="sc-inn-btn px-4 py-1.5 rounded-full text-xs transition whitespace-nowrap shrink-0 bg-white text-slate-700 border border-slate-300 font-medium hover:bg-slate-50">
                 Sri Lanka Inning SL Inning 117/10 (16.4 ov) (1st Inn)
             </button>
@@ -4846,7 +5068,7 @@
                 England Lions Inning ENG-L Inning 118/1 (7.2 ov) (2nd Inn)
             </button>
             </div>
-            
+                
             <div id="sc-inn-0" class="sc-inn-container bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden mb-6 hidden">
                 <div class="bg-[#009270] px-4 sm:px-6 py-3 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <h3 class="font-extrabold text-sm sm:text-base tracking-wide uppercase">
@@ -5027,7 +5249,7 @@
                     <td class="py-2.5 px-2 sm:px-3 text-right text-slate-600">0</td>
                     <td class="py-2.5 px-2 sm:px-3 text-right font-semibold text-slate-900">27</td>
                     <td class="py-2.5 px-2 sm:px-3 text-right font-extrabold text-red-600">4</td>
-                    <td class="py-2.5 px-2 sm:px-3 text-right font-black text-emerald-800 bg-emerald-50/70">11</td>
+                    <td class="py-2.5 px-2 sm:px-3 text-right font-black text-emerald-800 bg-emerald-50/70">0</td>
                     <td class="py-2.5 px-3 sm:px-4 text-right font-semibold text-slate-700">7.36</td>
                 </tr>
                 
@@ -5037,7 +5259,7 @@
                     <td class="py-2.5 px-2 sm:px-3 text-right text-slate-600">0</td>
                     <td class="py-2.5 px-2 sm:px-3 text-right font-semibold text-slate-900">23</td>
                     <td class="py-2.5 px-2 sm:px-3 text-right font-extrabold text-red-600">2</td>
-                    <td class="py-2.5 px-2 sm:px-3 text-right font-black text-emerald-800 bg-emerald-50/70">14</td>
+                    <td class="py-2.5 px-2 sm:px-3 text-right font-black text-emerald-800 bg-emerald-50/70">0</td>
                     <td class="py-2.5 px-3 sm:px-4 text-right font-semibold text-slate-700">5.75</td>
                 </tr>
                 
@@ -5047,7 +5269,7 @@
                     <td class="py-2.5 px-2 sm:px-3 text-right text-slate-600">0</td>
                     <td class="py-2.5 px-2 sm:px-3 text-right font-semibold text-slate-900">28</td>
                     <td class="py-2.5 px-2 sm:px-3 text-right font-extrabold text-red-600">0</td>
-                    <td class="py-2.5 px-2 sm:px-3 text-right font-black text-emerald-800 bg-emerald-50/70">9</td>
+                    <td class="py-2.5 px-2 sm:px-3 text-right font-black text-emerald-800 bg-emerald-50/70">0</td>
                     <td class="py-2.5 px-3 sm:px-4 text-right font-semibold text-slate-700">9.33</td>
                 </tr>
                 
@@ -5057,7 +5279,7 @@
                     <td class="py-2.5 px-2 sm:px-3 text-right text-slate-600">0</td>
                     <td class="py-2.5 px-2 sm:px-3 text-right font-semibold text-slate-900">13</td>
                     <td class="py-2.5 px-2 sm:px-3 text-right font-extrabold text-red-600">2</td>
-                    <td class="py-2.5 px-2 sm:px-3 text-right font-black text-emerald-800 bg-emerald-50/70">9</td>
+                    <td class="py-2.5 px-2 sm:px-3 text-right font-black text-emerald-800 bg-emerald-50/70">0</td>
                     <td class="py-2.5 px-3 sm:px-4 text-right font-semibold text-slate-700">4.33</td>
                 </tr>
                 
@@ -5067,7 +5289,7 @@
                     <td class="py-2.5 px-2 sm:px-3 text-right text-slate-600">0</td>
                     <td class="py-2.5 px-2 sm:px-3 text-right font-semibold text-slate-900">25</td>
                     <td class="py-2.5 px-2 sm:px-3 text-right font-extrabold text-red-600">2</td>
-                    <td class="py-2.5 px-2 sm:px-3 text-right font-black text-emerald-800 bg-emerald-50/70">5</td>
+                    <td class="py-2.5 px-2 sm:px-3 text-right font-black text-emerald-800 bg-emerald-50/70">0</td>
                     <td class="py-2.5 px-3 sm:px-4 text-right font-semibold text-slate-700">8.33</td>
                 </tr>
                 
@@ -5186,7 +5408,7 @@
                     <td class="py-2.5 px-2 sm:px-3 text-right text-slate-600">0</td>
                     <td class="py-2.5 px-2 sm:px-3 text-right font-semibold text-slate-900">28</td>
                     <td class="py-2.5 px-2 sm:px-3 text-right font-extrabold text-red-600">0</td>
-                    <td class="py-2.5 px-2 sm:px-3 text-right font-black text-emerald-800 bg-emerald-50/70">2</td>
+                    <td class="py-2.5 px-2 sm:px-3 text-right font-black text-emerald-800 bg-emerald-50/70">0</td>
                     <td class="py-2.5 px-3 sm:px-4 text-right font-semibold text-slate-700">14.00</td>
                 </tr>
                 
@@ -5206,7 +5428,7 @@
                     <td class="py-2.5 px-2 sm:px-3 text-right text-slate-600">0</td>
                     <td class="py-2.5 px-2 sm:px-3 text-right font-semibold text-slate-900">25</td>
                     <td class="py-2.5 px-2 sm:px-3 text-right font-extrabold text-red-600">1</td>
-                    <td class="py-2.5 px-2 sm:px-3 text-right font-black text-emerald-800 bg-emerald-50/70">2</td>
+                    <td class="py-2.5 px-2 sm:px-3 text-right font-black text-emerald-800 bg-emerald-50/70">0</td>
                     <td class="py-2.5 px-3 sm:px-4 text-right font-semibold text-slate-700">12.50</td>
                 </tr>
                 
@@ -5216,7 +5438,7 @@
                     <td class="py-2.5 px-2 sm:px-3 text-right text-slate-600">0</td>
                     <td class="py-2.5 px-2 sm:px-3 text-right font-semibold text-slate-900">19</td>
                     <td class="py-2.5 px-2 sm:px-3 text-right font-extrabold text-red-600">0</td>
-                    <td class="py-2.5 px-2 sm:px-3 text-right font-black text-emerald-800 bg-emerald-50/70">2</td>
+                    <td class="py-2.5 px-2 sm:px-3 text-right font-black text-emerald-800 bg-emerald-50/70">0</td>
                     <td class="py-2.5 px-3 sm:px-4 text-right font-semibold text-slate-700">19.00</td>
                 </tr>
                 
@@ -5226,7 +5448,7 @@
                     <td class="py-2.5 px-2 sm:px-3 text-right text-slate-600">0</td>
                     <td class="py-2.5 px-2 sm:px-3 text-right font-semibold text-slate-900">12</td>
                     <td class="py-2.5 px-2 sm:px-3 text-right font-extrabold text-red-600">0</td>
-                    <td class="py-2.5 px-2 sm:px-3 text-right font-black text-emerald-800 bg-emerald-50/70">2</td>
+                    <td class="py-2.5 px-2 sm:px-3 text-right font-black text-emerald-800 bg-emerald-50/70">0</td>
                     <td class="py-2.5 px-3 sm:px-4 text-right font-semibold text-slate-700">12.00</td>
                 </tr>
                 
@@ -5245,13 +5467,13 @@
                 
             </div>
             
-        </div>
-        
+            </div>
+            
 
         <!-- SECTION 3: NEW DEDICATED OVERS TAB -->
         
-        <div id="section-overs" class="tab-content mb-6 hidden">
-            <div class="flex items-center gap-2 mb-4 overflow-x-auto no-scrollbar">
+            <div id="section-overs" class="tab-content mb-6 hidden">
+                <div class="flex items-center gap-2 mb-4 overflow-x-auto no-scrollbar">
             <button onclick="switchOversInn(0)" id="ovInnBtn-0" class="ov-inn-btn px-4 py-1.5 rounded-full text-xs transition whitespace-nowrap shrink-0 bg-white text-slate-700 border border-slate-300 font-medium hover:bg-slate-50">
                 Sri Lanka Inning SL Inning 117/10 (16.4 ov) (1st Inn)
             </button>
@@ -5260,7 +5482,7 @@
                 England Lions Inning ENG-L Inning 118/1 (7.2 ov) (2nd Inn)
             </button>
             </div>
-            
+                
             <div id="ov-inn-0" class="ov-inn-container bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden mb-6 hidden">
                 <div class="bg-[#009270] px-4 sm:px-6 py-3 text-white flex items-center justify-between">
                     <h3 class="font-extrabold text-sm sm:text-base tracking-wide uppercase">
@@ -5655,8 +5877,8 @@
                 </div>
             </div>
             
-        </div>
-        
+            </div>
+            
 
         <!-- SECTION 4: NEW POINTS TABLE TAB -->
         
@@ -5665,7 +5887,7 @@
                 <div class="bg-[#009270] px-4 sm:px-6 py-3 text-white flex items-center justify-between">
                     <div>
                         <h3 class="font-extrabold text-sm sm:text-base tracking-wide uppercase">
-                            Caribbean Premier League — Standings
+                            Caribbean Premier League 2026 — Standings
                         </h3>
                         <p class="text-3xs text-emerald-100 mt-0.5">Top 4 teams qualify for playoffs & eliminators</p>
                     </div>
@@ -5686,126 +5908,7 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100">
-                            
-            <tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0 bg-emerald-50/70 font-bold">
-                <td class="py-2.5 px-3 text-center font-black text-slate-700">1</td>
-                <td class="py-2.5 px-3 sm:px-4 font-bold text-slate-900 flex items-center gap-2">
-                    <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 text-3xs font-black flex items-center justify-center border border-emerald-300 shrink-0">
-                        GAW
-                    </span>
-                    <span>Guyana Amazon Warriors</span>
-                </td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-700">10</td>
-                <td class="py-2.5 px-2 text-right font-semibold text-emerald-800">7</td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-600">2</td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-500">0</td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-500">0</td>
-                <td class="py-2.5 px-2 text-right font-black text-slate-900 text-sm">14</td>
-                <td class="py-2.5 px-3 text-right font-mono font-semibold text-slate-700">+0.842</td>
-            </tr>
-            
-            <tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0 bg-emerald-50/70 font-bold">
-                <td class="py-2.5 px-3 text-center font-black text-slate-700">2</td>
-                <td class="py-2.5 px-3 sm:px-4 font-bold text-slate-900 flex items-center gap-2">
-                    <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 text-3xs font-black flex items-center justify-center border border-emerald-300 shrink-0">
-                        ABF
-                    </span>
-                    <span>Antigua and Barbuda Falcons</span>
-                </td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-700">10</td>
-                <td class="py-2.5 px-2 text-right font-semibold text-emerald-800">6</td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-600">3</td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-500">0</td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-500">0</td>
-                <td class="py-2.5 px-2 text-right font-black text-slate-900 text-sm">12</td>
-                <td class="py-2.5 px-3 text-right font-mono font-semibold text-slate-700">+0.415</td>
-            </tr>
-            
-            <tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0 bg-emerald-50/70 font-bold">
-                <td class="py-2.5 px-3 text-center font-black text-slate-700">3</td>
-                <td class="py-2.5 px-3 sm:px-4 font-bold text-slate-900 flex items-center gap-2">
-                    <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 text-3xs font-black flex items-center justify-center border border-emerald-300 shrink-0">
-                        BT
-                    </span>
-                    <span>Barbados Tridents</span>
-                </td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-700">10</td>
-                <td class="py-2.5 px-2 text-right font-semibold text-emerald-800">4</td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-600">5</td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-500">0</td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-500">0</td>
-                <td class="py-2.5 px-2 text-right font-black text-slate-900 text-sm">8</td>
-                <td class="py-2.5 px-3 text-right font-mono font-semibold text-slate-700">+0.415</td>
-            </tr>
-            
-            <tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0 bg-emerald-50/70 font-bold">
-                <td class="py-2.5 px-3 text-center font-black text-slate-700">4</td>
-                <td class="py-2.5 px-3 sm:px-4 font-bold text-slate-900 flex items-center gap-2">
-                    <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 text-3xs font-black flex items-center justify-center border border-emerald-300 shrink-0">
-                        JAK
-                    </span>
-                    <span>Jamaica Kingsmen</span>
-                </td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-700">10</td>
-                <td class="py-2.5 px-2 text-right font-semibold text-emerald-800">4</td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-600">5</td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-500">0</td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-500">0</td>
-                <td class="py-2.5 px-2 text-right font-black text-slate-900 text-sm">8</td>
-                <td class="py-2.5 px-3 text-right font-mono font-semibold text-slate-700">+0.415</td>
-            </tr>
-            
-            <tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0 ">
-                <td class="py-2.5 px-3 text-center font-black text-slate-700">5</td>
-                <td class="py-2.5 px-3 sm:px-4 font-bold text-slate-900 flex items-center gap-2">
-                    <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 text-3xs font-black flex items-center justify-center border border-emerald-300 shrink-0">
-                        SLK
-                    </span>
-                    <span>St Lucia Kings</span>
-                </td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-700">10</td>
-                <td class="py-2.5 px-2 text-right font-semibold text-emerald-800">4</td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-600">5</td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-500">0</td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-500">0</td>
-                <td class="py-2.5 px-2 text-right font-black text-slate-900 text-sm">8</td>
-                <td class="py-2.5 px-3 text-right font-mono font-semibold text-slate-700">+0.415</td>
-            </tr>
-            
-            <tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0 ">
-                <td class="py-2.5 px-3 text-center font-black text-slate-700">6</td>
-                <td class="py-2.5 px-3 sm:px-4 font-bold text-slate-900 flex items-center gap-2">
-                    <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 text-3xs font-black flex items-center justify-center border border-emerald-300 shrink-0">
-                        STK
-                    </span>
-                    <span>St Kitts and Nevis Patriots</span>
-                </td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-700">10</td>
-                <td class="py-2.5 px-2 text-right font-semibold text-emerald-800">4</td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-600">5</td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-500">0</td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-500">0</td>
-                <td class="py-2.5 px-2 text-right font-black text-slate-900 text-sm">8</td>
-                <td class="py-2.5 px-3 text-right font-mono font-semibold text-slate-700">+0.415</td>
-            </tr>
-            
-            <tr class="hover:bg-slate-50 transition border-b border-slate-100 last:border-0 ">
-                <td class="py-2.5 px-3 text-center font-black text-slate-700">7</td>
-                <td class="py-2.5 px-3 sm:px-4 font-bold text-slate-900 flex items-center gap-2">
-                    <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 text-3xs font-black flex items-center justify-center border border-emerald-300 shrink-0">
-                        TKR
-                    </span>
-                    <span>Trinbago Knight Riders</span>
-                </td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-700">10</td>
-                <td class="py-2.5 px-2 text-right font-semibold text-emerald-800">4</td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-600">5</td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-500">0</td>
-                <td class="py-2.5 px-2 text-right font-medium text-slate-500">0</td>
-                <td class="py-2.5 px-2 text-right font-black text-slate-900 text-sm">8</td>
-                <td class="py-2.5 px-3 text-right font-mono font-semibold text-slate-700">+0.415</td>
-            </tr>
-            
+                            <tr><td colspan="9" class="py-6 text-center text-slate-400">No standings data available</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -5848,155 +5951,12 @@
                         Impact Overs Breakdown (Scored 10+ Runs)
                     </div>
                     <span class="bg-[#186047] px-2.5 py-1 rounded font-bold text-amber-300 text-xs">
-                        Total 11 Impact Overs
+                        Total 0 Impact Overs
                     </span>
                 </div>
                 <div class="p-3.5 sm:p-6 bg-slate-50/50">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
-                        
-                <div class="bg-white p-3.5 sm:p-4 rounded-xl border-2 border-amber-400 shadow-2xs bg-gradient-to-br from-amber-50/40 via-white to-amber-50/20">
-                    <div class="flex justify-between items-center text-xs">
-                        <span class="font-bold text-slate-800">Over 4 (Sonny Baker)</span>
-                        <span class="text-3xs uppercase tracking-wider font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded">Sri Lanka Inning SL Inning 117/10 (16.4 ov)</span>
-                    </div>
-                    <div class="text-xl sm:text-2xl font-black text-amber-600 mt-1">
-                        12 Runs <span class="text-xs font-bold text-red-600"></span>
-                    </div>
-                    <div class="mt-2 text-3xs sm:text-2xs text-slate-600 font-mono bg-slate-50 p-1.5 rounded border border-slate-100">
-                        Deliveries: 4 0 0 4 Wd 0 0
-                    </div>
-                </div>
-                
-                <div class="bg-white p-3.5 sm:p-4 rounded-xl border-2 border-amber-400 shadow-2xs bg-gradient-to-br from-amber-50/40 via-white to-amber-50/20">
-                    <div class="flex justify-between items-center text-xs">
-                        <span class="font-bold text-slate-800">Over 5 (Jamie Overton)</span>
-                        <span class="text-3xs uppercase tracking-wider font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded">Sri Lanka Inning SL Inning 117/10 (16.4 ov)</span>
-                    </div>
-                    <div class="text-xl sm:text-2xl font-black text-amber-600 mt-1">
-                        12 Runs <span class="text-xs font-bold text-red-600"></span>
-                    </div>
-                    <div class="mt-2 text-3xs sm:text-2xs text-slate-600 font-mono bg-slate-50 p-1.5 rounded border border-slate-100">
-                        Deliveries: 0 0 6 0 0 4
-                    </div>
-                </div>
-                
-                <div class="bg-white p-3.5 sm:p-4 rounded-xl border-2 border-amber-400 shadow-2xs bg-gradient-to-br from-amber-50/40 via-white to-amber-50/20">
-                    <div class="flex justify-between items-center text-xs">
-                        <span class="font-bold text-slate-800">Over 9 (Jafer Chohan)</span>
-                        <span class="text-3xs uppercase tracking-wider font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded">Sri Lanka Inning SL Inning 117/10 (16.4 ov)</span>
-                    </div>
-                    <div class="text-xl sm:text-2xl font-black text-amber-600 mt-1">
-                        10 Runs <span class="text-xs font-bold text-red-600"></span>
-                    </div>
-                    <div class="mt-2 text-3xs sm:text-2xs text-slate-600 font-mono bg-slate-50 p-1.5 rounded border border-slate-100">
-                        Deliveries: 0 0 0 6 0 0
-                    </div>
-                </div>
-                
-                <div class="bg-white p-3.5 sm:p-4 rounded-xl border-2 border-amber-400 shadow-2xs bg-gradient-to-br from-amber-50/40 via-white to-amber-50/20">
-                    <div class="flex justify-between items-center text-xs">
-                        <span class="font-bold text-slate-800">Over 13 (Jafer Chohan)</span>
-                        <span class="text-3xs uppercase tracking-wider font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded">Sri Lanka Inning SL Inning 117/10 (16.4 ov)</span>
-                    </div>
-                    <div class="text-xl sm:text-2xl font-black text-amber-600 mt-1">
-                        10 Runs <span class="text-xs font-bold text-red-600"></span>
-                    </div>
-                    <div class="mt-2 text-3xs sm:text-2xs text-slate-600 font-mono bg-slate-50 p-1.5 rounded border border-slate-100">
-                        Deliveries: 0 0 0 0 6 0
-                    </div>
-                </div>
-                
-                <div class="bg-white p-3.5 sm:p-4 rounded-xl border-2 border-amber-400 shadow-2xs bg-gradient-to-br from-amber-50/40 via-white to-amber-50/20">
-                    <div class="flex justify-between items-center text-xs">
-                        <span class="font-bold text-slate-800">Over 16 (Jamie Overton)</span>
-                        <span class="text-3xs uppercase tracking-wider font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded">Sri Lanka Inning SL Inning 117/10 (16.4 ov)</span>
-                    </div>
-                    <div class="text-xl sm:text-2xl font-black text-amber-600 mt-1">
-                        11 Runs <span class="text-xs font-bold text-red-600"></span>
-                    </div>
-                    <div class="mt-2 text-3xs sm:text-2xs text-slate-600 font-mono bg-slate-50 p-1.5 rounded border border-slate-100">
-                        Deliveries: 0 0 0 4 0 6
-                    </div>
-                </div>
-                
-                <div class="bg-white p-3.5 sm:p-4 rounded-xl border-2 border-amber-400 shadow-2xs bg-gradient-to-br from-amber-50/40 via-white to-amber-50/20">
-                    <div class="flex justify-between items-center text-xs">
-                        <span class="font-bold text-slate-800">Over 2 (Dushmantha Chameera)</span>
-                        <span class="text-3xs uppercase tracking-wider font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded">England Lions Inning ENG-L Inning 118/1 (7.2 ov)</span>
-                    </div>
-                    <div class="text-xl sm:text-2xl font-black text-amber-600 mt-1">
-                        27 Runs <span class="text-xs font-bold text-red-600"></span>
-                    </div>
-                    <div class="mt-2 text-3xs sm:text-2xs text-slate-600 font-mono bg-slate-50 p-1.5 rounded border border-slate-100">
-                        Deliveries: 6 6 6 4 4 0
-                    </div>
-                </div>
-                
-                <div class="bg-white p-3.5 sm:p-4 rounded-xl border-2 border-amber-400 shadow-2xs bg-gradient-to-br from-amber-50/40 via-white to-amber-50/20">
-                    <div class="flex justify-between items-center text-xs">
-                        <span class="font-bold text-slate-800">Over 3 (Nuwan Thushara)</span>
-                        <span class="text-3xs uppercase tracking-wider font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded">England Lions Inning ENG-L Inning 118/1 (7.2 ov)</span>
-                    </div>
-                    <div class="text-xl sm:text-2xl font-black text-amber-600 mt-1">
-                        20 Runs <span class="text-xs font-bold text-red-600"></span>
-                    </div>
-                    <div class="mt-2 text-3xs sm:text-2xs text-slate-600 font-mono bg-slate-50 p-1.5 rounded border border-slate-100">
-                        Deliveries: 4 0 4 4 0 Wd 4
-                    </div>
-                </div>
-                
-                <div class="bg-white p-3.5 sm:p-4 rounded-xl border-2 border-amber-400 shadow-2xs bg-gradient-to-br from-amber-50/40 via-white to-amber-50/20">
-                    <div class="flex justify-between items-center text-xs">
-                        <span class="font-bold text-slate-800">Over 4 (Dunith Wellalage)</span>
-                        <span class="text-3xs uppercase tracking-wider font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded">England Lions Inning ENG-L Inning 118/1 (7.2 ov)</span>
-                    </div>
-                    <div class="text-xl sm:text-2xl font-black text-amber-600 mt-1">
-                        10 Runs <span class="text-xs font-bold text-red-600"></span>
-                    </div>
-                    <div class="mt-2 text-3xs sm:text-2xs text-slate-600 font-mono bg-slate-50 p-1.5 rounded border border-slate-100">
-                        Deliveries: 0 4 0 0 4
-                    </div>
-                </div>
-                
-                <div class="bg-white p-3.5 sm:p-4 rounded-xl border-2 border-amber-400 shadow-2xs bg-gradient-to-br from-amber-50/40 via-white to-amber-50/20">
-                    <div class="flex justify-between items-center text-xs">
-                        <span class="font-bold text-slate-800">Over 5 (Tharindu Ratnayake)</span>
-                        <span class="text-3xs uppercase tracking-wider font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded">England Lions Inning ENG-L Inning 118/1 (7.2 ov)</span>
-                    </div>
-                    <div class="text-xl sm:text-2xl font-black text-amber-600 mt-1">
-                        19 Runs <span class="text-xs font-bold text-red-600"></span>
-                    </div>
-                    <div class="mt-2 text-3xs sm:text-2xs text-slate-600 font-mono bg-slate-50 p-1.5 rounded border border-slate-100">
-                        Deliveries: 6 6 0 6 0 0
-                    </div>
-                </div>
-                
-                <div class="bg-white p-3.5 sm:p-4 rounded-xl border-2 border-amber-400 shadow-2xs bg-gradient-to-br from-amber-50/40 via-white to-amber-50/20">
-                    <div class="flex justify-between items-center text-xs">
-                        <span class="font-bold text-slate-800">Over 6 (Eshan Malinga)</span>
-                        <span class="text-3xs uppercase tracking-wider font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded">England Lions Inning ENG-L Inning 118/1 (7.2 ov)</span>
-                    </div>
-                    <div class="text-xl sm:text-2xl font-black text-amber-600 mt-1">
-                        12 Runs <span class="text-xs font-bold text-red-600"></span>
-                    </div>
-                    <div class="mt-2 text-3xs sm:text-2xs text-slate-600 font-mono bg-slate-50 p-1.5 rounded border border-slate-100">
-                        Deliveries: 6 4 0 0 0 0
-                    </div>
-                </div>
-                
-                <div class="bg-white p-3.5 sm:p-4 rounded-xl border-2 border-amber-400 shadow-2xs bg-gradient-to-br from-amber-50/40 via-white to-amber-50/20">
-                    <div class="flex justify-between items-center text-xs">
-                        <span class="font-bold text-slate-800">Over 7 (Dunith Wellalage)</span>
-                        <span class="text-3xs uppercase tracking-wider font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded">England Lions Inning ENG-L Inning 118/1 (7.2 ov)</span>
-                    </div>
-                    <div class="text-xl sm:text-2xl font-black text-amber-600 mt-1">
-                        15 Runs <span class="text-xs font-bold text-red-600"></span>
-                    </div>
-                    <div class="mt-2 text-3xs sm:text-2xs text-slate-600 font-mono bg-slate-50 p-1.5 rounded border border-slate-100">
-                        Deliveries: 6 0 0 4 0 0
-                    </div>
-                </div>
-                
+                        <div class="col-span-3 text-center py-6 text-slate-400">No impact overs (>= 10 runs) in this match</div>
                     </div>
                 </div>
             </div>
@@ -9778,28 +9738,21 @@
                 }
             }
 
-            function filterDrawer(filterType) {
-                document.querySelectorAll('.drawer-filter-pill').forEach(b => {
-                    b.classList.remove('bg-[#009270]', 'text-white', 'shadow-2xs');
-                    b.classList.add('bg-[#333]', 'text-slate-300');
+            function filterMegaDrawer(cat) {
+                document.querySelectorAll('.drawer-cat-btn').forEach(b => {
+                    b.className = 'drawer-cat-btn px-3 py-1 rounded-full text-xs font-medium bg-[#333] text-slate-300 hover:bg-[#444]';
                 });
-                const activePill = document.getElementById('drawerPill-' + filterType);
-                if (activePill) {
-                    activePill.classList.remove('bg-[#333]', 'text-slate-300');
-                    activePill.classList.add('bg-[#009270]', 'text-white', 'shadow-2xs');
+                const activeBtn = document.getElementById('tab-draw-' + cat);
+                if (activeBtn) {
+                    activeBtn.className = 'drawer-cat-btn px-3 py-1 rounded-full text-xs font-bold bg-[#009270] text-white shadow-2xs';
                 }
 
-                document.querySelectorAll('.drawer-item').forEach(el => {
-                    const isLive = el.getAttribute('data-is-live') === 'true';
-                    const isToday = el.getAttribute('data-is-today') === 'true';
-                    if (filterType === 'all') {
-                        el.classList.remove('hidden');
-                    } else if (filterType === 'live') {
-                        if (isLive) el.classList.remove('hidden');
-                        else el.classList.add('hidden');
-                    } else if (filterType === 'today') {
-                        if (isToday) el.classList.remove('hidden');
-                        else el.classList.add('hidden');
+                document.querySelectorAll('.drawer-card').forEach(card => {
+                    const cCat = card.getAttribute('data-cat') || '';
+                    if (cat === 'all' || cCat === cat) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
                     }
                 });
             }

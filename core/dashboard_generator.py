@@ -104,7 +104,7 @@ class DashboardGenerator:
     """
 
     @classmethod
-    def generate(cls, match_data: MatchData, output_dir: str = "output", port: int = 8080) -> str:
+    def generate(cls, match_data: MatchData, output_dir: str = "output", port: int = 8080, write_main_dashboard: bool = False) -> str:
         os.makedirs(output_dir, exist_ok=True)
         meta = match_data.metadata
         safe_mid = str(meta.match_id or "live").strip()
@@ -624,12 +624,23 @@ class DashboardGenerator:
             """
 
         overs_tab_pills += '</div>'
-        overs_section_html = f"""
-        <div id="section-overs" class="tab-content mb-6 hidden">
-            {overs_tab_pills}
-            {overs_tab_tables}
-        </div>
-        """
+        if overs_tab_tables:
+            overs_section_html = f"""
+            <div id="section-overs" class="tab-content mb-6 hidden">
+                {overs_tab_pills}
+                {overs_tab_tables}
+            </div>
+            """
+        else:
+            overs_section_html = f"""
+            <div id="section-overs" class="tab-content mb-6 hidden">
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-8 text-center text-slate-500">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-slate-100 flex items-center justify-center text-slate-400 text-xl font-black mb-3">⏱</div>
+                    <h3 class="text-base font-bold text-slate-800">Overs Breakdown</h3>
+                    <p class="text-xs text-slate-500 mt-1">Over-by-over ball breakdown will stream live as each over is bowled.</p>
+                </div>
+            </div>
+            """
 
         # -------------------------------------------------------------
         # 6. Build the New "Points Table" Tab
@@ -924,12 +935,23 @@ class DashboardGenerator:
             """
 
         team_tabs_html += '</div>'
-        full_scorecard_section = f"""
-        <div id="section-scorecard" class="tab-content mb-6 hidden">
-            {team_tabs_html}
-            {scorecard_innings_html}
-        </div>
-        """
+        if scorecard_innings_html:
+            full_scorecard_section = f"""
+            <div id="section-scorecard" class="tab-content mb-6 hidden">
+                {team_tabs_html}
+                {scorecard_innings_html}
+            </div>
+            """
+        else:
+            full_scorecard_section = f"""
+            <div id="section-scorecard" class="tab-content mb-6 hidden">
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-8 text-center text-slate-500">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-emerald-100 flex items-center justify-center text-emerald-800 text-xl font-black mb-3">🏏</div>
+                    <h3 class="text-base font-bold text-slate-800">Match Scorecard Scheduled</h3>
+                    <p class="text-xs text-slate-500 mt-1">Full batting scorecard, dismissals, partnerships, and bowling figures will populate once the match begins.</p>
+                </div>
+            </div>
+            """
 
         # -------------------------------------------------------------
         # 9. Dedicated Commentary Tab Section
@@ -1111,6 +1133,33 @@ class DashboardGenerator:
                 </div>
                 <div class="text-right">
                     <div class="text-base sm:text-xl font-black text-slate-900">{html_escape.escape(score_txt)}</div>
+                </div>
+            </div>
+            """
+
+        if not score_boxes:
+            t1, t2 = "Team 1", "Team 2"
+            if " vs " in meta.match_title:
+                parts = meta.match_title.split(" vs ")
+                t1, t2 = parts[0].strip(), parts[1].strip()
+            elif " v " in meta.match_title:
+                parts = meta.match_title.split(" v ")
+                t1, t2 = parts[0].strip(), parts[1].strip()
+            score_boxes = f"""
+            <div class="bg-white p-3.5 sm:p-4 rounded-xl border border-slate-200 shadow-2xs flex items-center justify-between">
+                <div>
+                    <div class="text-xs sm:text-sm font-bold text-slate-800">{html_escape.escape(t1)}</div>
+                </div>
+                <div class="text-right">
+                    <div class="text-xs font-semibold text-slate-500">Yet to bat</div>
+                </div>
+            </div>
+            <div class="bg-white p-3.5 sm:p-4 rounded-xl border border-slate-200 shadow-2xs flex items-center justify-between">
+                <div>
+                    <div class="text-xs sm:text-sm font-bold text-slate-800">{html_escape.escape(t2)}</div>
+                </div>
+                <div class="text-right">
+                    <div class="text-xs font-semibold text-slate-500">Yet to bat</div>
                 </div>
             </div>
             """
@@ -1403,8 +1452,9 @@ class DashboardGenerator:
 </html>
 """
 
-        with open(html_path, "w", encoding="utf-8") as f:
-            f.write(html)
+        if write_main_dashboard or safe_mid in ["live", ""]:
+            with open(html_path, "w", encoding="utf-8") as f:
+                f.write(html)
         with open(match_html_path, "w", encoding="utf-8") as f:
             f.write(html)
 
@@ -1412,8 +1462,9 @@ class DashboardGenerator:
         pub_dir = os.path.join(os.path.dirname(os.path.abspath(output_dir)), "public")
         if os.path.isdir(pub_dir):
             try:
-                with open(os.path.join(pub_dir, os.path.basename(html_path)), "w", encoding="utf-8") as pf:
-                    pf.write(html)
+                if write_main_dashboard or safe_mid in ["live", ""]:
+                    with open(os.path.join(pub_dir, os.path.basename(html_path)), "w", encoding="utf-8") as pf:
+                        pf.write(html)
                 with open(os.path.join(pub_dir, os.path.basename(match_html_path)), "w", encoding="utf-8") as pf:
                     pf.write(html)
             except Exception:

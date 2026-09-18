@@ -90,6 +90,8 @@ class PageTemplates:
                 b_rem = m.get("balls_remaining", "")
                 b_rem_html = f'<div class="text-3xs text-emerald-300 font-medium mt-0.5">{html_escape.escape(b_rem)}</div>' if b_rem else ''
 
+                drawer_stat = m.get('scheduled_timing') if (not is_live and not is_done and m.get('scheduled_timing')) else m.get('status', 'Scheduled')
+
                 cards_html += f"""
                 <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
                      data-cat="{m.get('category', 'international')}"
@@ -108,7 +110,7 @@ class PageTemplates:
                     <div class="mt-2 pt-2 border-t border-slate-700/60 flex items-center justify-between">
                         <span class="text-3xs text-slate-400">{html_escape.escape(m.get('stage', 'Match'))}</span>
                         <div class="text-right">
-                            <span class="text-3xs font-semibold text-emerald-400">{html_escape.escape(m.get('status', 'Scheduled'))}</span>
+                            <span class="text-3xs font-semibold text-emerald-400">{html_escape.escape(drawer_stat)}</span>
                             {b_rem_html}
                         </div>
                     </div>
@@ -326,7 +328,7 @@ class PageTemplates:
                 s2 = m.get("team_2_score", "")
 
                 # Status / situation text
-                status_raw = m.get("situation") or m.get("status") or ("Live In Progress" if is_live else ("Match Completed" if is_done else "Scheduled"))
+                status_raw = m.get("situation") or (m.get("scheduled_timing") if (not is_live and not is_done and m.get("scheduled_timing")) else m.get("status")) or ("Live In Progress" if is_live else ("Match Completed" if is_done else "Scheduled"))
                 balls_rem = m.get("balls_remaining", "")
 
                 # Top Row Badge
@@ -1233,17 +1235,6 @@ class PageTemplates:
                     </div>
                 </div>
 
-                <!-- Admin Mapping Helper -->
-                <div class="bg-gradient-to-br from-slate-900 to-[#186047] text-white rounded-2xl p-6 shadow-md">
-                    <div class="text-xs font-black uppercase tracking-wider text-emerald-300 mb-1">CricCenter Admin</div>
-                    <h4 class="text-sm font-bold mb-2">Deep Scorecard Mapping</h4>
-                    <p class="text-3xs text-slate-300 leading-relaxed mb-4">
-                        Connect this match to an official CREX or Cricinfo URL for full ball-by-ball commentary and partnership wagon wheels.
-                    </p>
-                    <a href="/admin" class="inline-block w-full text-center py-2.5 px-4 bg-amber-400 hover:bg-amber-300 text-slate-900 font-extrabold text-xs rounded-xl shadow-xs transition">
-                        Open Admin Panel &rarr;
-                    </a>
-                </div>
             </div>
         </div>
     </main>

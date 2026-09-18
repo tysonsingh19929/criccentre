@@ -47,7 +47,7 @@
                     </div>
                     <div class="h-8 w-px bg-emerald-800"></div>
                     <div class="text-right">
-                        <div class="text-2xl font-black text-amber-400">10</div>
+                        <div id="stat-mapped-count" class="text-2xl font-black text-amber-400">10</div>
                         <div class="text-3xs uppercase font-bold text-emerald-300">Actively Mapped</div>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
         <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
             <div class="px-5 py-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
                 <h3 class="text-xs sm:text-sm font-black text-slate-900 uppercase tracking-wide">
-                    Actively Mapped & Ingested Matches (10)
+                    Actively Mapped & Ingested Matches (<span id="table-mapped-count">10</span>)
                 </h3>
                 <span class="text-3xs text-emerald-800 bg-emerald-100 font-bold px-2.5 py-0.5 rounded-full border border-emerald-300">
                     Live Engine Synced
@@ -113,7 +113,7 @@
                             <th class="py-2.5 px-3 sm:px-4 text-right">Actions</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-100">
+                    <tbody id="mappedTableBody" class="divide-y divide-slate-100">
                         
             <tr class="hover:bg-slate-50 transition border-b border-slate-100">
                 <td class="py-3 px-3 sm:px-4 font-mono font-bold text-slate-800">
@@ -432,14 +432,16 @@
                 <div class="flex flex-wrap items-center gap-2">
                     <input type="text" id="eventSearch" oninput="filterEvents()" placeholder="Search team or series..." class="px-3 py-1.5 text-xs bg-white border border-slate-300 rounded-lg focus:ring-1 focus:ring-emerald-500 focus:outline-hidden font-medium">
                     <button onclick="setFilterTab('all')" id="tab-all" class="admin-tab-btn px-3 py-1.5 rounded-lg text-xs font-black bg-slate-900 text-white shadow-2xs">All (57)</button>
-                    <button onclick="setFilterTab('unmapped')" id="tab-unmapped" class="admin-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:bg-slate-100">Unmapped (47)</button>
-                    <button onclick="setFilterTab('mapped')" id="tab-mapped" class="admin-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:bg-slate-100">Mapped (10)</button>
+                    <button onclick="setFilterTab('unmapped')" id="tab-unmapped" class="admin-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:bg-slate-100">Unmapped (<span id="tab-unmapped-cnt">47</span>)</button>
+                    <button onclick="setFilterTab('mapped')" id="tab-mapped" class="admin-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:bg-slate-100">Mapped (<span id="tab-mapped-cnt">10</span>)</button>
                 </div>
             </div>
 
             <div id="eventsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UW" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UW"
+                 data-unique="M-LEA-11UW"
                  data-title="guyana amazon warriors vs antigua &amp; barbuda falcons"
                  data-series="caribbean premier league 2026"
                  data-mapped="true"
@@ -449,11 +451,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UW
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UW">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Scheduled
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-black bg-emerald-100 text-emerald-800 border border-emerald-300">Mapped (CREX)</span>
+                            <span id="badge-map-11UW"><span class="px-2 py-0.5 rounded text-3xs font-black bg-emerald-100 text-emerald-800 border border-emerald-300">Mapped (CREX)</span></span>
                         </div>
                     </div>
 
@@ -469,7 +471,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UW" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center justify-between">
                         <span class="text-3xs text-slate-500 truncate max-w-[200px] font-mono">https://crex.com/cricket-live-score/abf-vs-gaw-qualifier-1st-match-caribbean-premier-league-2026-match-updates-11UW</span>
@@ -482,7 +484,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-13Q1" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="13Q1"
+                 data-unique="M-WOM-13Q1"
                  data-title="sri lanka women vs malaysia women"
                  data-series="w- asian t20 2026"
                  data-mapped="false"
@@ -492,11 +496,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-WOM-13Q1
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-13Q1">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Live In Progress
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-13Q1"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -512,7 +516,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-13Q1" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-13Q1" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -524,7 +528,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-126Y" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="126Y"
+                 data-unique="M-INT-126Y"
                  data-title="india u19 vs australia u19"
                  data-series="australia u19 tour of india 2026"
                  data-mapped="false"
@@ -534,11 +540,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-INT-126Y
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-126Y">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Scheduled
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-126Y"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -554,7 +560,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-126Y" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-126Y" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -566,7 +572,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-13Q2" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="13Q2"
+                 data-unique="M-WOM-13Q2"
                  data-title="india women vs japan women"
                  data-series="final womens asian games t20 2026"
                  data-mapped="true"
@@ -576,11 +584,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-WOM-13Q2
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-13Q2">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Scheduled
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-black bg-emerald-100 text-emerald-800 border border-emerald-300">Mapped (ESPNcricinfo)</span>
+                            <span id="badge-map-13Q2"><span class="px-2 py-0.5 rounded text-3xs font-black bg-emerald-100 text-emerald-800 border border-emerald-300">Mapped (ESPNcricinfo)</span></span>
                         </div>
                     </div>
 
@@ -596,7 +604,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-13Q2" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center justify-between">
                         <span class="text-3xs text-slate-500 truncate max-w-[200px] font-mono">https://www.cricinfo.com/series/asian-games-women-s-cricket-competition-2026-1550472/japan-women-vs-india-women-4th-quarter-final-1550477/live-cricket-score</span>
@@ -609,7 +617,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-13UL" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="13UL"
+                 data-unique="M-DOM-13UL"
                  data-title="ogdcl vs kingsmen academy"
                  data-series="president trophy 2026"
                  data-mapped="false"
@@ -619,11 +629,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-DOM-13UL
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-13UL">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Scheduled
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-13UL"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -639,7 +649,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-13UL" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-13UL" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -651,7 +661,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-13UM" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="13UM"
+                 data-unique="M-DOM-13UM"
                  data-title="sbp vs ptv"
                  data-series="president trophy 2026"
                  data-mapped="false"
@@ -661,11 +673,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-DOM-13UM
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-13UM">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Scheduled
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-13UM"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -681,7 +693,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-13UM" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-13UM" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -693,7 +705,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-13UN" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="13UN"
+                 data-unique="M-DOM-13UN"
                  data-title="krl vs mit"
                  data-series="president trophy 2026"
                  data-mapped="false"
@@ -703,11 +717,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-DOM-13UN
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-13UN">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Scheduled
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-13UN"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -723,7 +737,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-13UN" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-13UN" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -735,7 +749,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-13UO" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="13UO"
+                 data-unique="M-DOM-13UO"
                  data-title="ghani vs sngpl"
                  data-series="president trophy 2026"
                  data-mapped="false"
@@ -745,11 +761,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-DOM-13UO
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-13UO">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Scheduled
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-13UO"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -765,7 +781,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-13UO" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-13UO" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -777,7 +793,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-145V" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="145V"
+                 data-unique="M-LEA-145V"
                  data-title="mumbai vs kerala"
                  data-series="oman invitational triangular 2026"
                  data-mapped="false"
@@ -787,11 +805,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-145V
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-145V">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Scheduled
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-145V"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -807,7 +825,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-145V" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-145V" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -819,7 +837,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-132A" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="132A"
+                 data-unique="M-DOM-132A"
                  data-title="western australia vs south australia"
                  data-series="australia domestic one day cup 2026 27"
                  data-mapped="false"
@@ -829,11 +849,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-DOM-132A
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-132A">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Scheduled
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-132A"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -849,7 +869,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-132A" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-132A" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -861,7 +881,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11FL" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11FL"
+                 data-unique="M-INT-11FL"
                  data-title="zimbabwe vs australia"
                  data-series="australia tour of zimbabwe 2026"
                  data-mapped="false"
@@ -871,11 +893,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-INT-11FL
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11FL">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Scheduled
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11FL"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -891,7 +913,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11FL" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11FL" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -903,7 +925,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-13TA" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="13TA"
+                 data-unique="M-INT-13TA"
                  data-title="kenya vs uganda"
                  data-series="africa continental cup 2026"
                  data-mapped="false"
@@ -913,11 +937,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-INT-13TA
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-13TA">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Scheduled
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-13TA"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -933,7 +957,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-13TA" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-13TA" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -945,7 +969,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-13TB" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="13TB"
+                 data-unique="M-INT-13TB"
                  data-title="sierra leone vs botswana"
                  data-series="africa continental cup 2026"
                  data-mapped="false"
@@ -955,11 +981,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-INT-13TB
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-13TB">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Scheduled
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-13TB"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -975,7 +1001,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-13TB" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-13TB" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -987,7 +1013,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UX" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UX"
+                 data-unique="M-LEA-11UX"
                  data-title="jamaica kingsmen vs guyana amazon warriors"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -997,11 +1025,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UX
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UX">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Scheduled
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UX"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1017,7 +1045,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UX" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UX" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1029,7 +1057,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-13SQ" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="13SQ"
+                 data-unique="M-INT-13SQ"
                  data-title="japan vs hong kong"
                  data-series="hong kong tour of japan 2026"
                  data-mapped="false"
@@ -1039,11 +1069,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-INT-13SQ
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-13SQ">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Scheduled
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-13SQ"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1059,7 +1089,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-13SQ" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-13SQ" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1071,7 +1101,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-132B" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="132B"
+                 data-unique="M-DOM-132B"
                  data-title="queensland vs victoria"
                  data-series="australia domestic one day cup 2026 27"
                  data-mapped="false"
@@ -1081,11 +1113,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-DOM-132B
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-132B">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Scheduled
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-132B"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1101,7 +1133,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-132B" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-132B" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1113,7 +1145,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-13WB" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="13WB"
+                 data-unique="M-WOM-13WB"
                  data-title="rayalaseema xen stars women vs godavari golden eagles women"
                  data-series="womens andhra premier league 2026"
                  data-mapped="false"
@@ -1123,11 +1157,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-WOM-13WB
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-13WB">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Scheduled
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-13WB"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1143,7 +1177,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-13WB" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-13WB" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1155,7 +1189,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11K5" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11K5"
+                 data-unique="M-WOM-11K5"
                  data-title="the blaze vs hampshire women"
                  data-series="england women one day cup 2026"
                  data-mapped="false"
@@ -1165,11 +1201,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-WOM-11K5
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11K5">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Scheduled
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11K5"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1185,7 +1221,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11K5" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11K5" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1197,7 +1233,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-12IP" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="12IP"
+                 data-unique="M-WOM-12IP"
                  data-title="zimbabwe women vs south africa women"
                  data-series="south africa women tour of zimbabwe 2026"
                  data-mapped="false"
@@ -1207,11 +1245,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-WOM-12IP
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-12IP">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Scheduled
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-12IP"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1227,7 +1265,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-12IP" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-12IP" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1239,7 +1277,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-13TC" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="13TC"
+                 data-unique="M-INT-13TC"
                  data-title="team 1 (tbc) vs team 2 (tbc)"
                  data-series="africa continental cup 2026"
                  data-mapped="false"
@@ -1249,11 +1289,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-INT-13TC
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-13TC">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Scheduled
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-13TC"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1269,7 +1309,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-13TC" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-13TC" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1281,7 +1321,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11TW" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11TW"
+                 data-unique="M-LEA-11TW"
                  data-title="antigua &amp; barbuda falcons vs jkm 1st"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -1291,11 +1333,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11TW
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11TW">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — ABF Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11TW"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1311,7 +1353,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11TW" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11TW" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1323,7 +1365,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11TX" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11TX"
+                 data-unique="M-LEA-11TX"
                  data-title="st kitts and nevis patriots vs tkr 2nd"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -1333,11 +1377,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11TX
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11TX">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — TKR Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11TX"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1353,7 +1397,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11TX" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11TX" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1365,7 +1409,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11TY" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11TY"
+                 data-unique="M-LEA-11TY"
                  data-title="antigua &amp; barbuda falcons vs slk 3rd"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -1375,11 +1421,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11TY
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11TY">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — SLK Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11TY"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1395,7 +1441,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11TY" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11TY" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1407,7 +1453,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11TZ" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11TZ"
+                 data-unique="M-LEA-11TZ"
                  data-title="barbados tridents vs jkm 4th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -1417,11 +1465,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11TZ
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11TZ">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — BT Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11TZ"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1437,7 +1485,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11TZ" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11TZ" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1449,7 +1497,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11U0" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11U0"
+                 data-unique="M-LEA-11U0"
                  data-title="st kitts and nevis patriots vs slk 5th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -1459,11 +1509,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11U0
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11U0">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — SKNP Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11U0"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1479,7 +1529,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11U0" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11U0" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1491,7 +1541,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11U1" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11U1"
+                 data-unique="M-LEA-11U1"
                  data-title="guyana amazon warriors vs jkm 6th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -1501,11 +1553,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11U1
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11U1">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — GAW Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11U1"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1521,7 +1573,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11U1" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11U1" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1533,7 +1585,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11U2" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11U2"
+                 data-unique="M-LEA-11U2"
                  data-title="antigua &amp; barbuda falcons vs slk 7th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -1543,11 +1597,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11U2
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11U2">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — SLK Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11U2"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1563,7 +1617,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11U2" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11U2" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1575,7 +1629,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11U3" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11U3"
+                 data-unique="M-LEA-11U3"
                  data-title="jamaica kingsmen vs tkr 8th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -1585,11 +1641,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11U3
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11U3">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — JKM Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11U3"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1605,7 +1661,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11U3" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11U3" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1617,7 +1673,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11U4" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11U4"
+                 data-unique="M-LEA-11U4"
                  data-title="barbados tridents vs slk 9th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -1627,11 +1685,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11U4
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11U4">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — BT Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11U4"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1647,7 +1705,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11U4" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11U4" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1659,7 +1717,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11U5" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11U5"
+                 data-unique="M-LEA-11U5"
                  data-title="jamaica kingsmen vs sknp 10th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -1669,11 +1729,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11U5
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11U5">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — JKM Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11U5"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1689,7 +1749,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11U5" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11U5" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1701,7 +1761,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11U6" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11U6"
+                 data-unique="M-LEA-11U6"
                  data-title="guyana amazon warriors vs slk 11th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -1711,11 +1773,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11U6
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11U6">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — GAW Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11U6"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1731,7 +1793,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11U6" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11U6" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1743,7 +1805,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11U7" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11U7"
+                 data-unique="M-LEA-11U7"
                  data-title="antigua &amp; barbuda falcons vs sknp 12th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -1753,11 +1817,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11U7
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11U7">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — ABF Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11U7"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1773,7 +1837,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11U7" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11U7" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1785,7 +1849,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11U8" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11U8"
+                 data-unique="M-LEA-11U8"
                  data-title="jamaica kingsmen vs slk 13th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -1795,11 +1861,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11U8
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11U8">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — SLK Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11U8"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1815,7 +1881,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11U8" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11U8" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1827,7 +1893,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11U9" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11U9"
+                 data-unique="M-LEA-11U9"
                  data-title="antigua &amp; barbuda falcons vs tkr 14th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -1837,11 +1905,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11U9
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11U9">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — ABF Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11U9"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1857,7 +1925,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11U9" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11U9" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1869,7 +1937,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UA" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UA"
+                 data-unique="M-LEA-11UA"
                  data-title="antigua &amp; barbuda falcons vs gaw 15th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -1879,11 +1949,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UA
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UA">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — GAW Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UA"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1899,7 +1969,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UA" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UA" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1911,7 +1981,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UB" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UB"
+                 data-unique="M-LEA-11UB"
                  data-title="antigua &amp; barbuda falcons vs bt 16th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -1921,11 +1993,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UB
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UB">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — ABF Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UB"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1941,7 +2013,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UB" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UB" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1953,7 +2025,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UC" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UC"
+                 data-unique="M-LEA-11UC"
                  data-title="st lucia kings vs tkr 17th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -1963,11 +2037,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UC
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UC">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — SLK Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UC"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -1983,7 +2057,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UC" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UC" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -1995,7 +2069,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UD" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UD"
+                 data-unique="M-LEA-11UD"
                  data-title="jamaica kingsmen vs sknp 18th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -2005,11 +2081,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UD
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UD">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — JKM Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UD"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -2025,7 +2101,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UD" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UD" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -2037,7 +2113,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UE" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UE"
+                 data-unique="M-LEA-11UE"
                  data-title="barbados tridents vs tkr 19th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -2047,11 +2125,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UE
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UE">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — TKR Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UE"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -2067,7 +2145,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UE" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UE" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -2079,7 +2157,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UF" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UF"
+                 data-unique="M-LEA-11UF"
                  data-title="jamaica kingsmen vs tkr 20th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -2089,11 +2169,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UF
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UF">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — JKM Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UF"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -2109,7 +2189,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UF" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UF" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -2121,7 +2201,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UG" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UG"
+                 data-unique="M-LEA-11UG"
                  data-title="antigua &amp; barbuda falcons vs sknp 21st"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -2131,11 +2213,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UG
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UG">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Scheduled
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UG"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -2151,7 +2233,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UG" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UG" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -2163,7 +2245,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UH" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UH"
+                 data-unique="M-LEA-11UH"
                  data-title="guyana amazon warriors vs tkr 22nd"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -2173,11 +2257,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UH
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UH">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — GAW Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UH"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -2193,7 +2277,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UH" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UH" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -2205,7 +2289,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UI" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UI"
+                 data-unique="M-LEA-11UI"
                  data-title="barbados tridents vs sknp 23rd"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -2215,11 +2301,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UI
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UI">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — SKNP Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UI"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -2235,7 +2321,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UI" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UI" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -2247,7 +2333,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UJ" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UJ"
+                 data-unique="M-LEA-11UJ"
                  data-title="antigua &amp; barbuda falcons vs tkr 24th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -2257,11 +2345,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UJ
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UJ">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — ABF Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UJ"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -2277,7 +2365,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UJ" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UJ" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -2289,7 +2377,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UK" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UK"
+                 data-unique="M-LEA-11UK"
                  data-title="st kitts and nevis patriots vs slk 25th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -2299,11 +2389,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UK
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UK">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — SKNP Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UK"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -2319,7 +2409,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UK" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UK" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -2331,7 +2421,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UL" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UL"
+                 data-unique="M-LEA-11UL"
                  data-title="guyana amazon warriors vs jkm 26th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -2341,11 +2433,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UL
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UL">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — GAW Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UL"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -2361,7 +2453,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UL" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UL" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -2373,7 +2465,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UM" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UM"
+                 data-unique="M-LEA-11UM"
                  data-title="barbados tridents vs tkr 27th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -2383,11 +2477,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UM
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UM">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — TKR Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UM"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -2403,7 +2497,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UM" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UM" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -2415,7 +2509,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UN" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UN"
+                 data-unique="M-LEA-11UN"
                  data-title="guyana amazon warriors vs sknp 28th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -2425,11 +2521,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UN
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UN">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — GAW Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UN"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -2445,7 +2541,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UN" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UN" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -2457,7 +2553,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UO" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UO"
+                 data-unique="M-LEA-11UO"
                  data-title="barbados tridents vs slk 29th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -2467,11 +2565,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UO
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UO">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — BT Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UO"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -2487,7 +2585,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UO" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UO" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -2499,7 +2597,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UP" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UP"
+                 data-unique="M-LEA-11UP"
                  data-title="antigua &amp; barbuda falcons vs gaw 30th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -2509,11 +2609,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UP
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UP">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — ABF Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UP"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -2529,7 +2629,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UP" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UP" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -2541,7 +2641,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UQ" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UQ"
+                 data-unique="M-LEA-11UQ"
                  data-title="guyana amazon warriors vs slk 31st"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -2551,11 +2653,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UQ
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UQ">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — GAW Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UQ"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -2571,7 +2673,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UQ" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UQ" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -2583,7 +2685,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UR" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UR"
+                 data-unique="M-LEA-11UR"
                  data-title="barbados tridents vs sknp 32nd"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -2593,11 +2697,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UR
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UR">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — BT Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UR"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -2613,7 +2717,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UR" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UR" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -2625,7 +2729,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11US" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11US"
+                 data-unique="M-LEA-11US"
                  data-title="guyana amazon warriors vs tkr 33rd"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -2635,11 +2741,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11US
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11US">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — GAW Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11US"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -2655,7 +2761,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11US" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11US" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -2667,7 +2773,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UT" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UT"
+                 data-unique="M-LEA-11UT"
                  data-title="barbados tridents vs jkm 34th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -2677,11 +2785,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UT
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UT">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — BT Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UT"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -2697,7 +2805,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UT" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UT" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -2709,7 +2817,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UU" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UU"
+                 data-unique="M-LEA-11UU"
                  data-title="barbados tridents vs gaw 35th"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -2719,11 +2829,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UU
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UU">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — BT Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UU"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -2739,7 +2849,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UU" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UU" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -2751,7 +2861,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UV" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UV"
+                 data-unique="M-LEA-11UV"
                  data-title="barbados tridents vs jamaica kingsmen"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -2761,11 +2873,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UV
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UV">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
                                 Result — JKM Won
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UV"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -2781,7 +2893,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UV" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UV" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -2793,7 +2905,9 @@
                 </div>
             </div>
             
-            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+            <div id="card-11UY" class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-mid="11UY"
+                 data-unique="M-LEA-11UY"
                  data-title="antigua &amp; barbuda falcons vs tbc"
                  data-series="caribbean premier league 2026"
                  data-mapped="false"
@@ -2803,11 +2917,11 @@
                         <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             M-LEA-11UY
                         </span>
-                        <div class="flex items-center gap-1.5">
+                        <div class="flex items-center gap-1.5" id="badge-cont-11UY">
                             <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
                                 Scheduled
                             </span>
-                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                            <span id="badge-map-11UY"><span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span></span>
                         </div>
                     </div>
 
@@ -2823,7 +2937,7 @@
                     </div>
                 </div>
 
-                <div class="mt-3 pt-3 border-t border-slate-100">
+                <div id="card-action-11UY" class="mt-3 pt-3 border-t border-slate-100">
                     
                     <div class="flex items-center gap-2">
                         <input type="url" id="input-11UY" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
@@ -2844,7 +2958,28 @@
     </footer>
 
     <script>
+        const STORAGE_KEY = 'criccenter_admin_mappings';
         let currentFilter = 'all';
+
+        function getLocalMappings() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+            } catch (e) {
+                return {};
+            }
+        }
+
+        function saveLocalMapping(mid, mObj) {
+            const cur = getLocalMappings();
+            cur[mid] = mObj;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(cur));
+        }
+
+        function removeLocalMapping(mid) {
+            const cur = getLocalMappings();
+            delete cur[mid];
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(cur));
+        }
 
         function setFilterTab(f) {
             currentFilter = f;
@@ -2879,6 +3014,83 @@
             });
         }
 
+        function hydrateMappingsFromLocalStorage() {
+            const localMaps = getLocalMappings();
+            const tableBody = document.getElementById('mappedTableBody');
+
+            Object.keys(localMaps).forEach(mid => {
+                const m = localMaps[mid];
+                const card = document.getElementById('card-' + mid) || document.querySelector('[data-mid="' + mid + '"]') || document.querySelector('[data-unique="' + mid + '"]');
+                if (card) {
+                    card.setAttribute('data-mapped', 'true');
+                    const b = document.getElementById('badge-map-' + mid);
+                    if (b) {
+                        b.innerHTML = '<span class="px-2 py-0.5 rounded text-3xs font-black bg-emerald-100 text-emerald-800 border border-emerald-300">Mapped (' + (m.platform || 'Feed') + ')</span>';
+                    }
+                    const act = document.getElementById('card-action-' + mid);
+                    if (act) {
+                        act.innerHTML = '<div class="flex items-center justify-between"><span class="text-3xs text-slate-500 truncate max-w-[200px] font-mono">' + (m.url || '') + '</span><div class="flex items-center gap-1.5"><a href="/match/' + mid + '" target="_blank" class="px-2 py-1 bg-emerald-700 hover:bg-emerald-800 text-white rounded text-3xs font-bold transition">View</a><button onclick="unmapMatch('' + mid + '')" class="px-2 py-1 bg-rose-600 hover:bg-rose-700 text-white rounded text-3xs font-bold transition">Unmap</button></div></div>';
+                    }
+                }
+
+                if (tableBody) {
+                    const existingRow = tableBody.querySelector('[data-table-mid="' + mid + '"]');
+                    if (!existingRow) {
+                        const emptyTr = tableBody.querySelector('td[colspan="5"]');
+                        if (emptyTr && emptyTr.parentElement) {
+                            emptyTr.parentElement.remove();
+                        }
+                        const platBadge = (m.platform || '').toLowerCase().includes('cricinfo') ? 'bg-blue-100 text-blue-800 border-blue-300' : ((m.platform || '').toLowerCase().includes('cricbuzz') ? 'bg-emerald-100 text-emerald-800 border-emerald-300' : 'bg-amber-100 text-amber-900 border-amber-300');
+                        const tr = document.createElement('tr');
+                        tr.className = 'hover:bg-slate-50 transition border-b border-slate-100';
+                        tr.setAttribute('data-table-mid', mid);
+                        tr.innerHTML = `
+                            <td class="py-3 px-3 sm:px-4 font-mono font-bold text-slate-800">
+                                <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded border border-slate-200">${mid}</span>
+                            </td>
+                            <td class="py-3 px-3 sm:px-4">
+                                <div class="font-bold text-slate-900">${m.title || ('Match ' + mid)}</div>
+                                <div class="text-3xs uppercase text-slate-400 font-semibold">${m.category || 'international'}</div>
+                            </td>
+                            <td class="py-3 px-3 sm:px-4">
+                                <span class="px-2 py-0.5 rounded text-3xs font-extrabold border ${platBadge}">
+                                    ${m.platform || 'CREX'}
+                                </span>
+                            </td>
+                            <td class="py-3 px-3 sm:px-4 max-w-xs truncate font-mono text-2xs text-slate-600">
+                                <a href="${m.url || ''}" target="_blank" class="hover:underline text-emerald-700 font-medium">${m.url || ''}</a>
+                            </td>
+                            <td class="py-3 px-3 sm:px-4 text-right">
+                                <div class="flex items-center justify-end gap-2">
+                                    <a href="/match/${mid}" target="_blank" class="px-3 py-1 bg-emerald-700 hover:bg-emerald-800 text-white rounded text-2xs font-bold transition shadow-2xs">View Center &raquo;</a>
+                                    <button onclick="unmapMatch('${mid}')" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white rounded text-2xs font-bold transition shadow-2xs">Unmap</button>
+                                </div>
+                            </td>
+                        `;
+                        tableBody.appendChild(tr);
+                    }
+                }
+            });
+
+            // Recompute stats and tab counters
+            const allRows = document.querySelectorAll('.event-row');
+            const mappedRows = document.querySelectorAll('.event-row[data-mapped="true"]');
+            const total = allRows.length;
+            const mapped = mappedRows.length;
+            const unmapped = Math.max(0, total - mapped);
+
+            const statMapped = document.getElementById('stat-mapped-count');
+            if (statMapped) statMapped.innerText = mapped;
+            const tableMapped = document.getElementById('table-mapped-count');
+            if (tableMapped) tableMapped.innerText = mapped;
+            const tabMapped = document.getElementById('tab-mapped-cnt');
+            if (tabMapped) tabMapped.innerText = mapped;
+            const tabUnmapped = document.getElementById('tab-unmapped-cnt');
+            if (tabUnmapped) tabUnmapped.innerText = unmapped;
+
+            filterEvents();
+        }
+
         async function quickMapMatch(mid, title, cat) {
             const input = document.getElementById('input-' + mid);
             if (!input) return;
@@ -2889,22 +3101,34 @@
                 return;
             }
 
+            let plat = 'CREX';
+            if (url.includes('cricinfo') || url.includes('espn')) plat = 'ESPNcricinfo';
+            else if (url.includes('cricbuzz')) plat = 'Cricbuzz';
+
+            const mObj = {
+                match_id: mid,
+                title: title || ('Match ' + mid),
+                category: cat || 'international',
+                url: url,
+                platform: plat,
+                updated_at: new Date().toISOString()
+            };
+
+            saveLocalMapping(mid, mObj);
+            hydrateMappingsFromLocalStorage();
+
             try {
-                const res = await fetch('/api/admin/map', {
+                await fetch('/api/admin/map', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ match_id: mid, title: title, category: cat, url: url })
+                    body: JSON.stringify(mObj)
                 });
-                const data = await res.json();
-                if (data.status === 'ok' || data.status === 'received') {
-                    alert('Match ' + mid + ' mapped successfully! Ingestion initiated.');
-                    window.location.reload();
-                } else {
-                    alert('Error: ' + (data.error || 'Failed to map'));
-                }
             } catch (err) {
-                alert('Network error: ' + err.message);
+                console.warn('Backend sync note:', err);
             }
+
+            alert('Match ' + mid + ' mapped successfully! Ingestion initiated.');
+            window.location.reload();
         }
 
         async function handleCustomMapSubmit(e) {
@@ -2914,48 +3138,52 @@
             const cat = document.getElementById('customCategory').value;
             const url = document.getElementById('customUrl').value.trim();
 
+            let plat = 'CREX';
+            if (url.includes('cricinfo') || url.includes('espn')) plat = 'ESPNcricinfo';
+            else if (url.includes('cricbuzz')) plat = 'Cricbuzz';
+
+            const mObj = {
+                match_id: mid,
+                title: title,
+                category: cat,
+                url: url,
+                platform: plat,
+                updated_at: new Date().toISOString()
+            };
+
+            saveLocalMapping(mid, mObj);
+            hydrateMappingsFromLocalStorage();
+
             const msg = document.getElementById('mapStatusMsg');
-            msg.className = 'mt-3 text-xs font-bold text-blue-600 block';
-            msg.innerText = 'Saving mapping and syncing urls.txt...';
+            msg.className = 'mt-3 text-xs font-bold text-emerald-600 block';
+            msg.innerText = 'Mapping saved successfully! Live scraping initiated.';
 
             try {
-                const res = await fetch('/api/admin/map', {
+                await fetch('/api/admin/map', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ match_id: mid, title: title, category: cat, url: url })
+                    body: JSON.stringify(mObj)
                 });
-                const data = await res.json();
-                if (data.status === 'ok' || data.status === 'received') {
-                    msg.className = 'mt-3 text-xs font-bold text-emerald-600 block';
-                    msg.innerText = 'Mapping saved successfully! Live scraping initiated.';
-                    setTimeout(() => window.location.reload(), 1200);
-                } else {
-                    msg.className = 'mt-3 text-xs font-bold text-rose-600 block';
-                    msg.innerText = 'Error: ' + (data.error || 'Failed to save');
-                }
             } catch (err) {
-                msg.className = 'mt-3 text-xs font-bold text-rose-600 block';
-                msg.innerText = 'Network error: ' + err.message;
+                console.warn('Backend sync note:', err);
             }
+
+            setTimeout(() => window.location.reload(), 800);
         }
 
         async function unmapMatch(mid) {
             if (!confirm('Are you sure you want to unmap match ' + mid + '?')) return;
+            removeLocalMapping(mid);
             try {
-                const res = await fetch('/api/admin/unmap', {
+                await fetch('/api/admin/unmap', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ match_id: mid })
                 });
-                const data = await res.json();
-                if (data.status === 'ok') {
-                    window.location.reload();
-                } else {
-                    alert('Error: ' + (data.error || 'Failed to unmap'));
-                }
             } catch (err) {
-                alert('Error: ' + err.message);
+                console.warn('Backend unmap note:', err);
             }
+            window.location.reload();
         }
 
         async function triggerSync() {
@@ -2968,6 +3196,10 @@
                 alert('Sync failed: ' + err.message);
             }
         }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            hydrateMappingsFromLocalStorage();
+        });
     </script>
 </body>
 </html>

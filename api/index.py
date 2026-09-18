@@ -61,6 +61,18 @@ class handler(BaseHTTPRequestHandler):
             if clean_path.startswith("/match/"):
                 raw_id = clean_path.split("/match/")[1].split("?")[0].replace(".html", "").strip("/")
                 f = find_file(f"dashboard_{raw_id}.html")
+                if not f:
+                    map_file = find_file("data/match_mappings.json")
+                    if map_file:
+                        try:
+                            with open(map_file, "r", encoding="utf-8") as mp:
+                                mappings = json.load(mp)
+                                if raw_id in mappings:
+                                    alt_id = str(mappings[raw_id].get("match_id", "") or mappings[raw_id].get("cricinfo_id", "")).strip()
+                                    if alt_id and alt_id != raw_id:
+                                        f = find_file(f"dashboard_{alt_id}.html")
+                        except Exception:
+                            pass
                 if f:
                     with open(f, "r", encoding="utf-8") as fp:
                         return self._send_html(fp.read())
@@ -244,7 +256,6 @@ class handler(BaseHTTPRequestHandler):
             <div class="flex items-center gap-3 text-xs font-bold">
                 <a href="/live-scores" class="px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg transition">Live Scores</a>
                 <a href="/schedule" class="hidden sm:inline-block px-3 py-1.5 hover:text-amber-300 transition">Schedule</a>
-                <a href="/admin" class="px-3 py-1.5 bg-amber-400 hover:bg-amber-300 text-slate-900 rounded-lg transition">Admin</a>
             </div>
         </div>
     </header>
@@ -283,12 +294,9 @@ class handler(BaseHTTPRequestHandler):
             </div>
         </div>
 
-        <div class="flex items-center justify-center gap-3">
+        <div class="flex items-center justify-center">
             <a href="/live-scores" class="px-5 py-2.5 bg-[#186047] hover:bg-[#0d3b2c] text-white text-xs font-bold rounded-lg shadow-xs transition">
                 &larr; View Live Scores
-            </a>
-            <a href="/admin" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition">
-                Map Live Stream
             </a>
         </div>
     </main>

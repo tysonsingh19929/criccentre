@@ -166,8 +166,54 @@ class DashboardHTTPHandler(SimpleHTTPRequestHandler):
                     if match_info:
                         break
 
+            from core.dashboard_generator import DashboardGenerator
+            from core.models import MatchData, MatchMetadata, Inning
+
             match_info = match_info or {"match_id": m_id, "title": f"Match #{m_id}"}
-            return self._send_html(PageTemplates.render_match_hub_page(match_info, matches_data, series_data))
+            t1 = match_info.get("team_1", "")
+            t2 = match_info.get("team_2", "")
+            if not t1 and "title" in match_info:
+                parts = re.split(r'\s+(?:vs|v)\s+', match_info.get("title", ""), flags=re.I)
+                if len(parts) >= 2:
+                    t1, t2 = parts[0].strip(), parts[1].strip()
+                else:
+                    t1, t2 = match_info.get("title", "Team 1"), "Team 2"
+
+            t1_score = match_info.get("team_1_score", "")
+            t2_score = match_info.get("team_2_score", "")
+            innings = []
+            if t1_score:
+                innings.append(Inning(
+                    inning_name=f"{t1} Innings",
+                    header_summary=f"{t1} Inning {t1_score}"
+                ))
+            if t2_score:
+                innings.append(Inning(
+                    inning_name=f"{t2} Innings",
+                    header_summary=f"{t2} Inning {t2_score}"
+                ))
+
+            meta = MatchMetadata(
+                match_id=m_id,
+                match_title=match_info.get("title", f"{t1} vs {t2}"),
+                series=match_info.get("series", "Cricket Tournament"),
+                venue=match_info.get("venue", "International Stadium"),
+                toss=match_info.get("toss", ""),
+                status=match_info.get("status", "Match Scheduled"),
+                status_note=match_info.get("status_note", match_info.get("situation", "")),
+                source_url=match_info.get("url", f"/match/{m_id}"),
+                source_platform="CricCenter",
+                is_live=match_info.get("is_live", False),
+                match_impact_overs=0
+            )
+            m_data = MatchData(metadata=meta, innings=innings)
+            gen_path = DashboardGenerator.generate(m_data, output_dir=self.output_dir, write_main_dashboard=False)
+            if os.path.exists(m_file):
+                with open(m_file, "r", encoding="utf-8") as f:
+                    return self._send_html(f.read())
+            elif os.path.exists(gen_path):
+                with open(gen_path, "r", encoding="utf-8") as f:
+                    return self._send_html(f.read())
 
         # 2. Dedicated Article Reader: /news/<id>
         if clean_path.startswith("/news/"):
@@ -535,12 +581,24 @@ class DashboardServer:
                     with open(path, "w", encoding="utf-8") as f:
                         f.write(content)
 
-            # Pre-render Match Hub dashboards for all active feed matches (Live, Recent, Upcoming, Drawer)
+            # Pre-render Cricbuzz Match Center dashboards for all active feed matches (Live, Recent, Upcoming, Drawer)
+            from core.dashboard_generator import DashboardGenerator
+            from core.models import MatchData, MatchMetadata, Inning
+
             all_feed_matches = list(matches_data.get("live", [])) + list(matches_data.get("recent", [])) + list(matches_data.get("upcoming", []))
             drawer = matches_data.get("drawer", {})
             for cat_list in drawer.values():
                 if isinstance(cat_list, list):
                     all_feed_matches.extend(cat_list)
+
+            # Determine primary featured match
+            primary_id = None
+            for m in all_feed_matches:
+                if m.get("is_live"):
+                    primary_id = str(m.get("match_id", "")).strip()
+                    break
+            if not primary_id and all_feed_matches:
+                primary_id = str(all_feed_matches[0].get("match_id", "")).strip()
 
             seen_ids = set()
             for m in all_feed_matches:
@@ -549,14 +607,78 @@ class DashboardServer:
                     continue
                 seen_ids.add(m_id)
 
-                hub_html = PageTemplates.render_match_hub_page(m, matches_data, series_data)
-                for target_dir in [output_dir, pub_dir]:
-                    m_file = os.path.join(target_dir, f"dashboard_{m_id}.html")
-                    # If file exists and is already a full scorecard (> 50KB), do NOT overwrite
-                    if os.path.exists(m_file) and os.path.getsize(m_file) > 50000:
-                        continue
-                    with open(m_file, "w", encoding="utf-8") as f:
-                        f.write(hub_html)
+                resolved_id = HermesBrain.resolve_match_id(m_id, output_dir)
+                candidate_files = [
+                    os.path.join(output_dir, f"match_{resolved_id}_full.json"),
+                    os.path.join(output_dir, f"match_{resolved_id}.json"),
+                    os.path.join(output_dir, f"match_{m_id}_full.json"),
+                    os.path.join(output_dir, f"match_{m_id}.json"),
+                    os.path.join(output_dir, "data", f"match_{resolved_id}_full.json"),
+                    os.path.join(output_dir, "data", f"match_{m_id}_full.json"),
+                ]
+
+                m_data = None
+                for c_file in candidate_files:
+                    if os.path.exists(c_file):
+                        try:
+                            with open(c_file, "r", encoding="utf-8") as jf:
+                                d_dict = json.load(jf)
+                            m_data = MatchData.from_dict(d_dict)
+                            break
+                        except Exception:
+                            pass
+
+                if not m_data:
+                    # Synthesize clean MatchData with Cricbuzz layout
+                    t1 = m.get("team_1", "")
+                    t2 = m.get("team_2", "")
+                    if not t1 and "title" in m:
+                        parts = re.split(r'\s+(?:vs|v)\s+', m.get("title", ""), flags=re.I)
+                        if len(parts) >= 2:
+                            t1, t2 = parts[0].strip(), parts[1].strip()
+                        else:
+                            t1, t2 = m.get("title", "Team 1"), "Team 2"
+
+                    t1_score = m.get("team_1_score", "")
+                    t2_score = m.get("team_2_score", "")
+                    innings = []
+                    if t1_score:
+                        innings.append(Inning(
+                            inning_name=f"{t1} Innings",
+                            header_summary=f"{t1} Inning {t1_score}"
+                        ))
+                    if t2_score:
+                        innings.append(Inning(
+                            inning_name=f"{t2} Innings",
+                            header_summary=f"{t2} Inning {t2_score}"
+                        ))
+
+                    meta = MatchMetadata(
+                        match_id=m_id,
+                        match_title=m.get("title", f"{t1} vs {t2}"),
+                        series=m.get("series", "Cricket Tournament"),
+                        venue=m.get("venue", "International Stadium"),
+                        toss=m.get("toss", ""),
+                        status=m.get("status", "Match Scheduled"),
+                        status_note=m.get("status_note", m.get("situation", "")),
+                        source_url=m.get("url", f"/match/{m_id}"),
+                        source_platform="CricCenter",
+                        is_live=m.get("is_live", False),
+                        match_impact_overs=0
+                    )
+                    m_data = MatchData(metadata=meta, innings=innings)
+
+                is_primary = (m_id == primary_id)
+                DashboardGenerator.generate(m_data, output_dir=output_dir, write_main_dashboard=is_primary)
+
+                # If resolved_id is different (e.g. 13Q2 vs 1550477), ensure both dashboard files exist
+                if resolved_id and resolved_id != m_id:
+                    import shutil
+                    for t_dir in [output_dir, pub_dir]:
+                        src_dash = os.path.join(t_dir, f"dashboard_{m_data.metadata.match_id}.html")
+                        dst_dash = os.path.join(t_dir, f"dashboard_{m_id}.html")
+                        if os.path.exists(src_dash) and not os.path.exists(dst_dash):
+                            shutil.copy2(src_dash, dst_dash)
 
             # Sync data directory to public/data
             src_data = os.path.join(output_dir, "data")
