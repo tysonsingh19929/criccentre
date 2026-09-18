@@ -57,7 +57,7 @@
   },
   {
     "month": "Upcoming Schedule",
-    "series_name": "Kenya vs Uganda",
+    "series_name": "Uganda vs Kenya",
     "category": "International",
     "dates": "September - October 2026",
     "status": "Scheduled"
@@ -260,6 +260,13 @@
   },
   {
     "month": "Upcoming Schedule",
+    "series_name": "Northern Cape vs Limpopo",
+    "category": "International",
+    "dates": "September - October 2026",
+    "status": "Scheduled"
+  },
+  {
+    "month": "Upcoming Schedule",
     "series_name": "Eastern Storm vs Border",
     "category": "International",
     "dates": "September - October 2026",
@@ -268,13 +275,6 @@
   {
     "month": "Upcoming Schedule",
     "series_name": "Mpumalanga Rhinos vs South Western Districts",
-    "category": "International",
-    "dates": "September - October 2026",
-    "status": "Scheduled"
-  },
-  {
-    "month": "Upcoming Schedule",
-    "series_name": "Northern Cape vs Limpopo",
     "category": "International",
     "dates": "September - October 2026",
     "status": "Scheduled"

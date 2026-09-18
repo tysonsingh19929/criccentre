@@ -260,14 +260,18 @@ class CricketFeedEngine:
                     drawer_list.append(item)
 
                 if is_live:
+                    categories["recent"] = [x for x in categories["recent"] if x["match_id"] != mid]
+                    categories["upcoming"] = [x for x in categories["upcoming"] if x["match_id"] != mid]
                     if not any(x["match_id"] == mid for x in categories["live"]):
                         categories["live"].append(item)
                 elif is_completed:
-                    if not any(x["match_id"] == mid for x in categories["recent"]):
-                        categories["recent"].append(item)
+                    if not any(x["match_id"] == mid for x in categories["live"]):
+                        if not any(x["match_id"] == mid for x in categories["recent"]):
+                            categories["recent"].append(item)
                 else:
-                    if not any(x["match_id"] == mid for x in categories["upcoming"]):
-                        categories["upcoming"].append(item)
+                    if not any(x["match_id"] == mid for x in categories["live"]) and not any(x["match_id"] == mid for x in categories["recent"]):
+                        if not any(x["match_id"] == mid for x in categories["upcoming"]):
+                            categories["upcoming"].append(item)
 
         except Exception as e:
             print(f"[FeedEngine] Error in fetch_matches_directory: {e}")

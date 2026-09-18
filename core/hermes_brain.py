@@ -456,7 +456,8 @@ class HermesBrain:
         upcoming_list = matches_data.get("upcoming", [])
 
         all_matches_map: Dict[str, Dict[str, Any]] = {}
-        for m in upcoming_list + live_list + recent_list:
+        # Priority order: recent first, upcoming second, live last (so live always wins)
+        for m in recent_list + upcoming_list + live_list:
             mid = str(m.get("match_id", ""))
             if mid:
                 all_matches_map[mid] = m
@@ -465,31 +466,39 @@ class HermesBrain:
         new_recent = []
         new_upcoming = []
 
-        completed_indicators = ["won by", "won", "result", "completed", "abandoned", "match tied", "tied", "concluded", "no result"]
+        completed_indicators = ["won by", "won", "completed", "abandoned", "match tied", "tied", "concluded", "no result"]
         scheduled_indicators = ["scheduled", "preview", "starts at", "match begins", "starts in"]
-        live_indicators = ["live in progress", "opt to bat", "opt to bowl", "require ", "need "]
+        live_indicators = [
+            "live", "opt to bat", "opt to bowl", "require ", "need ", "trail by", "lead by", 
+            "in progress", "toss", "target "
+        ]
+
+        originally_live_ids = {str(m.get("match_id", "")) for m in live_list if m.get("match_id")}
 
         for mid, m in all_matches_map.items():
             cls.clean_match_item(m)
-            status_text = (m.get("status", "") + " " + m.get("title", "")).lower()
-            is_done = m.get("is_completed", False) or any(k in status_text for k in completed_indicators)
+            status_text = (str(m.get("status", "")) + " " + str(m.get("title", ""))).lower()
+            is_done = any(k in status_text for k in completed_indicators)
             is_scheduled = any(k in status_text for k in scheduled_indicators)
             is_stumps = any(k in status_text for k in ["stumps", "day 1 -", "day 2 -", "day 3 -", "day 4 -"])
 
-            # A match is active/live only if explicitly live in progress or active situation, not completed, not scheduled, and not stumps
-            is_active = (m.get("is_live", False) or any(k in status_text for k in live_indicators)) and not is_done and not is_scheduled and not is_stumps
+            is_orig_live = mid in originally_live_ids
+            is_active = (is_orig_live or m.get("is_live", False) or any(k in status_text for k in live_indicators)) and not is_done and not is_scheduled and not is_stumps
 
             if is_done:
                 m["is_live"] = False
                 m["is_completed"] = True
+                m["status_pill"] = "Result"
                 new_recent.append(m)
             elif is_active:
                 m["is_live"] = True
                 m["is_completed"] = False
+                m["status_pill"] = "LIVE"
                 new_live.append(m)
             else:
                 m["is_live"] = False
                 m["is_completed"] = False
+                m["status_pill"] = "Preview" if is_scheduled else ("Stumps" if is_stumps else "Result")
                 new_upcoming.append(m)
 
         matches_data["live"] = new_live
