@@ -1,0 +1,13 @@
+# ===========================================================================
+# Cricket Match URLs to Scrape (Managed by Hermes Brain & Admin Panel)
+# ===========================================================================
+# CPL 2026 - Qualifier 1 (CREX, Cricbuzz, Cricinfo Multi-Platform Parity)
+https://crex.com/cricket-live-score/abf-vs-gaw-qualifier-1st-match-caribbean-premier-league-2026-match-updates-11UW
+
+https://www.cricbuzz.com/live-cricket-scores/154689/gaw-vs-abf-qualifier-1-caribbean-premier-league-2026
+
+https://www.cricinfo.com/series/caribbean-premier-league-2026-1534175/antigua-and-barbuda-falcons-vs-guyana-amazon-warriors-qualifier-1-1534215/live-cricket-score
+
+# CPL 2026 - Eliminator
+https://www.cricinfo.com/series/caribbean-premier-league-2026-1534175/barbados-tridents-vs-jamaica-kingsmen-eliminator-1534214/ball-by-ball-commentary
+

@@ -1,0 +1,660 @@
+{
+  "metadata": {
+    "match_id": "154689",
+    "match_title": "Guyana Amazon Warriors vs Antigua and Barbuda Falcons, Qualifier 1, Caribbean Premier League 2026",
+    "series": "",
+    "venue": "",
+    "toss": "",
+    "status": "Result",
+    "status_note": "Antigua and Barbuda Falcons won by 9 wkts",
+    "source_url": "https://www.cricbuzz.com/live-cricket-scorecard/154689/gaw-vs-abf-qualifier-1-caribbean-premier-league-2026",
+    "source_platform": "Cricbuzz",
+    "is_live": false,
+    "match_impact_overs": 1
+  },
+  "innings": [
+    {
+      "inning_name": "Guyana Amazon Warriors Inning",
+      "header_summary": "Guyana Amazon Warriors Inning 76/0 (4.0 ov)",
+      "batting": [
+        {
+          "batter": "Glenn Phillips",
+          "dismissal": "",
+          "runs": 16,
+          "balls": 15,
+          "fours": 2,
+          "sixes": 0,
+          "strike_rate": 106.67
+        },
+        {
+          "batter": "Mavendra Dindyal",
+          "dismissal": "",
+          "runs": 11,
+          "balls": 18,
+          "fours": 1,
+          "sixes": 0,
+          "strike_rate": 61.11
+        },
+        {
+          "batter": "Shai Hope (wk)",
+          "dismissal": "",
+          "runs": 16,
+          "balls": 15,
+          "fours": 1,
+          "sixes": 0,
+          "strike_rate": 106.67
+        },
+        {
+          "batter": "Mohammad Haris",
+          "dismissal": "",
+          "runs": 1,
+          "balls": 3,
+          "fours": 0,
+          "sixes": 0,
+          "strike_rate": 33.33
+        },
+        {
+          "batter": "Shimron Hetmyer",
+          "dismissal": "",
+          "runs": 2,
+          "balls": 4,
+          "fours": 0,
+          "sixes": 0,
+          "strike_rate": 50.0
+        },
+        {
+          "batter": "Mehidy Hasan Miraz",
+          "dismissal": "",
+          "runs": 0,
+          "balls": 1,
+          "fours": 0,
+          "sixes": 0,
+          "strike_rate": 0.0
+        },
+        {
+          "batter": "Quentin Sampson",
+          "dismissal": "",
+          "runs": 0,
+          "balls": 1,
+          "fours": 0,
+          "sixes": 0,
+          "strike_rate": 0.0
+        },
+        {
+          "batter": "Khary Pierre",
+          "dismissal": "",
+          "runs": 1,
+          "balls": 2,
+          "fours": 0,
+          "sixes": 0,
+          "strike_rate": 50.0
+        },
+        {
+          "batter": "Imran Tahir (c)",
+          "dismissal": "",
+          "runs": 1,
+          "balls": 3,
+          "fours": 0,
+          "sixes": 0,
+          "strike_rate": 33.33
+        },
+        {
+          "batter": "Romario Shepherd",
+          "dismissal": "",
+          "runs": 14,
+          "balls": 13,
+          "fours": 1,
+          "sixes": 1,
+          "strike_rate": 107.69
+        },
+        {
+          "batter": "Shamar Joseph",
+          "dismissal": "",
+          "runs": 7,
+          "balls": 15,
+          "fours": 1,
+          "sixes": 0,
+          "strike_rate": 46.67
+        }
+      ],
+      "bowling": [
+        {
+          "bowler": "Fabian Allen",
+          "overs": 2.0,
+          "maidens": 0,
+          "runs": 14,
+          "wickets": 0,
+          "economy": 7.0,
+          "dot_balls": 0
+        },
+        {
+          "bowler": "Alzarri Joseph",
+          "overs": 3.0,
+          "maidens": 0,
+          "runs": 19,
+          "wickets": 0,
+          "economy": 6.3,
+          "dot_balls": 0
+        },
+        {
+          "bowler": "Joshua James",
+          "overs": 1.0,
+          "maidens": 0,
+          "runs": 1,
+          "wickets": 1,
+          "economy": 1.0,
+          "dot_balls": 0
+        },
+        {
+          "bowler": "Shadab Khan",
+          "overs": 4.0,
+          "maidens": 0,
+          "runs": 16,
+          "wickets": 4,
+          "economy": 4.0,
+          "dot_balls": 0
+        },
+        {
+          "bowler": "Sufyan Moqim",
+          "overs": 4.0,
+          "maidens": 0,
+          "runs": 13,
+          "wickets": 4,
+          "economy": 3.2,
+          "dot_balls": 0
+        },
+        {
+          "bowler": "Shamar Springer",
+          "overs": 1.0,
+          "maidens": 0,
+          "runs": 8,
+          "wickets": 1,
+          "economy": 8.0,
+          "dot_balls": 0
+        }
+      ],
+      "extras": {
+        "raw": "7",
+        "byes": 0,
+        "wides": 0,
+        "no_balls": 0,
+        "leg_byes": 0,
+        "penalty": 0,
+        "total": 7
+      },
+      "total": {
+        "raw": "76/0",
+        "overs": "(4.0 ov)",
+        "run_rate": ""
+      },
+      "fall_of_wickets": [],
+      "reviews": {},
+      "ball_by_ball": [],
+      "impact_overs_count": 0,
+      "impact_overs_list": []
+    },
+    {
+      "inning_name": "Antigua and Barbuda Falcons Inning",
+      "header_summary": "Antigua and Barbuda Falcons Inning 77/0 (2.0 ov)",
+      "batting": [
+        {
+          "batter": "Rahkeem Cornwall",
+          "dismissal": "",
+          "runs": 49,
+          "balls": 16,
+          "fours": 3,
+          "sixes": 6,
+          "strike_rate": 306.25
+        },
+        {
+          "batter": "Evin Lewis",
+          "dismissal": "",
+          "runs": 23,
+          "balls": 13,
+          "fours": 2,
+          "sixes": 2,
+          "strike_rate": 176.92
+        },
+        {
+          "batter": "Amir Jangoo (wk)",
+          "dismissal": "",
+          "runs": 4,
+          "balls": 4,
+          "fours": 1,
+          "sixes": 0,
+          "strike_rate": 100.0
+        }
+      ],
+      "bowling": [
+        {
+          "bowler": "Imran Tahir (c)",
+          "overs": 2.0,
+          "maidens": 0,
+          "runs": 20,
+          "wickets": 1,
+          "economy": 10.0,
+          "dot_balls": 0
+        },
+        {
+          "bowler": "Mehidy Hasan Miraz",
+          "overs": 1.2,
+          "maidens": 0,
+          "runs": 10,
+          "wickets": 0,
+          "economy": 7.5,
+          "dot_balls": 2
+        },
+        {
+          "bowler": "Khary Pierre",
+          "overs": 1.0,
+          "maidens": 0,
+          "runs": 26,
+          "wickets": 0,
+          "economy": 26.0,
+          "dot_balls": 0
+        },
+        {
+          "bowler": "Shamar Joseph",
+          "overs": 1.0,
+          "maidens": 0,
+          "runs": 21,
+          "wickets": 0,
+          "economy": 21.0,
+          "dot_balls": 0
+        }
+      ],
+      "extras": {
+        "raw": "1",
+        "byes": 0,
+        "wides": 0,
+        "no_balls": 0,
+        "leg_byes": 0,
+        "penalty": 0,
+        "total": 1
+      },
+      "total": {
+        "raw": "77/0",
+        "overs": "(2.0 ov)",
+        "run_rate": ""
+      },
+      "fall_of_wickets": [],
+      "reviews": {},
+      "ball_by_ball": [
+        {
+          "inning_name": "Inning",
+          "over_str": "5.2",
+          "over_num": 5,
+          "ball_num": 2,
+          "runs": 0,
+          "bowler": "",
+          "batter": "",
+          "outcome": "0",
+          "commentary_text": "77/1(5.2)",
+          "is_four": false,
+          "is_six": false,
+          "is_wicket": false,
+          "is_extra": false,
+          "extra_type": "",
+          "raw_event": ""
+        },
+        {
+          "inning_name": "Inning",
+          "over_str": "5.2",
+          "over_num": 5,
+          "ball_num": 2,
+          "runs": 0,
+          "bowler": "Mehidy Hasan Miraz",
+          "batter": "Evin Lewis",
+          "outcome": "5.2",
+          "commentary_text": "5.2Mehidy Hasan Miraz to Evin Lewis, 2 runs, a mishit, but it's cleared cover-point and Lewis comes back for the second run - Falcons are into the finals of #CPL2026 - was the off-break and Lewis didn't read it on the inside out drive, but he's got enough to clear the infield",
+          "is_four": false,
+          "is_six": false,
+          "is_wicket": false,
+          "is_extra": false,
+          "extra_type": "",
+          "raw_event": ""
+        },
+        {
+          "inning_name": "Inning",
+          "over_str": "5.1",
+          "over_num": 5,
+          "ball_num": 1,
+          "runs": 0,
+          "bowler": "Mehidy Hasan Miraz",
+          "batter": "Evin Lewis",
+          "outcome": "5.1",
+          "commentary_text": "5.1Mehidy Hasan Miraz to Evin Lewis, no run, flighted delivery and sliding back into the left-hander, pushed back at the bowler",
+          "is_four": false,
+          "is_six": false,
+          "is_wicket": false,
+          "is_extra": false,
+          "extra_type": "",
+          "raw_event": ""
+        },
+        {
+          "inning_name": "Inning",
+          "over_str": "4.6",
+          "over_num": 4,
+          "ball_num": 6,
+          "runs": 4,
+          "bowler": "Imran Tahir",
+          "batter": "Amir Jangoo",
+          "outcome": "4.6",
+          "commentary_text": "4.6Imran Tahir to Amir Jangoo, no run, nicely tossed up outside off - driven straight to the fielder at cover-point",
+          "is_four": true,
+          "is_six": false,
+          "is_wicket": false,
+          "is_extra": false,
+          "extra_type": "",
+          "raw_event": ""
+        },
+        {
+          "inning_name": "Inning",
+          "over_str": "4.5",
+          "over_num": 4,
+          "ball_num": 5,
+          "runs": 4,
+          "bowler": "Imran Tahir",
+          "batter": "Amir Jangoo",
+          "outcome": "4.5",
+          "commentary_text": "4.5Imran Tahir to Amir Jangoo, no run, fraction short and spinning back into the left-hander, punched off the back-foot to mid-off",
+          "is_four": true,
+          "is_six": false,
+          "is_wicket": false,
+          "is_extra": false,
+          "extra_type": "",
+          "raw_event": ""
+        },
+        {
+          "inning_name": "Inning",
+          "over_str": "4.4",
+          "over_num": 4,
+          "ball_num": 4,
+          "runs": 4,
+          "bowler": "",
+          "batter": "",
+          "outcome": "4.4",
+          "commentary_text": "4.44",
+          "is_four": true,
+          "is_six": false,
+          "is_wicket": false,
+          "is_extra": false,
+          "extra_type": "",
+          "raw_event": ""
+        },
+        {
+          "inning_name": "Inning",
+          "over_str": "4.3",
+          "over_num": 4,
+          "ball_num": 3,
+          "runs": 4,
+          "bowler": "Imran Tahir",
+          "batter": "Amir Jangoo",
+          "outcome": "4.3",
+          "commentary_text": "4.3Imran Tahir to Amir Jangoo, no run, loopy delivery outside off - Jangoo shapes for an expansive drive and misses",
+          "is_four": true,
+          "is_six": false,
+          "is_wicket": false,
+          "is_extra": false,
+          "extra_type": "",
+          "raw_event": ""
+        },
+        {
+          "inning_name": "Inning",
+          "over_str": "4.2",
+          "over_num": 4,
+          "ball_num": 2,
+          "runs": 4,
+          "bowler": "",
+          "batter": "",
+          "outcome": "4.2",
+          "commentary_text": "4.2W",
+          "is_four": true,
+          "is_six": false,
+          "is_wicket": false,
+          "is_extra": false,
+          "extra_type": "",
+          "raw_event": ""
+        },
+        {
+          "inning_name": "Inning",
+          "over_str": "4.1",
+          "over_num": 4,
+          "ball_num": 1,
+          "runs": 4,
+          "bowler": "Imran Tahir",
+          "batter": "Rahkeem Cornwall",
+          "outcome": "4.1",
+          "commentary_text": "4.1Imran Tahir to Rahkeem Cornwall, no run, slower and spinning away from wide of off - Cornwall reaches out on the hack and misses",
+          "is_four": true,
+          "is_six": false,
+          "is_wicket": false,
+          "is_extra": false,
+          "extra_type": "",
+          "raw_event": ""
+        }
+      ],
+      "impact_overs_count": 1,
+      "impact_overs_list": [
+        {
+          "over_number": 5,
+          "over_label": "Over 5",
+          "runs": 24,
+          "wickets": 0,
+          "bowler": "Imran Tahir",
+          "ball_outcomes": [
+            "4.6",
+            "4.5",
+            "4.4",
+            "4.3",
+            "4.2",
+            "4.1"
+          ],
+          "ball_count": 6
+        }
+      ]
+    }
+  ],
+  "partnerships": [],
+  "all_balls": [
+    {
+      "inning_name": "Inning",
+      "over_str": "5.2",
+      "over_num": 5,
+      "ball_num": 2,
+      "runs": 0,
+      "bowler": "",
+      "batter": "",
+      "outcome": "0",
+      "commentary_text": "77/1(5.2)",
+      "is_four": false,
+      "is_six": false,
+      "is_wicket": false,
+      "is_extra": false,
+      "extra_type": "",
+      "raw_event": ""
+    },
+    {
+      "inning_name": "Inning",
+      "over_str": "5.2",
+      "over_num": 5,
+      "ball_num": 2,
+      "runs": 0,
+      "bowler": "Mehidy Hasan Miraz",
+      "batter": "Evin Lewis",
+      "outcome": "5.2",
+      "commentary_text": "5.2Mehidy Hasan Miraz to Evin Lewis, 2 runs, a mishit, but it's cleared cover-point and Lewis comes back for the second run - Falcons are into the finals of #CPL2026 - was the off-break and Lewis didn't read it on the inside out drive, but he's got enough to clear the infield",
+      "is_four": false,
+      "is_six": false,
+      "is_wicket": false,
+      "is_extra": false,
+      "extra_type": "",
+      "raw_event": ""
+    },
+    {
+      "inning_name": "Inning",
+      "over_str": "5.1",
+      "over_num": 5,
+      "ball_num": 1,
+      "runs": 0,
+      "bowler": "Mehidy Hasan Miraz",
+      "batter": "Evin Lewis",
+      "outcome": "5.1",
+      "commentary_text": "5.1Mehidy Hasan Miraz to Evin Lewis, no run, flighted delivery and sliding back into the left-hander, pushed back at the bowler",
+      "is_four": false,
+      "is_six": false,
+      "is_wicket": false,
+      "is_extra": false,
+      "extra_type": "",
+      "raw_event": ""
+    },
+    {
+      "inning_name": "Inning",
+      "over_str": "4.6",
+      "over_num": 4,
+      "ball_num": 6,
+      "runs": 4,
+      "bowler": "Imran Tahir",
+      "batter": "Amir Jangoo",
+      "outcome": "4.6",
+      "commentary_text": "4.6Imran Tahir to Amir Jangoo, no run, nicely tossed up outside off - driven straight to the fielder at cover-point",
+      "is_four": true,
+      "is_six": false,
+      "is_wicket": false,
+      "is_extra": false,
+      "extra_type": "",
+      "raw_event": ""
+    },
+    {
+      "inning_name": "Inning",
+      "over_str": "4.5",
+      "over_num": 4,
+      "ball_num": 5,
+      "runs": 4,
+      "bowler": "Imran Tahir",
+      "batter": "Amir Jangoo",
+      "outcome": "4.5",
+      "commentary_text": "4.5Imran Tahir to Amir Jangoo, no run, fraction short and spinning back into the left-hander, punched off the back-foot to mid-off",
+      "is_four": true,
+      "is_six": false,
+      "is_wicket": false,
+      "is_extra": false,
+      "extra_type": "",
+      "raw_event": ""
+    },
+    {
+      "inning_name": "Inning",
+      "over_str": "4.4",
+      "over_num": 4,
+      "ball_num": 4,
+      "runs": 4,
+      "bowler": "",
+      "batter": "",
+      "outcome": "4.4",
+      "commentary_text": "4.44",
+      "is_four": true,
+      "is_six": false,
+      "is_wicket": false,
+      "is_extra": false,
+      "extra_type": "",
+      "raw_event": ""
+    },
+    {
+      "inning_name": "Inning",
+      "over_str": "4.3",
+      "over_num": 4,
+      "ball_num": 3,
+      "runs": 4,
+      "bowler": "Imran Tahir",
+      "batter": "Amir Jangoo",
+      "outcome": "4.3",
+      "commentary_text": "4.3Imran Tahir to Amir Jangoo, no run, loopy delivery outside off - Jangoo shapes for an expansive drive and misses",
+      "is_four": true,
+      "is_six": false,
+      "is_wicket": false,
+      "is_extra": false,
+      "extra_type": "",
+      "raw_event": ""
+    },
+    {
+      "inning_name": "Inning",
+      "over_str": "4.2",
+      "over_num": 4,
+      "ball_num": 2,
+      "runs": 4,
+      "bowler": "",
+      "batter": "",
+      "outcome": "4.2",
+      "commentary_text": "4.2W",
+      "is_four": true,
+      "is_six": false,
+      "is_wicket": false,
+      "is_extra": false,
+      "extra_type": "",
+      "raw_event": ""
+    },
+    {
+      "inning_name": "Inning",
+      "over_str": "4.1",
+      "over_num": 4,
+      "ball_num": 1,
+      "runs": 4,
+      "bowler": "Imran Tahir",
+      "batter": "Rahkeem Cornwall",
+      "outcome": "4.1",
+      "commentary_text": "4.1Imran Tahir to Rahkeem Cornwall, no run, slower and spinning away from wide of off - Cornwall reaches out on the hack and misses",
+      "is_four": true,
+      "is_six": false,
+      "is_wicket": false,
+      "is_extra": false,
+      "extra_type": "",
+      "raw_event": ""
+    }
+  ],
+  "day_by_day_events": [],
+  "hermes_analysis": {
+    "engine": "Hermes Brain Analytics v2.0",
+    "match_id": "154689",
+    "match_title": "Guyana Amazon Warriors vs Antigua and Barbuda Falcons, Qualifier 1, Caribbean Premier League 2026",
+    "is_live": false,
+    "match_impact_overs": 1,
+    "total_match_dots": 2,
+    "innings_analysis": [
+      {
+        "inning_index": 1,
+        "inning_name": "Guyana Amazon Warriors Inning",
+        "header_summary": "Guyana Amazon Warriors Inning 76/0 (4.0 ov)",
+        "impact_overs_count": 0,
+        "impact_overs": [],
+        "total_dot_balls": 0,
+        "total_wickets": 10
+      },
+      {
+        "inning_index": 2,
+        "inning_name": "Antigua and Barbuda Falcons Inning",
+        "header_summary": "Antigua and Barbuda Falcons Inning 77/0 (2.0 ov)",
+        "impact_overs_count": 1,
+        "impact_overs": [
+          {
+            "over_number": 5,
+            "over_label": "Over 5",
+            "runs": 24,
+            "wickets": 0,
+            "bowler": "Imran Tahir",
+            "ball_outcomes": [
+              "4.6",
+              "4.5",
+              "4.4",
+              "4.3",
+              "4.2",
+              "4.1"
+            ],
+            "ball_count": 6
+          }
+        ],
+        "total_dot_balls": 2,
+        "total_wickets": 1
+      }
+    ]
+  }
+}

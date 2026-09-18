@@ -1,0 +1,27 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.class
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Large binaries & temp captures
+*.zip
+admin_panel.png
+cricinfo_news.png
+cricinfo_schedule.png
+scorecard_*.png
+crex_page_text.txt
+crex_scorecard_clicked.txt
+crex_state_dump.json
+scratch_*.py
+test_*.py
+
+# Operating system files
+Thumbs.db
+.DS_Store

@@ -1,0 +1,2882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermes Brain Admin | Match & Series Master Mapping Console</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; }</style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col justify-between">
+    <!-- RESTRICTED ADMIN NAVIGATION (NOT LINKED ON PUBLIC SITE) -->
+    <header class="bg-slate-900 text-white shadow-md border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 h-12 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="bg-emerald-600 text-white font-black px-2 py-0.5 rounded text-xs tracking-wider uppercase">
+                    ADMIN
+                </div>
+                <span class="text-sm font-black text-white tracking-tight">HERMES BRAIN MATCH MAPPER</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="/" target="_blank" class="text-xs font-semibold text-slate-300 hover:text-white transition">
+                    &larr; Open Public Portal
+                </a>
+                <button onclick="triggerSync()" class="px-3 py-1 bg-emerald-700 hover:bg-emerald-800 text-white rounded text-xs font-bold transition shadow-xs">
+                    Sync CREX Feeds
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-3 sm:px-4 mt-6 flex-1 w-full space-y-6">
+        <!-- Control Banner -->
+        <div class="bg-gradient-to-r from-emerald-950 via-slate-900 to-emerald-900 text-white p-6 rounded-2xl shadow-sm border border-emerald-800">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <span class="text-3xs font-black uppercase tracking-widest text-emerald-400">ENGINE CONTROL CONSOLE</span>
+                    <h1 class="text-xl sm:text-2xl font-black tracking-tight mt-0.5">CREX Master Event Directory & URL Router</h1>
+                    <p class="text-xs text-emerald-200/80 mt-1">
+                        All events and series worldwide ingested from CREX. Input any Cricinfo, Cricbuzz, or CREX match link to begin live ball-by-ball scraping and automatically promote matches to Live.
+                    </p>
+                </div>
+                <div class="flex items-center gap-3 shrink-0">
+                    <div class="text-right">
+                        <div class="text-2xl font-black text-white">57</div>
+                        <div class="text-3xs uppercase font-bold text-emerald-300">Total CREX Events</div>
+                    </div>
+                    <div class="h-8 w-px bg-emerald-800"></div>
+                    <div class="text-right">
+                        <div class="text-2xl font-black text-amber-400">7</div>
+                        <div class="text-3xs uppercase font-bold text-emerald-300">Actively Mapped</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom URL Mapper Box -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs p-5 sm:p-6">
+            <h2 class="text-sm sm:text-base font-black text-slate-900 uppercase tracking-wide mb-1">
+                Custom Match Mapping (Any URL)
+            </h2>
+            <p class="text-xs text-slate-500 mb-4">Paste any match URL from ESPNcricinfo, Cricbuzz, or CREX. Hermes Brain will auto-bind the match ID, sync urls.txt, and start live scraping.</p>
+            
+            <form onsubmit="handleCustomMapSubmit(event)" class="grid grid-cols-1 md:grid-cols-12 gap-3 items-end">
+                <div class="md:col-span-3">
+                    <label class="block text-3xs font-extrabold uppercase text-slate-600 mb-1">Match ID / Key</label>
+                    <input type="text" id="customMatchId" required placeholder="e.g. 1534214 or 11UV" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-hidden font-mono">
+                </div>
+                <div class="md:col-span-4">
+                    <label class="block text-3xs font-extrabold uppercase text-slate-600 mb-1">Match Title</label>
+                    <input type="text" id="customTitle" required placeholder="e.g. Barbados Tridents vs Jamaica Kingsmen" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-hidden">
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-3xs font-extrabold uppercase text-slate-600 mb-1">Category</label>
+                    <select id="customCategory" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-hidden font-semibold">
+                        <option value="international">International</option>
+                        <option value="league">League</option>
+                        <option value="women">Women</option>
+                        <option value="domestic">Domestic</option>
+                    </select>
+                </div>
+                <div class="md:col-span-12 lg:col-span-9">
+                    <label class="block text-3xs font-extrabold uppercase text-slate-600 mb-1">Source Match URL (Cricinfo, Cricbuzz, or CREX)</label>
+                    <input type="url" id="customUrl" required placeholder="https://www.cricinfo.com/... or https://www.cricbuzz.com/... or https://crex.com/..." class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-hidden font-mono">
+                </div>
+                <div class="md:col-span-12 lg:col-span-3">
+                    <button type="submit" class="w-full py-2 bg-[#186047] hover:bg-[#124d38] text-white text-xs font-black uppercase tracking-wider rounded-lg transition shadow-xs">
+                        Save & Scrape Now &raquo;
+                    </button>
+                </div>
+            </form>
+            <div id="mapStatusMsg" class="mt-3 text-xs font-bold hidden"></div>
+        </div>
+
+        <!-- Active Mappings Table -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
+            <div class="px-5 py-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+                <h3 class="text-xs sm:text-sm font-black text-slate-900 uppercase tracking-wide">
+                    Actively Mapped & Ingested Matches (7)
+                </h3>
+                <span class="text-3xs text-emerald-800 bg-emerald-100 font-bold px-2.5 py-0.5 rounded-full border border-emerald-300">
+                    Live Engine Synced
+                </span>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs whitespace-nowrap">
+                    <thead class="bg-slate-100 text-slate-600 font-extrabold uppercase text-3xs tracking-wider border-b border-slate-200">
+                        <tr>
+                            <th class="py-2.5 px-3 sm:px-4">Match ID</th>
+                            <th class="py-2.5 px-3 sm:px-4">Match Title</th>
+                            <th class="py-2.5 px-3 sm:px-4">Platform</th>
+                            <th class="py-2.5 px-3 sm:px-4">Mapped Source URL</th>
+                            <th class="py-2.5 px-3 sm:px-4 text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        
+            <tr class="hover:bg-slate-50 transition border-b border-slate-100">
+                <td class="py-3 px-3 sm:px-4 font-mono font-bold text-slate-800">
+                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded border border-slate-200">1534214</span>
+                </td>
+                <td class="py-3 px-3 sm:px-4">
+                    <div class="font-bold text-slate-900">Barbados Tridents vs Jamaica Kingsmen - Eliminator</div>
+                    <div class="text-3xs uppercase text-slate-400 font-semibold">league</div>
+                </td>
+                <td class="py-3 px-3 sm:px-4">
+                    <span class="px-2 py-0.5 rounded text-3xs font-extrabold border bg-blue-100 text-blue-800 border-blue-300">
+                        ESPNcricinfo
+                    </span>
+                </td>
+                <td class="py-3 px-3 sm:px-4 max-w-xs truncate font-mono text-2xs text-slate-600">
+                    <a href="https://www.cricinfo.com/series/caribbean-premier-league-2026-1534175/barbados-tridents-vs-jamaica-kingsmen-eliminator-1534214/ball-by-ball-commentary" target="_blank" class="hover:underline text-emerald-700 font-medium">
+                        https://www.cricinfo.com/series/caribbean-premier-league-2026-1534175/barbados-tridents-vs-jamaica-kingsmen-eliminator-1534214/ball-by-ball-commentary
+                    </a>
+                </td>
+                <td class="py-3 px-3 sm:px-4 text-right">
+                    <div class="flex items-center justify-end gap-2">
+                        <a href="/match/1534214" target="_blank" class="px-3 py-1 bg-emerald-700 hover:bg-emerald-800 text-white rounded text-2xs font-bold transition shadow-2xs">
+                            View Center &raquo;
+                        </a>
+                        <button onclick="unmapMatch('1534214')" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white rounded text-2xs font-bold transition shadow-2xs">
+                            Unmap
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr class="hover:bg-slate-50 transition border-b border-slate-100">
+                <td class="py-3 px-3 sm:px-4 font-mono font-bold text-slate-800">
+                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded border border-slate-200">1540220</span>
+                </td>
+                <td class="py-3 px-3 sm:px-4">
+                    <div class="font-bold text-slate-900">Guyana Amazon Warriors Women vs Trinbago Knight Riders Women - Final</div>
+                    <div class="text-3xs uppercase text-slate-400 font-semibold">women</div>
+                </td>
+                <td class="py-3 px-3 sm:px-4">
+                    <span class="px-2 py-0.5 rounded text-3xs font-extrabold border bg-blue-100 text-blue-800 border-blue-300">
+                        ESPNcricinfo
+                    </span>
+                </td>
+                <td class="py-3 px-3 sm:px-4 max-w-xs truncate font-mono text-2xs text-slate-600">
+                    <a href="https://www.cricinfo.com/series/women-s-caribbean-premier-league-2026-1540211/guyana-amazon-warriors-women-vs-trinbago-knight-riders-women-final-1540220/live-cricket-score" target="_blank" class="hover:underline text-emerald-700 font-medium">
+                        https://www.cricinfo.com/series/women-s-caribbean-premier-league-2026-1540211/guyana-amazon-warriors-women-vs-trinbago-knight-riders-women-final-1540220/live-cricket-score
+                    </a>
+                </td>
+                <td class="py-3 px-3 sm:px-4 text-right">
+                    <div class="flex items-center justify-end gap-2">
+                        <a href="/match/1540220" target="_blank" class="px-3 py-1 bg-emerald-700 hover:bg-emerald-800 text-white rounded text-2xs font-bold transition shadow-2xs">
+                            View Center &raquo;
+                        </a>
+                        <button onclick="unmapMatch('1540220')" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white rounded text-2xs font-bold transition shadow-2xs">
+                            Unmap
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr class="hover:bg-slate-50 transition border-b border-slate-100">
+                <td class="py-3 px-3 sm:px-4 font-mono font-bold text-slate-800">
+                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded border border-slate-200">1496586</span>
+                </td>
+                <td class="py-3 px-3 sm:px-4">
+                    <div class="font-bold text-slate-900">England vs Sri Lanka - 2nd T20I</div>
+                    <div class="text-3xs uppercase text-slate-400 font-semibold">international</div>
+                </td>
+                <td class="py-3 px-3 sm:px-4">
+                    <span class="px-2 py-0.5 rounded text-3xs font-extrabold border bg-blue-100 text-blue-800 border-blue-300">
+                        ESPNcricinfo
+                    </span>
+                </td>
+                <td class="py-3 px-3 sm:px-4 max-w-xs truncate font-mono text-2xs text-slate-600">
+                    <a href="https://www.cricinfo.com/series/sri-lanka-in-england-2026-1496567/england-vs-sri-lanka-2nd-t20i-1496586/live-cricket-score" target="_blank" class="hover:underline text-emerald-700 font-medium">
+                        https://www.cricinfo.com/series/sri-lanka-in-england-2026-1496567/england-vs-sri-lanka-2nd-t20i-1496586/live-cricket-score
+                    </a>
+                </td>
+                <td class="py-3 px-3 sm:px-4 text-right">
+                    <div class="flex items-center justify-end gap-2">
+                        <a href="/match/1496586" target="_blank" class="px-3 py-1 bg-emerald-700 hover:bg-emerald-800 text-white rounded text-2xs font-bold transition shadow-2xs">
+                            View Center &raquo;
+                        </a>
+                        <button onclick="unmapMatch('1496586')" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white rounded text-2xs font-bold transition shadow-2xs">
+                            Unmap
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr class="hover:bg-slate-50 transition border-b border-slate-100">
+                <td class="py-3 px-3 sm:px-4 font-mono font-bold text-slate-800">
+                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded border border-slate-200">12LV</span>
+                </td>
+                <td class="py-3 px-3 sm:px-4">
+                    <div class="font-bold text-slate-900">Barbados Tridents vs Jamaica Kingsmen - Eliminator 1</div>
+                    <div class="text-3xs uppercase text-slate-400 font-semibold">league</div>
+                </td>
+                <td class="py-3 px-3 sm:px-4">
+                    <span class="px-2 py-0.5 rounded text-3xs font-extrabold border bg-amber-100 text-amber-900 border-amber-300">
+                        CREX
+                    </span>
+                </td>
+                <td class="py-3 px-3 sm:px-4 max-w-xs truncate font-mono text-2xs text-slate-600">
+                    <a href="https://crex.com/cricket-live-score/bt-vs-jkm-eliminator-1-caribbean-premier-league-2026-match-updates-11UV/live" target="_blank" class="hover:underline text-emerald-700 font-medium">
+                        https://crex.com/cricket-live-score/bt-vs-jkm-eliminator-1-caribbean-premier-league-2026-match-updates-11UV/live
+                    </a>
+                </td>
+                <td class="py-3 px-3 sm:px-4 text-right">
+                    <div class="flex items-center justify-end gap-2">
+                        <a href="/match/12LV" target="_blank" class="px-3 py-1 bg-emerald-700 hover:bg-emerald-800 text-white rounded text-2xs font-bold transition shadow-2xs">
+                            View Center &raquo;
+                        </a>
+                        <button onclick="unmapMatch('12LV')" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white rounded text-2xs font-bold transition shadow-2xs">
+                            Unmap
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr class="hover:bg-slate-50 transition border-b border-slate-100">
+                <td class="py-3 px-3 sm:px-4 font-mono font-bold text-slate-800">
+                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded border border-slate-200">11UW</span>
+                </td>
+                <td class="py-3 px-3 sm:px-4">
+                    <div class="font-bold text-slate-900">Guyana Amazon Warriors vs Antigua &amp; Barbuda Falcons - Qualifier 1</div>
+                    <div class="text-3xs uppercase text-slate-400 font-semibold">league</div>
+                </td>
+                <td class="py-3 px-3 sm:px-4">
+                    <span class="px-2 py-0.5 rounded text-3xs font-extrabold border bg-amber-100 text-amber-900 border-amber-300">
+                        CREX
+                    </span>
+                </td>
+                <td class="py-3 px-3 sm:px-4 max-w-xs truncate font-mono text-2xs text-slate-600">
+                    <a href="https://crex.com/cricket-live-score/abf-vs-gaw-qualifier-1st-match-caribbean-premier-league-2026-match-updates-11UW" target="_blank" class="hover:underline text-emerald-700 font-medium">
+                        https://crex.com/cricket-live-score/abf-vs-gaw-qualifier-1st-match-caribbean-premier-league-2026-match-updates-11UW
+                    </a>
+                </td>
+                <td class="py-3 px-3 sm:px-4 text-right">
+                    <div class="flex items-center justify-end gap-2">
+                        <a href="/match/11UW" target="_blank" class="px-3 py-1 bg-emerald-700 hover:bg-emerald-800 text-white rounded text-2xs font-bold transition shadow-2xs">
+                            View Center &raquo;
+                        </a>
+                        <button onclick="unmapMatch('11UW')" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white rounded text-2xs font-bold transition shadow-2xs">
+                            Unmap
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr class="hover:bg-slate-50 transition border-b border-slate-100">
+                <td class="py-3 px-3 sm:px-4 font-mono font-bold text-slate-800">
+                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded border border-slate-200">154689</span>
+                </td>
+                <td class="py-3 px-3 sm:px-4">
+                    <div class="font-bold text-slate-900">Guyana Amazon Warriors vs Antigua &amp; Barbuda Falcons - Qualifier 1</div>
+                    <div class="text-3xs uppercase text-slate-400 font-semibold">league</div>
+                </td>
+                <td class="py-3 px-3 sm:px-4">
+                    <span class="px-2 py-0.5 rounded text-3xs font-extrabold border bg-emerald-100 text-emerald-800 border-emerald-300">
+                        Cricbuzz
+                    </span>
+                </td>
+                <td class="py-3 px-3 sm:px-4 max-w-xs truncate font-mono text-2xs text-slate-600">
+                    <a href="https://www.cricbuzz.com/live-cricket-scores/154689/gaw-vs-abf-qualifier-1-caribbean-premier-league-2026" target="_blank" class="hover:underline text-emerald-700 font-medium">
+                        https://www.cricbuzz.com/live-cricket-scores/154689/gaw-vs-abf-qualifier-1-caribbean-premier-league-2026
+                    </a>
+                </td>
+                <td class="py-3 px-3 sm:px-4 text-right">
+                    <div class="flex items-center justify-end gap-2">
+                        <a href="/match/154689" target="_blank" class="px-3 py-1 bg-emerald-700 hover:bg-emerald-800 text-white rounded text-2xs font-bold transition shadow-2xs">
+                            View Center &raquo;
+                        </a>
+                        <button onclick="unmapMatch('154689')" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white rounded text-2xs font-bold transition shadow-2xs">
+                            Unmap
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr class="hover:bg-slate-50 transition border-b border-slate-100">
+                <td class="py-3 px-3 sm:px-4 font-mono font-bold text-slate-800">
+                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded border border-slate-200">1534215</span>
+                </td>
+                <td class="py-3 px-3 sm:px-4">
+                    <div class="font-bold text-slate-900">Antigua and Barbuda Falcons vs Guyana Amazon Warriors - Qualifier 1</div>
+                    <div class="text-3xs uppercase text-slate-400 font-semibold">league</div>
+                </td>
+                <td class="py-3 px-3 sm:px-4">
+                    <span class="px-2 py-0.5 rounded text-3xs font-extrabold border bg-blue-100 text-blue-800 border-blue-300">
+                        ESPNcricinfo
+                    </span>
+                </td>
+                <td class="py-3 px-3 sm:px-4 max-w-xs truncate font-mono text-2xs text-slate-600">
+                    <a href="https://www.cricinfo.com/series/caribbean-premier-league-2026-1534175/antigua-and-barbuda-falcons-vs-guyana-amazon-warriors-qualifier-1-1534215/live-cricket-score" target="_blank" class="hover:underline text-emerald-700 font-medium">
+                        https://www.cricinfo.com/series/caribbean-premier-league-2026-1534175/antigua-and-barbuda-falcons-vs-guyana-amazon-warriors-qualifier-1-1534215/live-cricket-score
+                    </a>
+                </td>
+                <td class="py-3 px-3 sm:px-4 text-right">
+                    <div class="flex items-center justify-end gap-2">
+                        <a href="/match/1534215" target="_blank" class="px-3 py-1 bg-emerald-700 hover:bg-emerald-800 text-white rounded text-2xs font-bold transition shadow-2xs">
+                            View Center &raquo;
+                        </a>
+                        <button onclick="unmapMatch('1534215')" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white rounded text-2xs font-bold transition shadow-2xs">
+                            Unmap
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Ingested CREX Directory (Filterable & Searchable) -->
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 sm:p-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
+                <div>
+                    <h3 class="text-xs sm:text-sm font-black text-slate-900 uppercase tracking-wide">
+                        CREX World Events Directory (57 Ingested)
+                    </h3>
+                    <p class="text-3xs text-slate-500 mt-0.5">Quickly map any event by pasting a Cricinfo, Cricbuzz, or CREX link directly into its card.</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <input type="text" id="eventSearch" oninput="filterEvents()" placeholder="Search team or series..." class="px-3 py-1.5 text-xs bg-white border border-slate-300 rounded-lg focus:ring-1 focus:ring-emerald-500 focus:outline-hidden font-medium">
+                    <button onclick="setFilterTab('all')" id="tab-all" class="admin-tab-btn px-3 py-1.5 rounded-lg text-xs font-black bg-slate-900 text-white shadow-2xs">All (57)</button>
+                    <button onclick="setFilterTab('unmapped')" id="tab-unmapped" class="admin-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:bg-slate-100">Unmapped (50)</button>
+                    <button onclick="setFilterTab('mapped')" id="tab-mapped" class="admin-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:bg-slate-100">Mapped (7)</button>
+                </div>
+            </div>
+
+            <div id="eventsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="guyana amazon warriors vs antigua &amp; barbuda falcons"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="true"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UW
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Scheduled
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-black bg-emerald-100 text-emerald-800 border border-emerald-300">Mapped (CREX)</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Guyana Amazon Warriors vs Antigua &amp; Barbuda Falcons
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">Qualifier 1</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Sep 18, 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center justify-between">
+                        <span class="text-3xs text-slate-500 truncate max-w-[200px] font-mono">https://crex.com/cricket-live-score/abf-vs-gaw-qualifier-1st-match-caribbean-premier-league-2026-match-updates-11UW</span>
+                        <div class="flex items-center gap-1.5">
+                            <a href="/match/11UW" target="_blank" class="px-2 py-1 bg-emerald-700 hover:bg-emerald-800 text-white rounded text-3xs font-bold transition">View</a>
+                            <button onclick="unmapMatch('11UW')" class="px-2 py-1 bg-rose-600 hover:bg-rose-700 text-white rounded text-3xs font-bold transition">Unmap</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="sri lanka women vs malaysia women"
+                 data-series="w- asian t20 2026"
+                 data-mapped="false"
+                 data-live="true">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-WOM-13Q1
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Live In Progress
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Sri Lanka Women vs Malaysia Women
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        W- Asian T20 2026 &bull; <span class="text-slate-600 font-medium">W- Asian T20 2026</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Sep 18, 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">women</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-13Q1" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('13Q1', 'Sri Lanka Women vs Malaysia Women', 'women')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="india u19 vs australia u19"
+                 data-series="australia u19 tour of india 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-INT-126Y
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Scheduled
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        India U19 vs Australia U19
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Australia U19 Tour Of India 2026 &bull; <span class="text-slate-600 font-medium">1St Odi</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Sep 18, 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">international</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-126Y" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('126Y', 'India U19 vs Australia U19', 'international')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="india women vs japan women"
+                 data-series="final womens asian games t20 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-WOM-13Q2
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Scheduled
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        India Women vs Japan Women
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Final Womens Asian Games T20 2026 &bull; <span class="text-slate-600 font-medium">4Th Qtr</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Sep 18, 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">women</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-13Q2" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('13Q2', 'India Women vs Japan Women', 'women')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="ogdcl vs kingsmen academy"
+                 data-series="president trophy 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-DOM-13UL
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Scheduled
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        OGDCL vs Kingsmen Academy
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        President Trophy 2026 &bull; <span class="text-slate-600 font-medium">8Th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Sep 18, 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">domestic</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-13UL" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('13UL', 'OGDCL vs Kingsmen Academy', 'domestic')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="sbp vs ptv"
+                 data-series="president trophy 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-DOM-13UM
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Scheduled
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        SBP vs PTV
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        President Trophy 2026 &bull; <span class="text-slate-600 font-medium">7Th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Sep 18, 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">domestic</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-13UM" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('13UM', 'SBP vs PTV', 'domestic')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="krl vs mit"
+                 data-series="president trophy 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-DOM-13UN
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Scheduled
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        KRL vs MIT
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        President Trophy 2026 &bull; <span class="text-slate-600 font-medium">6Th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Sep 18, 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">domestic</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-13UN" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('13UN', 'KRL vs MIT', 'domestic')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="ghani vs sngpl"
+                 data-series="president trophy 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-DOM-13UO
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Scheduled
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Ghani vs SNGPL
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        President Trophy 2026 &bull; <span class="text-slate-600 font-medium">5Th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Sep 18, 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">domestic</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-13UO" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('13UO', 'Ghani vs SNGPL', 'domestic')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="mumbai vs kerala"
+                 data-series="oman invitational triangular 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-145V
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Scheduled
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Mumbai vs Kerala
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Oman Invitational Triangular 2026 &bull; <span class="text-slate-600 font-medium">2Nd Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Sep 18, 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-145V" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('145V', 'Mumbai vs Kerala', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="western australia vs south australia"
+                 data-series="australia domestic one day cup 2026 27"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-DOM-132A
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Scheduled
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Western Australia vs South Australia
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Australia Domestic One Day Cup 2026 27 &bull; <span class="text-slate-600 font-medium">1St Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Sep 18, 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">domestic</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-132A" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('132A', 'Western Australia vs South Australia', 'domestic')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="zimbabwe vs australia"
+                 data-series="australia tour of zimbabwe 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-INT-11FL
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Scheduled
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Zimbabwe vs Australia
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Australia Tour Of Zimbabwe 2026 &bull; <span class="text-slate-600 font-medium">2Nd Odi</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Sep 18, 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">international</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11FL" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11FL', 'Zimbabwe vs Australia', 'international')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="kenya vs uganda"
+                 data-series="africa continental cup 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-INT-13TA
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Scheduled
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Kenya vs Uganda
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Africa Continental Cup 2026 &bull; <span class="text-slate-600 font-medium">19Th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Sep 18, 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">international</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-13TA" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('13TA', 'Kenya vs Uganda', 'international')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="sierra leone vs botswana"
+                 data-series="africa continental cup 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-INT-13TB
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Scheduled
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Sierra Leone vs Botswana
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Africa Continental Cup 2026 &bull; <span class="text-slate-600 font-medium">20Th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Sep 18, 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">international</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-13TB" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('13TB', 'Sierra Leone vs Botswana', 'international')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="jamaica kingsmen vs guyana amazon warriors"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UX
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Scheduled
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Jamaica Kingsmen vs Guyana Amazon Warriors
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">Qualifier 2</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Sep 18, 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UX" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UX', 'Jamaica Kingsmen vs Guyana Amazon Warriors', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="japan vs hong kong"
+                 data-series="hong kong tour of japan 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-INT-13SQ
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Scheduled
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Japan vs Hong Kong
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Hong Kong Tour Of Japan 2026 &bull; <span class="text-slate-600 font-medium">1St T20</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Sep 19, 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">international</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-13SQ" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('13SQ', 'Japan vs Hong Kong', 'international')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="queensland vs victoria"
+                 data-series="australia domestic one day cup 2026 27"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-DOM-132B
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Scheduled
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Queensland vs Victoria
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Australia Domestic One Day Cup 2026 27 &bull; <span class="text-slate-600 font-medium">2Nd Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Sep 19, 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">domestic</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-132B" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('132B', 'Queensland vs Victoria', 'domestic')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="rayalaseema xen stars women vs godavari golden eagles women"
+                 data-series="womens andhra premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-WOM-13WB
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Scheduled
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Rayalaseema Xen Stars Women vs Godavari Golden Eagles Women
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Womens Andhra Premier League 2026 &bull; <span class="text-slate-600 font-medium">1St Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Sep 19, 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">women</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-13WB" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('13WB', 'Rayalaseema Xen Stars Women vs Godavari Golden Eagles Women', 'women')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="the blaze vs hampshire women"
+                 data-series="england women one day cup 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-WOM-11K5
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Scheduled
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        The Blaze vs Hampshire Women
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        England Women One Day Cup 2026 &bull; <span class="text-slate-600 font-medium">Final</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Sep 19, 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">women</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11K5" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11K5', 'The Blaze vs Hampshire Women', 'women')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="zimbabwe women vs south africa women"
+                 data-series="south africa women tour of zimbabwe 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-WOM-12IP
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Scheduled
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Zimbabwe Women vs South Africa Women
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        South Africa Women Tour Of Zimbabwe 2026 &bull; <span class="text-slate-600 font-medium">5Th T20</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Sep 19, 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">women</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-12IP" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('12IP', 'Zimbabwe Women vs South Africa Women', 'women')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="team 1 (tbc) vs team 2 (tbc)"
+                 data-series="africa continental cup 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-INT-13TC
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Scheduled
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Team 1 (TBC) vs Team 2 (TBC)
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Africa Continental Cup 2026 &bull; <span class="text-slate-600 font-medium">Final</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Sep 19, 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">international</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-13TC" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('13TC', 'Team 1 (TBC) vs Team 2 (TBC)', 'international')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="antigua &amp; barbuda falcons vs jkm 1st"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11TW
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — ABF Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Antigua &amp; Barbuda Falcons vs Jkm 1St
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">1st Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11TW" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11TW', 'Antigua &amp; Barbuda Falcons vs Jkm 1St', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="st kitts and nevis patriots vs tkr 2nd"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11TX
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — TKR Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        St Kitts and Nevis Patriots vs Tkr 2Nd
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">2nd Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11TX" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11TX', 'St Kitts and Nevis Patriots vs Tkr 2Nd', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="antigua &amp; barbuda falcons vs slk 3rd"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11TY
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — SLK Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Antigua &amp; Barbuda Falcons vs Slk 3Rd
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">3rd Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11TY" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11TY', 'Antigua &amp; Barbuda Falcons vs Slk 3Rd', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="barbados tridents vs jkm 4th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11TZ
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — BT Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Barbados Tridents vs Jkm 4Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">4th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11TZ" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11TZ', 'Barbados Tridents vs Jkm 4Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="st kitts and nevis patriots vs slk 5th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11U0
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — SKNP Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        St Kitts and Nevis Patriots vs Slk 5Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">5th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11U0" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11U0', 'St Kitts and Nevis Patriots vs Slk 5Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="guyana amazon warriors vs jkm 6th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11U1
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — GAW Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Guyana Amazon Warriors vs Jkm 6Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">6th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11U1" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11U1', 'Guyana Amazon Warriors vs Jkm 6Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="antigua &amp; barbuda falcons vs slk 7th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11U2
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — SLK Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Antigua &amp; Barbuda Falcons vs Slk 7Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">7th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11U2" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11U2', 'Antigua &amp; Barbuda Falcons vs Slk 7Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="jamaica kingsmen vs tkr 8th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11U3
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — JKM Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Jamaica Kingsmen vs Tkr 8Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">8th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11U3" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11U3', 'Jamaica Kingsmen vs Tkr 8Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="barbados tridents vs slk 9th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11U4
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — BT Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Barbados Tridents vs Slk 9Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">9th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11U4" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11U4', 'Barbados Tridents vs Slk 9Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="jamaica kingsmen vs sknp 10th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11U5
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — JKM Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Jamaica Kingsmen vs Sknp 10Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">10th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11U5" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11U5', 'Jamaica Kingsmen vs Sknp 10Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="guyana amazon warriors vs slk 11th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11U6
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — GAW Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Guyana Amazon Warriors vs Slk 11Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">11th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11U6" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11U6', 'Guyana Amazon Warriors vs Slk 11Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="antigua &amp; barbuda falcons vs sknp 12th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11U7
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — ABF Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Antigua &amp; Barbuda Falcons vs Sknp 12Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">12th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11U7" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11U7', 'Antigua &amp; Barbuda Falcons vs Sknp 12Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="jamaica kingsmen vs slk 13th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11U8
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — SLK Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Jamaica Kingsmen vs Slk 13Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">13th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11U8" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11U8', 'Jamaica Kingsmen vs Slk 13Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="antigua &amp; barbuda falcons vs tkr 14th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11U9
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — ABF Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Antigua &amp; Barbuda Falcons vs Tkr 14Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">14th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11U9" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11U9', 'Antigua &amp; Barbuda Falcons vs Tkr 14Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="antigua &amp; barbuda falcons vs gaw 15th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UA
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — GAW Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Antigua &amp; Barbuda Falcons vs Gaw 15Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">15th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UA" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UA', 'Antigua &amp; Barbuda Falcons vs Gaw 15Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="antigua &amp; barbuda falcons vs bt 16th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UB
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — ABF Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Antigua &amp; Barbuda Falcons vs Bt 16Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">16th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UB" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UB', 'Antigua &amp; Barbuda Falcons vs Bt 16Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="st lucia kings vs tkr 17th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UC
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — SLK Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        St Lucia Kings vs Tkr 17Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">17th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UC" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UC', 'St Lucia Kings vs Tkr 17Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="jamaica kingsmen vs sknp 18th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UD
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — JKM Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Jamaica Kingsmen vs Sknp 18Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">18th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UD" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UD', 'Jamaica Kingsmen vs Sknp 18Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="barbados tridents vs tkr 19th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UE
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — TKR Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Barbados Tridents vs Tkr 19Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">19th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UE" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UE', 'Barbados Tridents vs Tkr 19Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="jamaica kingsmen vs tkr 20th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UF
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — JKM Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Jamaica Kingsmen vs Tkr 20Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">20th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UF" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UF', 'Jamaica Kingsmen vs Tkr 20Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="antigua &amp; barbuda falcons vs sknp 21st"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UG
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Scheduled
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Antigua &amp; Barbuda Falcons vs Sknp 21St
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">21st Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UG" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UG', 'Antigua &amp; Barbuda Falcons vs Sknp 21St', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="guyana amazon warriors vs tkr 22nd"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UH
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — GAW Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Guyana Amazon Warriors vs Tkr 22Nd
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">22nd Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UH" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UH', 'Guyana Amazon Warriors vs Tkr 22Nd', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="barbados tridents vs sknp 23rd"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UI
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — SKNP Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Barbados Tridents vs Sknp 23Rd
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">23rd Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UI" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UI', 'Barbados Tridents vs Sknp 23Rd', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="antigua &amp; barbuda falcons vs tkr 24th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UJ
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — ABF Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Antigua &amp; Barbuda Falcons vs Tkr 24Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">24th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UJ" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UJ', 'Antigua &amp; Barbuda Falcons vs Tkr 24Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="st kitts and nevis patriots vs slk 25th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UK
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — SKNP Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        St Kitts and Nevis Patriots vs Slk 25Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">25th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UK" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UK', 'St Kitts and Nevis Patriots vs Slk 25Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="guyana amazon warriors vs jkm 26th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UL
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — GAW Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Guyana Amazon Warriors vs Jkm 26Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">26th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UL" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UL', 'Guyana Amazon Warriors vs Jkm 26Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="barbados tridents vs tkr 27th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UM
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — TKR Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Barbados Tridents vs Tkr 27Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">27th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UM" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UM', 'Barbados Tridents vs Tkr 27Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="guyana amazon warriors vs sknp 28th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UN
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — GAW Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Guyana Amazon Warriors vs Sknp 28Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">28th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UN" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UN', 'Guyana Amazon Warriors vs Sknp 28Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="barbados tridents vs slk 29th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UO
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — BT Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Barbados Tridents vs Slk 29Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">29th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UO" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UO', 'Barbados Tridents vs Slk 29Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="antigua &amp; barbuda falcons vs gaw 30th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UP
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — ABF Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Antigua &amp; Barbuda Falcons vs Gaw 30Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">30th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UP" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UP', 'Antigua &amp; Barbuda Falcons vs Gaw 30Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="guyana amazon warriors vs slk 31st"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UQ
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — GAW Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Guyana Amazon Warriors vs Slk 31St
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">31st Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UQ" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UQ', 'Guyana Amazon Warriors vs Slk 31St', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="barbados tridents vs sknp 32nd"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UR
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — BT Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Barbados Tridents vs Sknp 32Nd
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">32nd Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UR" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UR', 'Barbados Tridents vs Sknp 32Nd', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="guyana amazon warriors vs tkr 33rd"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11US
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — GAW Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Guyana Amazon Warriors vs Tkr 33Rd
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">33rd Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11US" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11US', 'Guyana Amazon Warriors vs Tkr 33Rd', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="barbados tridents vs jkm 34th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UT
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — BT Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Barbados Tridents vs Jkm 34Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">34th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UT" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UT', 'Barbados Tridents vs Jkm 34Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="barbados tridents vs gaw 35th"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UU
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — BT Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Barbados Tridents vs Gaw 35Th
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">35th Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UU" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UU', 'Barbados Tridents vs Gaw 35Th', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="barbados tridents vs jamaica kingsmen"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UV
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-slate-700 bg-slate-100 border-slate-200">
+                                Result — JKM Won
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Barbados Tridents vs Jamaica Kingsmen
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">1 Match</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UV" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UV', 'Barbados Tridents vs Jamaica Kingsmen', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="event-row bg-white rounded-xl border border-slate-200 shadow-2xs p-4 hover:border-emerald-500/50 transition flex flex-col justify-between"
+                 data-title="antigua &amp; barbuda falcons vs tbc"
+                 data-series="caribbean premier league 2026"
+                 data-mapped="false"
+                 data-live="false">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="font-mono text-3xs font-black text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            M-LEA-11UY
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-3xs font-bold px-2 py-0.5 rounded border text-blue-700 bg-blue-50 border-blue-200">
+                                Scheduled
+                            </span>
+                            <span class="px-2 py-0.5 rounded text-3xs font-bold bg-amber-50 text-amber-800 border border-amber-200">Ready to Map</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                        Antigua &amp; Barbuda Falcons vs Tbc
+                    </h3>
+                    <div class="text-3xs text-emerald-800 font-bold mt-1.5 truncate">
+                        Caribbean Premier League 2026 &bull; <span class="text-slate-600 font-medium">Final</span>
+                    </div>
+                    <div class="text-3xs text-slate-400 font-medium mt-1 flex items-center justify-between">
+                        <span>Date: <strong class="text-slate-700">Aug - Sep 2026</strong></span>
+                        <span class="text-3xs uppercase font-extrabold px-1.5 py-0.2 bg-slate-100 text-slate-600 rounded border border-slate-200">league</span>
+                    </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-100">
+                    
+                    <div class="flex items-center gap-2">
+                        <input type="url" id="input-11UY" placeholder="Paste Cricinfo, Cricbuzz, or CREX URL..." class="flex-1 px-2.5 py-1 text-3xs border border-slate-300 rounded font-mono focus:ring-1 focus:ring-emerald-500 focus:outline-hidden">
+                        <button onclick="quickMapMatch('11UY', 'Antigua &amp; Barbuda Falcons vs Tbc', 'league')" class="px-3 py-1 bg-[#186047] hover:bg-[#0d3b2c] text-white text-3xs font-bold rounded transition whitespace-nowrap shadow-2xs">
+                            Map & Track Live &raquo;
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-12 py-6 bg-slate-900 text-slate-500 text-3xs text-center border-t border-slate-800">
+        Hermes Brain v2.0 Admin Engine &bull; Restricted Access
+    </footer>
+
+    <script>
+        let currentFilter = 'all';
+
+        function setFilterTab(f) {
+            currentFilter = f;
+            document.querySelectorAll('.admin-tab-btn').forEach(b => {
+                b.className = 'admin-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:bg-slate-100';
+            });
+            const activeBtn = document.getElementById('tab-' + f);
+            if (activeBtn) {
+                activeBtn.className = 'admin-tab-btn px-3 py-1.5 rounded-lg text-xs font-black bg-slate-900 text-white shadow-2xs';
+            }
+            filterEvents();
+        }
+
+        function filterEvents() {
+            const q = (document.getElementById('eventSearch').value || '').toLowerCase().trim();
+            document.querySelectorAll('.event-row').forEach(row => {
+                const title = row.getAttribute('data-title') || '';
+                const series = row.getAttribute('data-series') || '';
+                const isMapped = row.getAttribute('data-mapped') === 'true';
+
+                let matchesTab = true;
+                if (currentFilter === 'unmapped') matchesTab = !isMapped;
+                if (currentFilter === 'mapped') matchesTab = isMapped;
+
+                let matchesQuery = !q || title.includes(q) || series.includes(q);
+
+                if (matchesTab && matchesQuery) {
+                    row.classList.remove('hidden');
+                } else {
+                    row.classList.add('hidden');
+                }
+            });
+        }
+
+        async function quickMapMatch(mid, title, cat) {
+            const input = document.getElementById('input-' + mid);
+            if (!input) return;
+            const url = input.value.trim();
+            if (!url) {
+                alert('Please paste a match URL first.');
+                input.focus();
+                return;
+            }
+
+            try {
+                const res = await fetch('/api/admin/map', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ match_id: mid, title: title, category: cat, url: url })
+                });
+                const data = await res.json();
+                if (data.status === 'ok') {
+                    alert('Match ' + mid + ' mapped successfully! Ingestion initiated.');
+                    window.location.reload();
+                } else {
+                    alert('Error: ' + (data.error || 'Failed to map'));
+                }
+            } catch (err) {
+                alert('Network error: ' + err.message);
+            }
+        }
+
+        async function handleCustomMapSubmit(e) {
+            e.preventDefault();
+            const mid = document.getElementById('customMatchId').value.trim();
+            const title = document.getElementById('customTitle').value.trim();
+            const cat = document.getElementById('customCategory').value;
+            const url = document.getElementById('customUrl').value.trim();
+
+            const msg = document.getElementById('mapStatusMsg');
+            msg.className = 'mt-3 text-xs font-bold text-blue-600 block';
+            msg.innerText = 'Saving mapping and syncing urls.txt...';
+
+            try {
+                const res = await fetch('/api/admin/map', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ match_id: mid, title: title, category: cat, url: url })
+                });
+                const data = await res.json();
+                if (data.status === 'ok') {
+                    msg.className = 'mt-3 text-xs font-bold text-emerald-600 block';
+                    msg.innerText = 'Mapping saved successfully! Live scraping initiated.';
+                    setTimeout(() => window.location.reload(), 1200);
+                } else {
+                    msg.className = 'mt-3 text-xs font-bold text-rose-600 block';
+                    msg.innerText = 'Error: ' + (data.error || 'Failed to save');
+                }
+            } catch (err) {
+                msg.className = 'mt-3 text-xs font-bold text-rose-600 block';
+                msg.innerText = 'Network error: ' + err.message;
+            }
+        }
+
+        async function unmapMatch(mid) {
+            if (!confirm('Are you sure you want to unmap match ' + mid + '?')) return;
+            try {
+                const res = await fetch('/api/admin/unmap', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ match_id: mid })
+                });
+                const data = await res.json();
+                if (data.status === 'ok') {
+                    window.location.reload();
+                } else {
+                    alert('Error: ' + (data.error || 'Failed to unmap'));
+                }
+            } catch (err) {
+                alert('Error: ' + err.message);
+            }
+        }
+
+        async function triggerSync() {
+            try {
+                const res = await fetch('/api/admin/sync', { method: 'POST' });
+                const data = await res.json();
+                alert('Feed sync triggered: ' + (data.message || 'Syncing'));
+                window.location.reload();
+            } catch (err) {
+                alert('Sync failed: ' + err.message);
+            }
+        }
+    </script>
+</body>
+</html>

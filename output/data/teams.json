@@ -1,0 +1,168 @@
+{
+  "international_men": [
+    {
+      "name": "India",
+      "code": "IND",
+      "flag": "IN"
+    },
+    {
+      "name": "Australia",
+      "code": "AUS",
+      "flag": "AU"
+    },
+    {
+      "name": "England",
+      "code": "ENG",
+      "flag": "GB"
+    },
+    {
+      "name": "South Africa",
+      "code": "SA",
+      "flag": "ZA"
+    },
+    {
+      "name": "New Zealand",
+      "code": "NZ",
+      "flag": "NZ"
+    },
+    {
+      "name": "Pakistan",
+      "code": "PAK",
+      "flag": "PK"
+    },
+    {
+      "name": "West Indies",
+      "code": "WI",
+      "flag": "JM"
+    },
+    {
+      "name": "Sri Lanka",
+      "code": "SL",
+      "flag": "LK"
+    },
+    {
+      "name": "Bangladesh",
+      "code": "BAN",
+      "flag": "BD"
+    },
+    {
+      "name": "Afghanistan",
+      "code": "AFG",
+      "flag": "AF"
+    },
+    {
+      "name": "Ireland",
+      "code": "IRE",
+      "flag": "IE"
+    },
+    {
+      "name": "Zimbabwe",
+      "code": "ZIM",
+      "flag": "ZW"
+    }
+  ],
+  "international_women": [
+    {
+      "name": "Australia Women",
+      "code": "AUS-W",
+      "flag": "AU"
+    },
+    {
+      "name": "England Women",
+      "code": "ENG-W",
+      "flag": "GB"
+    },
+    {
+      "name": "India Women",
+      "code": "IND-W",
+      "flag": "IN"
+    },
+    {
+      "name": "South Africa Women",
+      "code": "SA-W",
+      "flag": "ZA"
+    },
+    {
+      "name": "New Zealand Women",
+      "code": "NZ-W",
+      "flag": "NZ"
+    },
+    {
+      "name": "West Indies Women",
+      "code": "WI-W",
+      "flag": "JM"
+    },
+    {
+      "name": "Pakistan Women",
+      "code": "PAK-W",
+      "flag": "PK"
+    },
+    {
+      "name": "Sri Lanka Women",
+      "code": "SL-W",
+      "flag": "LK"
+    },
+    {
+      "name": "Bangladesh Women",
+      "code": "BAN-W",
+      "flag": "BD"
+    },
+    {
+      "name": "Thailand Women",
+      "code": "THAI-W",
+      "flag": "TH"
+    }
+  ],
+  "leagues": [
+    {
+      "name": "Barbados Tridents",
+      "code": "BBT",
+      "league": "CPL"
+    },
+    {
+      "name": "Jamaica Kingsmen",
+      "code": "JKM",
+      "league": "CPL"
+    },
+    {
+      "name": "Guyana Amazon Warriors",
+      "code": "GAW",
+      "league": "CPL"
+    },
+    {
+      "name": "Trinbago Knight Riders",
+      "code": "TKR",
+      "league": "CPL"
+    },
+    {
+      "name": "St Lucia Kings",
+      "code": "SLK",
+      "league": "CPL"
+    },
+    {
+      "name": "Antigua and Barbuda Falcons",
+      "code": "ABF",
+      "league": "CPL"
+    },
+    {
+      "name": "St Kitts and Nevis Patriots",
+      "code": "SKNP",
+      "league": "CPL"
+    },
+    {
+      "name": "Mumbai Indians",
+      "code": "MI",
+      "league": "IPL"
+    },
+    {
+      "name": "Chennai Super Kings",
+      "code": "CSK",
+      "league": "IPL"
+    },
+    {
+      "name": "Royal Challengers Bengaluru",
+      "code": "RCB",
+      "league": "IPL"
+    }
+  ]
+}
