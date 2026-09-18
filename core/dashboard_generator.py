@@ -1408,5 +1408,16 @@ class DashboardGenerator:
         with open(match_html_path, "w", encoding="utf-8") as f:
             f.write(html)
 
+        # Mirror to public directory for seamless Vercel / static CDN deployment
+        pub_dir = os.path.join(os.path.dirname(os.path.abspath(output_dir)), "public")
+        if os.path.isdir(pub_dir):
+            try:
+                with open(os.path.join(pub_dir, os.path.basename(html_path)), "w", encoding="utf-8") as pf:
+                    pf.write(html)
+                with open(os.path.join(pub_dir, os.path.basename(match_html_path)), "w", encoding="utf-8") as pf:
+                    pf.write(html)
+            except Exception:
+                pass
+
         print(f"  [+] Clean Professional Match Center generated -> {html_path}")
         return html_path

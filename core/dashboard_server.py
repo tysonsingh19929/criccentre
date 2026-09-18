@@ -509,6 +509,8 @@ class DashboardServer:
         cls._thread = threading.Thread(target=cls._server.serve_forever, daemon=True)
         cls._thread.start()
 
+        cls.pre_render_all_pages(abs_output_dir)
+
         dashboard_url = f"http://localhost:{actual_port}"
         print("=" * 75, flush=True)
         print(f"[*] LIVE CRICKET PLATFORM WEB SERVER INITIALIZED", flush=True)
@@ -518,6 +520,67 @@ class DashboardServer:
         print("=" * 75, flush=True)
 
         return dashboard_url, actual_port
+
+    @staticmethod
+    def _load_static_json(file_path: str, default: Any = None) -> Any:
+        if default is None:
+            default = {}
+        if os.path.exists(file_path):
+            try:
+                with open(file_path, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            except Exception:
+                return default
+        return default
+
+    @classmethod
+    def pre_render_all_pages(cls, output_dir: str = "output"):
+        """Pre-renders all HTML pages into output_dir and public/ for static hosting & Vercel deployment."""
+        try:
+            os.makedirs(output_dir, exist_ok=True)
+            pub_dir = os.path.join(os.path.dirname(os.path.abspath(output_dir)), "public")
+            os.makedirs(pub_dir, exist_ok=True)
+
+            matches_data = HermesBrain.get_platform_matches_data(output_dir)
+            series_data = cls._load_static_json(os.path.join(output_dir, "data", "series.json"), {})
+            schedule_data = cls._load_static_json(os.path.join(output_dir, "data", "schedule.json"), [])
+            teams_data = cls._load_static_json(os.path.join(output_dir, "data", "teams.json"), {})
+            rankings_data = cls._load_static_json(os.path.join(output_dir, "data", "rankings.json"), {})
+            news_data = cls._load_static_json(os.path.join(output_dir, "data", "news.json"), [])
+            data_dir = os.path.join(output_dir, "data")
+            mappings = HermesBrain.load_mappings(data_dir)
+            catalog_data = cls._load_static_json(os.path.join(data_dir, "crex_catalog.json"), {"events": [], "series": []})
+
+            pages = {
+                "index.html": PageTemplates.render_live_scores_page(matches_data, series_data),
+                "live-scores.html": PageTemplates.render_live_scores_page(matches_data, series_data),
+                "schedule.html": PageTemplates.render_schedule_page(schedule_data, matches_data, series_data),
+                "series.html": PageTemplates.render_series_page(series_data, matches_data),
+                "teams.html": PageTemplates.render_teams_page(teams_data, matches_data, series_data),
+                "rankings.html": PageTemplates.render_rankings_page(rankings_data, matches_data, series_data),
+                "news.html": PageTemplates.render_news_page(news_data, matches_data, series_data),
+                "admin.html": AdminPanel.render(mappings, matches_data, series_data, catalog_data),
+            }
+
+            for filename, content in pages.items():
+                for target_dir in [output_dir, pub_dir]:
+                    path = os.path.join(target_dir, filename)
+                    with open(path, "w", encoding="utf-8") as f:
+                        f.write(content)
+
+            # Sync data directory to public/data
+            src_data = os.path.join(output_dir, "data")
+            dst_data = os.path.join(pub_dir, "data")
+            if os.path.isdir(src_data):
+                os.makedirs(dst_data, exist_ok=True)
+                import shutil
+                for item in os.listdir(src_data):
+                    s_item = os.path.join(src_data, item)
+                    d_item = os.path.join(dst_data, item)
+                    if os.path.isfile(s_item):
+                        shutil.copy2(s_item, d_item)
+        except Exception as e:
+            print(f"[!] Pre-render warning: {e}")
 
     @classmethod
     def stop(cls):

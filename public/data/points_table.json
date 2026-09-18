@@ -1,0 +1,89 @@
+{
+  "tournament": "Caribbean Premier League",
+  "standings": [
+    {
+      "pos": 1,
+      "team": "Guyana Amazon Warriors",
+      "short_name": "GAW",
+      "matches": 10,
+      "won": 7,
+      "lost": 2,
+      "tied": 0,
+      "nr": 0,
+      "pts": 14,
+      "nrr": "+0.842"
+    },
+    {
+      "pos": 2,
+      "team": "Antigua and Barbuda Falcons",
+      "short_name": "ABF",
+      "matches": 10,
+      "won": 6,
+      "lost": 3,
+      "tied": 0,
+      "nr": 0,
+      "pts": 12,
+      "nrr": "+0.415"
+    },
+    {
+      "pos": 3,
+      "team": "Barbados Tridents",
+      "short_name": "BT",
+      "matches": 10,
+      "won": 4,
+      "lost": 5,
+      "tied": 0,
+      "nr": 0,
+      "pts": 8,
+      "nrr": "+0.415"
+    },
+    {
+      "pos": 4,
+      "team": "Jamaica Kingsmen",
+      "short_name": "JAK",
+      "matches": 10,
+      "won": 4,
+      "lost": 5,
+      "tied": 0,
+      "nr": 0,
+      "pts": 8,
+      "nrr": "+0.415"
+    },
+    {
+      "pos": 5,
+      "team": "St Lucia Kings",
+      "short_name": "SLK",
+      "matches": 10,
+      "won": 4,
+      "lost": 5,
+      "tied": 0,
+      "nr": 0,
+      "pts": 8,
+      "nrr": "+0.415"
+    },
+    {
+      "pos": 6,
+      "team": "St Kitts and Nevis Patriots",
+      "short_name": "STKNP",
+      "matches": 10,
+      "won": 4,
+      "lost": 5,
+      "tied": 0,
+      "nr": 0,
+      "pts": 8,
+      "nrr": "+0.415"
+    },
+    {
+      "pos": 7,
+      "team": "Trinbago Knight Riders",
+      "short_name": "TKR",
+      "matches": 10,
+      "won": 4,
+      "lost": 5,
+      "tied": 0,
+      "nr": 0,
+      "pts": 8,
+      "nrr": "+0.415"
+    }
+  ]
+}

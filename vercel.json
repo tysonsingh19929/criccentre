@@ -1,15 +1,18 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/index.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "api/index.py"
-    }
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/scores", "destination": "/live-scores.html" },
+    { "source": "/live", "destination": "/live-scores.html" },
+    { "source": "/match/:id", "destination": "/dashboard_:id.html" },
+    { "source": "/api/matches", "destination": "/data/matches.json" },
+    { "source": "/api/schedule", "destination": "/data/schedule.json" },
+    { "source": "/api/series", "destination": "/data/series.json" },
+    { "source": "/api/teams", "destination": "/data/teams.json" },
+    { "source": "/api/rankings", "destination": "/data/rankings.json" },
+    { "source": "/api/news", "destination": "/data/news.json" },
+    { "source": "/api/points-table", "destination": "/data/points_table.json" },
+    { "source": "/api/standings", "destination": "/data/points_table.json" },
+    { "source": "/api/admin/mappings", "destination": "/data/match_mappings.json" },
+    { "source": "/api/live", "destination": "/data/matches.json" }
   ]
 }
