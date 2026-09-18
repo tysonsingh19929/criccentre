@@ -195,45 +195,105 @@ class handler(BaseHTTPRequestHandler):
             return self._send_json({"status": "error", "error": str(e)}, status_code=200)
 
     def _render_preview(self, match_id: str) -> str:
+        # Try loading matches.json to get rich metadata
+        match_info = None
+        matches_file = find_file("data/matches.json")
+        if matches_file:
+            try:
+                with open(matches_file, "r", encoding="utf-8") as fp:
+                    m_data = json.load(fp)
+                    all_matches = list(m_data.get("live", [])) + list(m_data.get("recent", [])) + list(m_data.get("upcoming", []))
+                    drawer = m_data.get("drawer", {})
+                    for cat_list in drawer.values():
+                        if isinstance(cat_list, list):
+                            all_matches.extend(cat_list)
+                    for m in all_matches:
+                        if str(m.get("match_id", "")).strip() == str(match_id).strip():
+                            match_info = m
+                            break
+            except Exception:
+                pass
+
+        title = match_info.get("title", f"Match #{match_id}") if match_info else f"Match #{match_id}"
+        series = match_info.get("series", "Cricket Tournament") if match_info else "Cricket Tournament"
+        stage = match_info.get("stage", "Match") if match_info else "Match"
+        venue = match_info.get("venue", "International Stadium") if match_info else "International Stadium"
+        status_text = match_info.get("situation") or match_info.get("status") or "Match in Progress" if match_info else "Match in Progress"
+        t1 = match_info.get("team_1", "Team 1") if match_info else "Team 1"
+        t2 = match_info.get("team_2", "Team 2") if match_info else "Team 2"
+        s1 = match_info.get("team_1_score", "Yet to bat") if match_info else "Yet to bat"
+        s2 = match_info.get("team_2_score", "Yet to bat") if match_info else "Yet to bat"
+
         return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Match #{match_id} | CricCenter Match Hub</title>
+    <title>{title} | CricCenter Match Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>body {{ font-family: 'Inter', sans-serif; background-color: #f1f5f9; }}</style>
+    <style>body {{ font-family: 'Inter', sans-serif; background-color: #f8fafc; }}</style>
 </head>
 <body class="min-h-screen flex flex-col justify-between text-slate-800">
-    <header class="bg-[#186047] text-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <header class="bg-[#186047] text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
             <a href="/" class="flex items-center gap-2 font-black text-lg tracking-tight">
-                <span class="w-6 h-6 rounded-full bg-amber-400 flex items-center justify-center text-[#186047] font-black text-xs">C</span>
+                <span class="w-6 h-6 rounded bg-amber-400 flex items-center justify-center text-[#186047] font-black text-xs">C</span>
                 CricCenter
             </a>
-            <a href="/live-scores" class="text-xs font-bold bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition">Live Scores</a>
+            <div class="flex items-center gap-3 text-xs font-bold">
+                <a href="/live-scores" class="px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg transition">Live Scores</a>
+                <a href="/schedule" class="hidden sm:inline-block px-3 py-1.5 hover:text-amber-300 transition">Schedule</a>
+                <a href="/admin" class="px-3 py-1.5 bg-amber-400 hover:bg-amber-300 text-slate-900 rounded-lg transition">Admin</a>
+            </div>
         </div>
     </header>
-    <main class="max-w-lg mx-auto px-4 py-16 flex-1 w-full text-center">
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
-            <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-700 font-bold rounded-full text-xs uppercase tracking-wider mb-4 border border-emerald-200">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                Match Hub
+
+    <main class="max-w-4xl mx-auto px-3 sm:px-4 py-8 flex-1 w-full space-y-6">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+            <div class="bg-slate-900 text-white px-5 py-3 flex items-center justify-between">
+                <div class="flex items-center gap-2 text-xs font-bold">
+                    <span class="px-2 py-0.5 rounded bg-red-600 text-white font-black text-3xs uppercase">LIVE</span>
+                    <span class="text-emerald-400">{series}</span>
+                    <span class="text-slate-500">&bull;</span>
+                    <span class="text-slate-300">{stage}</span>
+                </div>
+                <span class="text-3xs font-mono text-slate-400">ID: {match_id}</span>
             </div>
-            <h2 class="text-2xl font-black text-slate-900 mb-2">Match #{match_id}</h2>
-            <p class="text-sm text-slate-600 mb-6">Real-time ball feed and detailed scorecard will synchronize as soon as match data is captured.</p>
-            <div class="flex items-center justify-center gap-3">
-                <a href="/live-scores" class="px-5 py-2.5 bg-[#186047] hover:bg-[#0d3b2c] text-white text-xs font-bold rounded-lg shadow-sm transition">
-                    &larr; View Live Scores
-                </a>
-                <a href="/schedule" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition">
-                    Match Schedule
-                </a>
+
+            <div class="p-6 sm:p-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+                        <span class="font-extrabold text-slate-900 text-base">{t1}</span>
+                        <span class="font-black text-slate-800 text-base">{s1}</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+                        <span class="font-extrabold text-slate-900 text-base">{t2}</span>
+                        <span class="font-black text-slate-800 text-base">{s2}</span>
+                    </div>
+                </div>
+
+                <div class="mt-6 p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 font-bold text-xs sm:text-sm">
+                    {status_text}
+                </div>
+
+                <div class="mt-4 text-3xs text-slate-500">
+                    Venue: <span class="font-semibold text-slate-700">{venue}</span>
+                </div>
             </div>
         </div>
+
+        <div class="flex items-center justify-center gap-3">
+            <a href="/live-scores" class="px-5 py-2.5 bg-[#186047] hover:bg-[#0d3b2c] text-white text-xs font-bold rounded-lg shadow-xs transition">
+                &larr; View Live Scores
+            </a>
+            <a href="/admin" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition">
+                Map Live Stream
+            </a>
+        </div>
     </main>
-    <footer class="bg-slate-900 text-slate-400 text-xs py-4 text-center">
+
+    <footer class="bg-[#0f3024] text-slate-400 text-xs py-6 text-center border-t border-emerald-950">
         &copy; 2026 CricCenter. Ultra-fast real-time cricket platform.
     </footer>
 </body>

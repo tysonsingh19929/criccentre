@@ -7,33 +7,33 @@
       "href": "/match/1534214"
     },
     {
-      "match_id": "170933",
-      "text": "JPNWvsINDW-INDW won",
-      "status_pill": "Preview",
-      "href": "/match/170933"
-    },
-    {
       "match_id": "152742",
       "text": "AUSvsZIM-ZIM opt to bowl",
       "status_pill": "LIVE",
       "href": "/match/152742"
     },
     {
+      "match_id": "170933",
+      "text": "JPNWvsINDW-INDW won",
+      "status_pill": "Result",
+      "href": "/match/170933"
+    },
+    {
       "match_id": "170120",
       "text": "INDvsAFG-IND won",
-      "status_pill": "Preview",
+      "status_pill": "Result",
       "href": "/match/170120"
     },
     {
       "match_id": "154689",
       "text": "GAWvsABF-ABF won",
-      "status_pill": "Preview",
+      "status_pill": "Result",
       "href": "/match/154689"
     },
     {
       "match_id": "129618",
       "text": "SLvsENG-ENG won",
-      "status_pill": "Preview",
+      "status_pill": "Result",
       "href": "/match/129618"
     },
     {
@@ -51,7 +51,7 @@
     {
       "match_id": "171647",
       "text": "Uganda vs Kenya19th Match",
-      "status_pill": "LIVE",
+      "status_pill": "Preview",
       "href": "/match/171647"
     },
     {
@@ -93,25 +93,25 @@
     {
       "match_id": "142651",
       "text": "Hampshire vs Leicestershire62nd Match",
-      "status_pill": "LIVE",
+      "status_pill": "Preview",
       "href": "/match/142651"
     },
     {
       "match_id": "142662",
       "text": "Yorkshire vs Somerset63rd Match",
-      "status_pill": "LIVE",
+      "status_pill": "Preview",
       "href": "/match/142662"
     },
     {
       "match_id": "142673",
       "text": "Glamorgan vs Surrey64th Match",
-      "status_pill": "LIVE",
+      "status_pill": "Preview",
       "href": "/match/142673"
     },
     {
       "match_id": "142684",
       "text": "Nottinghamshire vs Sussex65th Match",
-      "status_pill": "LIVE",
+      "status_pill": "Preview",
       "href": "/match/142684"
     },
     {
@@ -127,34 +127,28 @@
       "href": "/match/167053"
     },
     {
-      "match_id": "171727",
-      "text": "North West - Eastvaal Renault Dragons vs Boland5th Match",
-      "status_pill": "LIVE",
-      "href": "/match/171727"
-    },
-    {
-      "match_id": "171737",
-      "text": "Western Province vs Dolphins6th Match",
-      "status_pill": "LIVE",
-      "href": "/match/171737"
-    },
-    {
       "match_id": "171747",
       "text": "Knights vs Lions7th Match",
-      "status_pill": "LIVE",
+      "status_pill": "Preview",
       "href": "/match/171747"
     },
     {
       "match_id": "171757",
       "text": "Warriors vs Titans8th Match",
-      "status_pill": "LIVE",
+      "status_pill": "Preview",
       "href": "/match/171757"
     },
     {
-      "match_id": "143273",
-      "text": "Lancashire vs Kent52nd Match",
+      "match_id": "171727",
+      "text": "North West - Eastvaal Renault Dragons vs Boland5th Match",
       "status_pill": "Preview",
-      "href": "/match/143273"
+      "href": "/match/171727"
+    },
+    {
+      "match_id": "171737",
+      "text": "Western Province vs Dolphins6th Match",
+      "status_pill": "Preview",
+      "href": "/match/171737"
     },
     {
       "match_id": "143240",
@@ -173,6 +167,12 @@
       "text": "Middlesex vs Gloucestershire51st Match",
       "status_pill": "Preview",
       "href": "/match/143262"
+    },
+    {
+      "match_id": "143273",
+      "text": "Lancashire vs Kent52nd Match",
+      "status_pill": "Preview",
+      "href": "/match/143273"
     },
     {
       "match_id": "172037",
@@ -228,10 +228,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/170120",
-        "team_1": "India",
-        "team_2": "Afghanistan",
-        "status_pill": "Preview"
+        "url": "/match/170120"
       },
       {
         "match_id": "129618",
@@ -242,10 +239,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/129618",
-        "team_1": "Sri Lanka",
-        "team_2": "England",
-        "status_pill": "Preview"
+        "url": "/match/129618"
       },
       {
         "match_id": "171627",
@@ -256,10 +250,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/171627",
-        "team_1": "Uganda",
-        "team_2": "Rwanda",
-        "status_pill": "Preview"
+        "url": "/match/171627"
       },
       {
         "match_id": "171637",
@@ -270,10 +261,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/171637",
-        "team_1": "Kenya",
-        "team_2": "Botswana",
-        "status_pill": "Preview"
+        "url": "/match/171637"
       },
       {
         "match_id": "171647",
@@ -284,10 +272,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/171647",
-        "team_1": "Uganda",
-        "team_2": "Kenya",
-        "status_pill": "Preview"
+        "url": "/match/171647"
       },
       {
         "match_id": "171657",
@@ -298,10 +283,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/171657",
-        "team_1": "Sierra Leone",
-        "team_2": "Botswana",
-        "status_pill": "Preview"
+        "url": "/match/171657"
       },
       {
         "match_id": "171257",
@@ -312,24 +294,18 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/171257",
-        "team_1": "Japan",
-        "team_2": "Hong Kong, China",
-        "status_pill": "Preview"
+        "url": "/match/171257"
       },
       {
         "match_id": "152742",
-        "title": "Australia vs Zimbabwe",
+        "title": "Australia vs ZimbabweLIVE",
         "stage": "2nd ODI",
         "category": "international",
         "status": "Match Scheduled",
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/152742",
-        "team_1": "Australia",
-        "team_2": "Zimbabwe",
-        "status_pill": "Preview"
+        "url": "/match/152742"
       },
       {
         "match_id": "142640",
@@ -340,10 +316,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/142640",
-        "team_1": "Essex",
-        "team_2": "Warwickshire",
-        "status_pill": "Preview"
+        "url": "/match/142640"
       },
       {
         "match_id": "142651",
@@ -354,10 +327,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/142651",
-        "team_1": "Hampshire",
-        "team_2": "Leicestershire",
-        "status_pill": "Preview"
+        "url": "/match/142651"
       },
       {
         "match_id": "142662",
@@ -368,10 +338,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/142662",
-        "team_1": "Yorkshire",
-        "team_2": "Somerset",
-        "status_pill": "Preview"
+        "url": "/match/142662"
       },
       {
         "match_id": "142673",
@@ -382,10 +349,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/142673",
-        "team_1": "Glamorgan",
-        "team_2": "Surrey",
-        "status_pill": "Preview"
+        "url": "/match/142673"
       },
       {
         "match_id": "142684",
@@ -396,24 +360,18 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/142684",
-        "team_1": "Nottinghamshire",
-        "team_2": "Sussex",
-        "status_pill": "Preview"
+        "url": "/match/142684"
       },
       {
         "match_id": "167050",
-        "title": "Western Australia vs South Australia",
+        "title": "Western Australia vs South AustraliaLIVE",
         "stage": "1st Match",
         "category": "international",
         "status": "Match Scheduled",
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/167050",
-        "team_1": "Western Australia",
-        "team_2": "South Australia",
-        "status_pill": "Preview"
+        "url": "/match/167050"
       },
       {
         "match_id": "167053",
@@ -424,38 +382,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/167053",
-        "team_1": "Queensland",
-        "team_2": "Victoria",
-        "status_pill": "Preview"
-      },
-      {
-        "match_id": "171727",
-        "title": "North West - Eastvaal Renault Dragons vs Boland",
-        "stage": "5th Match",
-        "category": "international",
-        "status": "Match Scheduled",
-        "balls_remaining": "",
-        "is_live": false,
-        "is_completed": false,
-        "url": "/match/171727",
-        "team_1": "North West - Eastvaal Renault Dragons",
-        "team_2": "Boland",
-        "status_pill": "Preview"
-      },
-      {
-        "match_id": "171737",
-        "title": "Western Province vs Dolphins",
-        "stage": "6th Match",
-        "category": "international",
-        "status": "Match Scheduled",
-        "balls_remaining": "",
-        "is_live": false,
-        "is_completed": false,
-        "url": "/match/171737",
-        "team_1": "Western Province",
-        "team_2": "Dolphins",
-        "status_pill": "Preview"
+        "url": "/match/167053"
       },
       {
         "match_id": "171747",
@@ -466,10 +393,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/171747",
-        "team_1": "Knights",
-        "team_2": "Lions",
-        "status_pill": "Preview"
+        "url": "/match/171747"
       },
       {
         "match_id": "171757",
@@ -480,24 +404,29 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/171757",
-        "team_1": "Warriors",
-        "team_2": "Titans",
-        "status_pill": "Preview"
+        "url": "/match/171757"
       },
       {
-        "match_id": "143273",
-        "title": "Lancashire vs Kent",
-        "stage": "52nd Match",
+        "match_id": "171727",
+        "title": "North West - Eastvaal Renault Dragons vs Boland",
+        "stage": "5th Match",
         "category": "international",
         "status": "Match Scheduled",
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/143273",
-        "team_1": "Lancashire",
-        "team_2": "Kent",
-        "status_pill": "Preview"
+        "url": "/match/171727"
+      },
+      {
+        "match_id": "171737",
+        "title": "Western Province vs Dolphins",
+        "stage": "6th Match",
+        "category": "international",
+        "status": "Match Scheduled",
+        "balls_remaining": "",
+        "is_live": false,
+        "is_completed": false,
+        "url": "/match/171737"
       },
       {
         "match_id": "143240",
@@ -508,10 +437,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/143240",
-        "team_1": "Durham",
-        "team_2": "Worcestershire",
-        "status_pill": "Preview"
+        "url": "/match/143240"
       },
       {
         "match_id": "143251",
@@ -522,10 +448,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/143251",
-        "team_1": "Derbyshire",
-        "team_2": "Northamptonshire",
-        "status_pill": "Preview"
+        "url": "/match/143251"
       },
       {
         "match_id": "143262",
@@ -536,10 +459,18 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/143262",
-        "team_1": "Middlesex",
-        "team_2": "Gloucestershire",
-        "status_pill": "Preview"
+        "url": "/match/143262"
+      },
+      {
+        "match_id": "143273",
+        "title": "Lancashire vs Kent",
+        "stage": "52nd Match",
+        "category": "international",
+        "status": "Match Scheduled",
+        "balls_remaining": "",
+        "is_live": false,
+        "is_completed": false,
+        "url": "/match/143273"
       },
       {
         "match_id": "172037",
@@ -550,10 +481,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/172037",
-        "team_1": "Northern Cape",
-        "team_2": "Limpopo",
-        "status_pill": "Preview"
+        "url": "/match/172037"
       },
       {
         "match_id": "172047",
@@ -564,10 +492,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/172047",
-        "team_1": "Eastern Storm",
-        "team_2": "Border",
-        "status_pill": "Preview"
+        "url": "/match/172047"
       },
       {
         "match_id": "172057",
@@ -578,24 +503,18 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/172057",
-        "team_1": "Mpumalanga Rhinos",
-        "team_2": "South Western Districts",
-        "status_pill": "Preview"
+        "url": "/match/172057"
       },
       {
         "match_id": "155466",
-        "title": "India U19 vs Australia U19",
-        "stage": "1St Unofficial Odi",
+        "title": "India U19 vs Australia U19LIVE1st unofficial ODI",
+        "stage": "Match",
         "category": "international",
         "status": "Match Scheduled",
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/155466",
-        "team_1": "India U19",
-        "team_2": "Australia U19",
-        "status_pill": "Preview"
+        "url": "/match/155466"
       }
     ],
     "league": [
@@ -614,36 +533,29 @@
         "balls_remaining": "35 balls remaining",
         "is_live": false,
         "is_completed": true,
-        "url": "/match/1534214",
-        "status_pill": "Result"
+        "url": "/match/1534214"
       },
       {
         "match_id": "154689",
-        "title": "Guyana Amazon Warriors vs Antigua & Barbuda Falcons",
+        "title": "Gaw vs Abf",
         "stage": "Match",
         "category": "league",
         "status": "Match Scheduled",
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/154689",
-        "team_1": "Guyana Amazon Warriors",
-        "team_2": "Antigua & Barbuda Falcons",
-        "status_pill": "Preview"
+        "url": "/match/154689"
       },
       {
         "match_id": "154700",
-        "title": "Jamaica Kingsmen vs Guyana Amazon Warriors",
-        "stage": "Qualifier 2",
+        "title": "Jamaica Kingsmen vs Guyana Amazon WarriorsQualifier 2",
+        "stage": "Match",
         "category": "league",
         "status": "Match Scheduled",
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/154700",
-        "team_1": "Jamaica Kingsmen",
-        "team_2": "Guyana Amazon Warriors",
-        "status_pill": "Preview"
+        "url": "/match/154700"
       },
       {
         "match_id": "169420",
@@ -654,10 +566,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/169420",
-        "team_1": "Belfast Wolves",
-        "team_2": "Edinburgh Castle Rockers",
-        "status_pill": "Preview"
+        "url": "/match/169420"
       },
       {
         "match_id": "169427",
@@ -668,10 +577,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/169427",
-        "team_1": "Rotterdam Dockers",
-        "team_2": "Dublin Guardians",
-        "status_pill": "Preview"
+        "url": "/match/169427"
       }
     ],
     "domestic": [
@@ -684,10 +590,7 @@
         "balls_remaining": "",
         "is_live": true,
         "is_completed": false,
-        "url": "/match/142673",
-        "team_1": "Glam",
-        "team_2": "Sur",
-        "status_pill": "LIVE"
+        "url": "/match/142673"
       },
       {
         "match_id": "142651",
@@ -698,10 +601,7 @@
         "balls_remaining": "",
         "is_live": true,
         "is_completed": false,
-        "url": "/match/142651",
-        "team_1": "Ham",
-        "team_2": "Leic",
-        "status_pill": "LIVE"
+        "url": "/match/142651"
       },
       {
         "match_id": "142684",
@@ -712,10 +612,7 @@
         "balls_remaining": "",
         "is_live": true,
         "is_completed": false,
-        "url": "/match/142684",
-        "team_1": "Notts",
-        "team_2": "Sus",
-        "status_pill": "LIVE"
+        "url": "/match/142684"
       },
       {
         "match_id": "142662",
@@ -726,10 +623,7 @@
         "balls_remaining": "",
         "is_live": true,
         "is_completed": false,
-        "url": "/match/142662",
-        "team_1": "Yorks",
-        "team_2": "Som",
-        "status_pill": "LIVE"
+        "url": "/match/142662"
       },
       {
         "match_id": "167050",
@@ -740,10 +634,7 @@
         "balls_remaining": "",
         "is_live": true,
         "is_completed": false,
-        "url": "/match/167050",
-        "team_1": "Wa",
-        "team_2": "Saus",
-        "status_pill": "LIVE"
+        "url": "/match/167050"
       },
       {
         "match_id": "171727",
@@ -754,10 +645,7 @@
         "balls_remaining": "",
         "is_live": true,
         "is_completed": false,
-        "url": "/match/171727",
-        "team_1": "Nwest",
-        "team_2": "Bol",
-        "status_pill": "LIVE"
+        "url": "/match/171727"
       },
       {
         "match_id": "171757",
@@ -768,10 +656,7 @@
         "balls_remaining": "",
         "is_live": true,
         "is_completed": false,
-        "url": "/match/171757",
-        "team_1": "War",
-        "team_2": "Tit",
-        "status_pill": "LIVE"
+        "url": "/match/171757"
       },
       {
         "match_id": "171737",
@@ -782,10 +667,7 @@
         "balls_remaining": "",
         "is_live": true,
         "is_completed": false,
-        "url": "/match/171737",
-        "team_1": "Wpr",
-        "team_2": "Dol",
-        "status_pill": "LIVE"
+        "url": "/match/171737"
       },
       {
         "match_id": "171747",
@@ -796,10 +678,7 @@
         "balls_remaining": "",
         "is_live": true,
         "is_completed": false,
-        "url": "/match/171747",
-        "team_1": "Kng",
-        "team_2": "Lions",
-        "status_pill": "LIVE"
+        "url": "/match/171747"
       },
       {
         "match_id": "143240",
@@ -810,10 +689,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/143240",
-        "team_1": "Dur",
-        "team_2": "Worcs",
-        "status_pill": "Preview"
+        "url": "/match/143240"
       },
       {
         "match_id": "143251",
@@ -824,10 +700,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/143251",
-        "team_1": "Derby",
-        "team_2": "Nhnts",
-        "status_pill": "Preview"
+        "url": "/match/143251"
       },
       {
         "match_id": "143262",
@@ -838,10 +711,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/143262",
-        "team_1": "Mdx",
-        "team_2": "Gloucs",
-        "status_pill": "Preview"
+        "url": "/match/143262"
       },
       {
         "match_id": "172047",
@@ -852,10 +722,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/172047",
-        "team_1": "Estorm",
-        "team_2": "Bor",
-        "status_pill": "Preview"
+        "url": "/match/172047"
       },
       {
         "match_id": "172057",
@@ -866,10 +733,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/172057",
-        "team_1": "Mpr",
-        "team_2": "Swd",
-        "status_pill": "Preview"
+        "url": "/match/172057"
       },
       {
         "match_id": "172037",
@@ -880,26 +744,20 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/172037",
-        "team_1": "Ncape",
-        "team_2": "Limpo",
-        "status_pill": "Preview"
+        "url": "/match/172037"
       }
     ],
     "women": [
       {
         "match_id": "155606",
-        "title": "Australia A Women vs India A Women",
-        "stage": "3Rd Unofficial T20",
+        "title": "Australia A Women vs India A Women3rd unofficial T20",
+        "stage": "Match",
         "category": "women",
         "status": "Match Preview",
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/155606",
-        "team_1": "Australia A Women",
-        "team_2": "India A Women",
-        "status_pill": "Preview"
+        "url": "/match/155606"
       },
       {
         "match_id": "170930",
@@ -910,10 +768,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/170930",
-        "team_1": "Sri Lanka Women",
-        "team_2": "Malaysia Women",
-        "status_pill": "Preview"
+        "url": "/match/170930"
       },
       {
         "match_id": "170933",
@@ -924,24 +779,18 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/170933",
-        "team_1": "Japan Women",
-        "team_2": "India Women",
-        "status_pill": "Preview"
+        "url": "/match/170933"
       },
       {
         "match_id": "161813",
-        "title": "Trinbago Knight Riders Women vs Guyana Amazon Warriors Women",
+        "title": "Tkrw vs Gaww",
         "stage": "Match",
         "category": "women",
         "status": "Match Preview",
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/161813",
-        "team_1": "Trinbago Knight Riders Women",
-        "team_2": "Guyana Amazon Warriors Women",
-        "status_pill": "Preview"
+        "url": "/match/161813"
       },
       {
         "match_id": "160007",
@@ -952,10 +801,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": false,
-        "url": "/match/160007",
-        "team_1": "South Africa Women",
-        "team_2": "Zimbabwe Women",
-        "status_pill": "Preview"
+        "url": "/match/160007"
       },
       {
         "match_id": "171647",
@@ -966,24 +812,18 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": true,
-        "url": "/match/171647",
-        "team_1": "Uga",
-        "team_2": "Ken",
-        "status_pill": "Result"
+        "url": "/match/171647"
       },
       {
         "match_id": "152742",
-        "title": "Australia vs Zimbabwe",
+        "title": "Aus vs Zim",
         "stage": "2Nd Odi",
         "category": "women",
         "status": "india women won by 8 wkts",
         "balls_remaining": "",
         "is_live": false,
         "is_completed": true,
-        "url": "/match/152742",
-        "team_1": "Australia",
-        "team_2": "Zimbabwe",
-        "status_pill": "Result"
+        "url": "/match/152742"
       },
       {
         "match_id": "142673",
@@ -994,10 +834,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": true,
-        "url": "/match/142673",
-        "team_1": "Glam",
-        "team_2": "Sur",
-        "status_pill": "Result"
+        "url": "/match/142673"
       },
       {
         "match_id": "142651",
@@ -1008,10 +845,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": true,
-        "url": "/match/142651",
-        "team_1": "Ham",
-        "team_2": "Leic",
-        "status_pill": "Result"
+        "url": "/match/142651"
       },
       {
         "match_id": "142684",
@@ -1022,10 +856,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": true,
-        "url": "/match/142684",
-        "team_1": "Notts",
-        "team_2": "Sus",
-        "status_pill": "Result"
+        "url": "/match/142684"
       },
       {
         "match_id": "142662",
@@ -1036,10 +867,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": true,
-        "url": "/match/142662",
-        "team_1": "Yorks",
-        "team_2": "Som",
-        "status_pill": "Result"
+        "url": "/match/142662"
       },
       {
         "match_id": "167050",
@@ -1050,10 +878,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": true,
-        "url": "/match/167050",
-        "team_1": "Wa",
-        "team_2": "Saus",
-        "status_pill": "Result"
+        "url": "/match/167050"
       },
       {
         "match_id": "171727",
@@ -1064,10 +889,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": true,
-        "url": "/match/171727",
-        "team_1": "Nwest",
-        "team_2": "Bol",
-        "status_pill": "Result"
+        "url": "/match/171727"
       },
       {
         "match_id": "171757",
@@ -1078,10 +900,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": true,
-        "url": "/match/171757",
-        "team_1": "War",
-        "team_2": "Tit",
-        "status_pill": "Result"
+        "url": "/match/171757"
       },
       {
         "match_id": "171737",
@@ -1092,10 +911,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": true,
-        "url": "/match/171737",
-        "team_1": "Wpr",
-        "team_2": "Dol",
-        "status_pill": "Result"
+        "url": "/match/171737"
       },
       {
         "match_id": "171747",
@@ -1106,10 +922,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": true,
-        "url": "/match/171747",
-        "team_1": "Kng",
-        "team_2": "Lions",
-        "status_pill": "Result"
+        "url": "/match/171747"
       },
       {
         "match_id": "143240",
@@ -1120,10 +933,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": true,
-        "url": "/match/143240",
-        "team_1": "Dur",
-        "team_2": "Worcs",
-        "status_pill": "Result"
+        "url": "/match/143240"
       },
       {
         "match_id": "143251",
@@ -1134,10 +944,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": true,
-        "url": "/match/143251",
-        "team_1": "Derby",
-        "team_2": "Nhnts",
-        "status_pill": "Result"
+        "url": "/match/143251"
       },
       {
         "match_id": "143262",
@@ -1148,10 +955,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": true,
-        "url": "/match/143262",
-        "team_1": "Mdx",
-        "team_2": "Gloucs",
-        "status_pill": "Result"
+        "url": "/match/143262"
       },
       {
         "match_id": "172047",
@@ -1162,10 +966,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": true,
-        "url": "/match/172047",
-        "team_1": "Estorm",
-        "team_2": "Bor",
-        "status_pill": "Result"
+        "url": "/match/172047"
       },
       {
         "match_id": "172057",
@@ -1176,10 +977,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": true,
-        "url": "/match/172057",
-        "team_1": "Mpr",
-        "team_2": "Swd",
-        "status_pill": "Result"
+        "url": "/match/172057"
       },
       {
         "match_id": "172037",
@@ -1190,10 +988,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": true,
-        "url": "/match/172037",
-        "team_1": "Ncape",
-        "team_2": "Limpo",
-        "status_pill": "Result"
+        "url": "/match/172037"
       },
       {
         "match_id": "155466",
@@ -1204,10 +999,7 @@
         "balls_remaining": "",
         "is_live": false,
         "is_completed": true,
-        "url": "/match/155466",
-        "team_1": "Indu19",
-        "team_2": "Ausu19",
-        "status_pill": "Result"
+        "url": "/match/155466"
       }
     ]
   },
@@ -1221,24 +1013,18 @@
       "balls_remaining": "",
       "is_live": true,
       "is_completed": false,
-      "url": "/match/171647",
-      "team_1": "Uga",
-      "team_2": "Ken",
-      "status_pill": "LIVE"
+      "url": "/match/171647"
     },
     {
       "match_id": "152742",
-      "title": "Australia vs Zimbabwe",
+      "title": "Aus vs Zim",
       "stage": "2Nd Odi",
       "category": "international",
       "status": "zimbabwezimzimbabwe opt to bowllive scor",
       "balls_remaining": "",
       "is_live": true,
       "is_completed": false,
-      "url": "/match/152742",
-      "team_1": "Australia",
-      "team_2": "Zimbabwe",
-      "status_pill": "LIVE"
+      "url": "/match/152742"
     },
     {
       "match_id": "142673",
@@ -1249,10 +1035,7 @@
       "balls_remaining": "",
       "is_live": true,
       "is_completed": false,
-      "url": "/match/142673",
-      "team_1": "Glam",
-      "team_2": "Sur",
-      "status_pill": "LIVE"
+      "url": "/match/142673"
     },
     {
       "match_id": "142651",
@@ -1263,10 +1046,7 @@
       "balls_remaining": "",
       "is_live": true,
       "is_completed": false,
-      "url": "/match/142651",
-      "team_1": "Ham",
-      "team_2": "Leic",
-      "status_pill": "LIVE"
+      "url": "/match/142651"
     },
     {
       "match_id": "142684",
@@ -1277,10 +1057,7 @@
       "balls_remaining": "",
       "is_live": true,
       "is_completed": false,
-      "url": "/match/142684",
-      "team_1": "Notts",
-      "team_2": "Sus",
-      "status_pill": "LIVE"
+      "url": "/match/142684"
     },
     {
       "match_id": "142662",
@@ -1291,10 +1068,7 @@
       "balls_remaining": "",
       "is_live": true,
       "is_completed": false,
-      "url": "/match/142662",
-      "team_1": "Yorks",
-      "team_2": "Som",
-      "status_pill": "LIVE"
+      "url": "/match/142662"
     },
     {
       "match_id": "167050",
@@ -1305,10 +1079,7 @@
       "balls_remaining": "",
       "is_live": true,
       "is_completed": false,
-      "url": "/match/167050",
-      "team_1": "Wa",
-      "team_2": "Saus",
-      "status_pill": "LIVE"
+      "url": "/match/167050"
     },
     {
       "match_id": "171727",
@@ -1319,10 +1090,7 @@
       "balls_remaining": "",
       "is_live": true,
       "is_completed": false,
-      "url": "/match/171727",
-      "team_1": "Nwest",
-      "team_2": "Bol",
-      "status_pill": "LIVE"
+      "url": "/match/171727"
     },
     {
       "match_id": "171757",
@@ -1333,10 +1101,7 @@
       "balls_remaining": "",
       "is_live": true,
       "is_completed": false,
-      "url": "/match/171757",
-      "team_1": "War",
-      "team_2": "Tit",
-      "status_pill": "LIVE"
+      "url": "/match/171757"
     },
     {
       "match_id": "171737",
@@ -1347,10 +1112,7 @@
       "balls_remaining": "",
       "is_live": true,
       "is_completed": false,
-      "url": "/match/171737",
-      "team_1": "Wpr",
-      "team_2": "Dol",
-      "status_pill": "LIVE"
+      "url": "/match/171737"
     },
     {
       "match_id": "171747",
@@ -1361,24 +1123,7 @@
       "balls_remaining": "",
       "is_live": true,
       "is_completed": false,
-      "url": "/match/171747",
-      "team_1": "Kng",
-      "team_2": "Lions",
-      "status_pill": "LIVE"
-    },
-    {
-      "match_id": "155466",
-      "title": "Indu19 vs Ausu19",
-      "stage": "Match",
-      "category": "international",
-      "status": "khandheriindia u19indu19australia u19aus",
-      "balls_remaining": "",
-      "is_live": true,
-      "is_completed": false,
-      "url": "/match/155466",
-      "team_1": "Indu19",
-      "team_2": "Ausu19",
-      "status_pill": "LIVE"
+      "url": "/match/171747"
     }
   ],
   "recent": [
@@ -1397,109 +1142,98 @@
       "balls_remaining": "35 balls remaining",
       "is_live": false,
       "is_completed": true,
-      "url": "/match/1534214",
-      "status_pill": "Result"
-    }
-  ],
-  "upcoming": [
+      "url": "/match/1534214"
+    },
     {
       "match_id": "143240",
-      "title": "Durham vs Worcestershire",
-      "stage": "49th Match",
-      "category": "international",
-      "status": "Match Scheduled",
+      "title": "Dur vs Worcs",
+      "stage": "49Th Match",
+      "category": "women",
+      "status": "india women won by 8 wkts",
       "balls_remaining": "",
       "is_live": false,
-      "is_completed": false,
-      "url": "/match/143240",
-      "team_1": "Durham",
-      "team_2": "Worcestershire",
-      "status_pill": "Preview"
+      "is_completed": true,
+      "url": "/match/143240"
     },
     {
       "match_id": "143251",
-      "title": "Derbyshire vs Northamptonshire",
-      "stage": "50th Match",
-      "category": "international",
-      "status": "Match Scheduled",
+      "title": "Derby vs Nhnts",
+      "stage": "50Th Match",
+      "category": "women",
+      "status": "india women won by 8 wkts",
       "balls_remaining": "",
       "is_live": false,
-      "is_completed": false,
-      "url": "/match/143251",
-      "team_1": "Derbyshire",
-      "team_2": "Northamptonshire",
-      "status_pill": "Preview"
+      "is_completed": true,
+      "url": "/match/143251"
     },
     {
       "match_id": "143262",
-      "title": "Middlesex vs Gloucestershire",
-      "stage": "51st Match",
-      "category": "international",
-      "status": "Match Scheduled",
+      "title": "Mdx vs Gloucs",
+      "stage": "51St Match",
+      "category": "women",
+      "status": "india women won by 8 wkts",
       "balls_remaining": "",
       "is_live": false,
-      "is_completed": false,
-      "url": "/match/143262",
-      "team_1": "Middlesex",
-      "team_2": "Gloucestershire",
-      "status_pill": "Preview"
+      "is_completed": true,
+      "url": "/match/143262"
     },
     {
       "match_id": "172047",
-      "title": "Eastern Storm vs Border",
-      "stage": "5th Match",
-      "category": "international",
-      "status": "Match Scheduled",
+      "title": "Estorm vs Bor",
+      "stage": "5Th Match",
+      "category": "women",
+      "status": "india women won by 8 wkts",
       "balls_remaining": "",
       "is_live": false,
-      "is_completed": false,
-      "url": "/match/172047",
-      "team_1": "Eastern Storm",
-      "team_2": "Border",
-      "status_pill": "Preview"
+      "is_completed": true,
+      "url": "/match/172047"
     },
     {
       "match_id": "172057",
-      "title": "Mpumalanga Rhinos vs South Western Districts",
-      "stage": "6th Match",
-      "category": "international",
-      "status": "Match Scheduled",
+      "title": "Mpr vs Swd",
+      "stage": "6Th Match",
+      "category": "women",
+      "status": "india women won by 8 wkts",
       "balls_remaining": "",
       "is_live": false,
-      "is_completed": false,
-      "url": "/match/172057",
-      "team_1": "Mpumalanga Rhinos",
-      "team_2": "South Western Districts",
-      "status_pill": "Preview"
+      "is_completed": true,
+      "url": "/match/172057"
     },
     {
       "match_id": "172037",
-      "title": "Northern Cape vs Limpopo",
-      "stage": "4th Match",
-      "category": "international",
-      "status": "Match Scheduled",
+      "title": "Ncape vs Limpo",
+      "stage": "4Th Match",
+      "category": "women",
+      "status": "india women won by 8 wkts",
       "balls_remaining": "",
       "is_live": false,
-      "is_completed": false,
-      "url": "/match/172037",
-      "team_1": "Northern Cape",
-      "team_2": "Limpopo",
-      "status_pill": "Preview"
+      "is_completed": true,
+      "url": "/match/172037"
+    },
+    {
+      "match_id": "155466",
+      "title": "Indu19 vs Ausu19",
+      "stage": "Match",
+      "category": "women",
+      "status": "india women won by 8 wkts",
+      "balls_remaining": "",
+      "is_live": false,
+      "is_completed": true,
+      "url": "/match/155466"
     },
     {
       "match_id": "170933",
-      "title": "Japan Women vs India Women",
-      "stage": "4th Quarter Final",
+      "title": "Jpnw vs Indw",
+      "stage": "4Th Quarter Final",
       "category": "women",
-      "status": "Match Preview",
+      "status": "india women won by 8 wkts",
       "balls_remaining": "",
       "is_live": false,
-      "is_completed": false,
-      "url": "/match/170933",
-      "team_1": "Japan Women",
-      "team_2": "India Women",
-      "status_pill": "Preview"
-    },
+      "is_completed": true,
+      "url": "/match/170933"
+    }
+  ],
+  "upcoming": [
     {
       "match_id": "170120",
       "title": "India vs Afghanistan",
@@ -1509,10 +1243,7 @@
       "balls_remaining": "",
       "is_live": false,
       "is_completed": false,
-      "url": "/match/170120",
-      "team_1": "India",
-      "team_2": "Afghanistan",
-      "status_pill": "Preview"
+      "url": "/match/170120"
     },
     {
       "match_id": "129618",
@@ -1523,10 +1254,7 @@
       "balls_remaining": "",
       "is_live": false,
       "is_completed": false,
-      "url": "/match/129618",
-      "team_1": "Sri Lanka",
-      "team_2": "England",
-      "status_pill": "Preview"
+      "url": "/match/129618"
     },
     {
       "match_id": "171627",
@@ -1537,10 +1265,7 @@
       "balls_remaining": "",
       "is_live": false,
       "is_completed": false,
-      "url": "/match/171627",
-      "team_1": "Uganda",
-      "team_2": "Rwanda",
-      "status_pill": "Preview"
+      "url": "/match/171627"
     },
     {
       "match_id": "171637",
@@ -1551,10 +1276,7 @@
       "balls_remaining": "",
       "is_live": false,
       "is_completed": false,
-      "url": "/match/171637",
-      "team_1": "Kenya",
-      "team_2": "Botswana",
-      "status_pill": "Preview"
+      "url": "/match/171637"
     },
     {
       "match_id": "171657",
@@ -1565,10 +1287,7 @@
       "balls_remaining": "",
       "is_live": false,
       "is_completed": false,
-      "url": "/match/171657",
-      "team_1": "Sierra Leone",
-      "team_2": "Botswana",
-      "status_pill": "Preview"
+      "url": "/match/171657"
     },
     {
       "match_id": "171257",
@@ -1579,38 +1298,29 @@
       "balls_remaining": "",
       "is_live": false,
       "is_completed": false,
-      "url": "/match/171257",
-      "team_1": "Japan",
-      "team_2": "Hong Kong, China",
-      "status_pill": "Preview"
+      "url": "/match/171257"
     },
     {
       "match_id": "154689",
-      "title": "Guyana Amazon Warriors vs Antigua & Barbuda Falcons",
+      "title": "Gaw vs Abf",
       "stage": "Match",
       "category": "league",
       "status": "Match Scheduled",
       "balls_remaining": "",
       "is_live": false,
       "is_completed": false,
-      "url": "/match/154689",
-      "team_1": "Guyana Amazon Warriors",
-      "team_2": "Antigua & Barbuda Falcons",
-      "status_pill": "Preview"
+      "url": "/match/154689"
     },
     {
       "match_id": "154700",
-      "title": "Jamaica Kingsmen vs Guyana Amazon Warriors",
-      "stage": "Qualifier 2",
+      "title": "Jamaica Kingsmen vs Guyana Amazon WarriorsQualifier 2",
+      "stage": "Match",
       "category": "league",
       "status": "Match Scheduled",
       "balls_remaining": "",
       "is_live": false,
       "is_completed": false,
-      "url": "/match/154700",
-      "team_1": "Jamaica Kingsmen",
-      "team_2": "Guyana Amazon Warriors",
-      "status_pill": "Preview"
+      "url": "/match/154700"
     },
     {
       "match_id": "169420",
@@ -1621,10 +1331,7 @@
       "balls_remaining": "",
       "is_live": false,
       "is_completed": false,
-      "url": "/match/169420",
-      "team_1": "Belfast Wolves",
-      "team_2": "Edinburgh Castle Rockers",
-      "status_pill": "Preview"
+      "url": "/match/169420"
     },
     {
       "match_id": "169427",
@@ -1635,10 +1342,7 @@
       "balls_remaining": "",
       "is_live": false,
       "is_completed": false,
-      "url": "/match/169427",
-      "team_1": "Rotterdam Dockers",
-      "team_2": "Dublin Guardians",
-      "status_pill": "Preview"
+      "url": "/match/169427"
     },
     {
       "match_id": "142640",
@@ -1649,10 +1353,7 @@
       "balls_remaining": "",
       "is_live": false,
       "is_completed": false,
-      "url": "/match/142640",
-      "team_1": "Essex",
-      "team_2": "Warwickshire",
-      "status_pill": "Preview"
+      "url": "/match/142640"
     },
     {
       "match_id": "167053",
@@ -1663,10 +1364,40 @@
       "balls_remaining": "",
       "is_live": false,
       "is_completed": false,
-      "url": "/match/167053",
-      "team_1": "Queensland",
-      "team_2": "Victoria",
-      "status_pill": "Preview"
+      "url": "/match/167053"
+    },
+    {
+      "match_id": "143240",
+      "title": "Durham vs Worcestershire",
+      "stage": "49th Match",
+      "category": "international",
+      "status": "Match Scheduled",
+      "balls_remaining": "",
+      "is_live": false,
+      "is_completed": false,
+      "url": "/match/143240"
+    },
+    {
+      "match_id": "143251",
+      "title": "Derbyshire vs Northamptonshire",
+      "stage": "50th Match",
+      "category": "international",
+      "status": "Match Scheduled",
+      "balls_remaining": "",
+      "is_live": false,
+      "is_completed": false,
+      "url": "/match/143251"
+    },
+    {
+      "match_id": "143262",
+      "title": "Middlesex vs Gloucestershire",
+      "stage": "51st Match",
+      "category": "international",
+      "status": "Match Scheduled",
+      "balls_remaining": "",
+      "is_live": false,
+      "is_completed": false,
+      "url": "/match/143262"
     },
     {
       "match_id": "143273",
@@ -1677,24 +1408,62 @@
       "balls_remaining": "",
       "is_live": false,
       "is_completed": false,
-      "url": "/match/143273",
-      "team_1": "Lancashire",
-      "team_2": "Kent",
-      "status_pill": "Preview"
+      "url": "/match/143273"
+    },
+    {
+      "match_id": "172037",
+      "title": "Northern Cape vs Limpopo",
+      "stage": "4th Match",
+      "category": "international",
+      "status": "Match Scheduled",
+      "balls_remaining": "",
+      "is_live": false,
+      "is_completed": false,
+      "url": "/match/172037"
+    },
+    {
+      "match_id": "172047",
+      "title": "Eastern Storm vs Border",
+      "stage": "5th Match",
+      "category": "international",
+      "status": "Match Scheduled",
+      "balls_remaining": "",
+      "is_live": false,
+      "is_completed": false,
+      "url": "/match/172047"
+    },
+    {
+      "match_id": "172057",
+      "title": "Mpumalanga Rhinos vs South Western Districts",
+      "stage": "6th Match",
+      "category": "international",
+      "status": "Match Scheduled",
+      "balls_remaining": "",
+      "is_live": false,
+      "is_completed": false,
+      "url": "/match/172057"
+    },
+    {
+      "match_id": "155466",
+      "title": "India U19 vs Australia U19LIVE1st unofficial ODI",
+      "stage": "Match",
+      "category": "international",
+      "status": "Match Scheduled",
+      "balls_remaining": "",
+      "is_live": false,
+      "is_completed": false,
+      "url": "/match/155466"
     },
     {
       "match_id": "155606",
-      "title": "Australia A Women vs India A Women",
-      "stage": "3Rd Unofficial T20",
+      "title": "Australia A Women vs India A Women3rd unofficial T20",
+      "stage": "Match",
       "category": "women",
       "status": "Match Preview",
       "balls_remaining": "",
       "is_live": false,
       "is_completed": false,
-      "url": "/match/155606",
-      "team_1": "Australia A Women",
-      "team_2": "India A Women",
-      "status_pill": "Preview"
+      "url": "/match/155606"
     },
     {
       "match_id": "170930",
@@ -1705,24 +1474,29 @@
       "balls_remaining": "",
       "is_live": false,
       "is_completed": false,
-      "url": "/match/170930",
-      "team_1": "Sri Lanka Women",
-      "team_2": "Malaysia Women",
-      "status_pill": "Preview"
+      "url": "/match/170930"
+    },
+    {
+      "match_id": "170933",
+      "title": "Japan Women vs India Women",
+      "stage": "4th Quarter Final",
+      "category": "women",
+      "status": "Match Preview",
+      "balls_remaining": "",
+      "is_live": false,
+      "is_completed": false,
+      "url": "/match/170933"
     },
     {
       "match_id": "161813",
-      "title": "Trinbago Knight Riders Women vs Guyana Amazon Warriors Women",
+      "title": "Tkrw vs Gaww",
       "stage": "Match",
       "category": "women",
       "status": "Match Preview",
       "balls_remaining": "",
       "is_live": false,
       "is_completed": false,
-      "url": "/match/161813",
-      "team_1": "Trinbago Knight Riders Women",
-      "team_2": "Guyana Amazon Warriors Women",
-      "status_pill": "Preview"
+      "url": "/match/161813"
     },
     {
       "match_id": "160007",
@@ -1733,10 +1507,7 @@
       "balls_remaining": "",
       "is_live": false,
       "is_completed": false,
-      "url": "/match/160007",
-      "team_1": "South Africa Women",
-      "team_2": "Zimbabwe Women",
-      "status_pill": "Preview"
+      "url": "/match/160007"
     }
   ]
 }

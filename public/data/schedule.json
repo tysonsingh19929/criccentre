@@ -281,14 +281,14 @@
   },
   {
     "month": "Upcoming Schedule",
-    "series_name": "Australia U19 tour of India 2026India U19 vs Australia U191st unofficial ODI",
+    "series_name": "India U19 vs Australia U19LIVE1st unofficial ODI",
     "category": "International",
     "dates": "September - October 2026",
     "status": "Scheduled"
   },
   {
     "month": "Upcoming Schedule",
-    "series_name": "India U19 vs Australia U191st unofficial ODI",
+    "series_name": "India U19 vs Australia U19LIVE",
     "category": "International",
     "dates": "September - October 2026",
     "status": "Scheduled"
@@ -310,13 +310,6 @@
   {
     "month": "Upcoming Schedule",
     "series_name": "Australia A Women vs India A Women",
-    "category": "International",
-    "dates": "September - October 2026",
-    "status": "Scheduled"
-  },
-  {
-    "month": "Upcoming Schedule",
-    "series_name": "Thailand Women vs Pakistan Women",
     "category": "International",
     "dates": "September - October 2026",
     "status": "Scheduled"

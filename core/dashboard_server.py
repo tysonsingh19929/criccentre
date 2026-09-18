@@ -148,8 +148,6 @@ class DashboardHTTPHandler(SimpleHTTPRequestHandler):
             # Look up metadata from matches.json or catalog for dedicated match preview
             matches_data = self._get_merged_matches_data()
             series_data = self._get_data("series", {})
-            header = PageTemplates.render_global_header("live-scores", matches_data, series_data)
-            footer = PageTemplates.render_global_footer()
 
             match_info = None
             for m in matches_data.get("live", []) + matches_data.get("upcoming", []) + matches_data.get("recent", []):
@@ -157,50 +155,19 @@ class DashboardHTTPHandler(SimpleHTTPRequestHandler):
                     match_info = m
                     break
 
-            m_title = match_info.get("title", f"Match #{m_id}") if match_info else f"Match #{m_id}"
-            m_series = match_info.get("series", "Cricket Tournament") if match_info else "Cricket Tournament"
-            m_stage = match_info.get("stage", "Match") if match_info else "Match"
-            m_status = match_info.get("status", "Match Scheduled") if match_info else "Match Scheduled"
+            if not match_info:
+                drawer = matches_data.get("drawer", {})
+                for cat_list in drawer.values():
+                    if isinstance(cat_list, list):
+                        for m in cat_list:
+                            if str(m.get("match_id")) == str(m_id):
+                                match_info = m
+                                break
+                    if match_info:
+                        break
 
-            preview_html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{m_title} | Match Center</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>body {{ font-family: 'Inter', sans-serif; background-color: #f1f5f9; }}</style>
-</head>
-<body class="text-slate-800 min-h-screen flex flex-col justify-between">
-    {header}
-    <main class="max-w-4xl mx-auto px-4 py-12 flex-1 w-full text-center">
-        <div class="bg-white rounded-2xl shadow-xs border border-slate-200 p-8 sm:p-12 max-w-lg mx-auto">
-            <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-700 font-bold rounded-full text-xs uppercase tracking-wider mb-4 border border-emerald-200">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                Match Center
-            </div>
-            <div class="text-xs uppercase font-bold text-emerald-600 mb-1">{m_series} • {m_stage}</div>
-            <h2 class="text-2xl font-black text-slate-900 mb-2">{m_title}</h2>
-            <p class="text-sm font-semibold text-slate-600 mb-6">{m_status}</p>
-            <div class="p-4 bg-slate-50 rounded-xl border border-slate-100 text-left text-xs text-slate-600 mb-6">
-                <p class="font-semibold text-slate-800 mb-1">Detailed Scorecard & Ball Feeds:</p>
-                <p>Live stream and delivery ball tracking for this match can be mapped via the Admin Panel or URLs feed.</p>
-            </div>
-            <div class="flex items-center justify-center gap-3">
-                <a href="/live-scores" class="px-5 py-2.5 bg-[#186047] hover:bg-[#0d3b2c] text-white text-xs font-bold rounded-lg shadow-xs transition">
-                    &larr; View Live Scores
-                </a>
-                <a href="/schedule" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition">
-                    Match Schedule
-                </a>
-            </div>
-        </div>
-    </main>
-    {footer}
-</body>
-</html>"""
-            return self._send_html(preview_html)
+            match_info = match_info or {"match_id": m_id, "title": f"Match #{m_id}"}
+            return self._send_html(PageTemplates.render_match_hub_page(match_info, matches_data, series_data))
 
         # 2. Dedicated Article Reader: /news/<id>
         if clean_path.startswith("/news/"):
@@ -567,6 +534,29 @@ class DashboardServer:
                     path = os.path.join(target_dir, filename)
                     with open(path, "w", encoding="utf-8") as f:
                         f.write(content)
+
+            # Pre-render Match Hub dashboards for all active feed matches (Live, Recent, Upcoming, Drawer)
+            all_feed_matches = list(matches_data.get("live", [])) + list(matches_data.get("recent", [])) + list(matches_data.get("upcoming", []))
+            drawer = matches_data.get("drawer", {})
+            for cat_list in drawer.values():
+                if isinstance(cat_list, list):
+                    all_feed_matches.extend(cat_list)
+
+            seen_ids = set()
+            for m in all_feed_matches:
+                m_id = str(m.get("match_id", "")).strip()
+                if not m_id or m_id in seen_ids:
+                    continue
+                seen_ids.add(m_id)
+
+                hub_html = PageTemplates.render_match_hub_page(m, matches_data, series_data)
+                for target_dir in [output_dir, pub_dir]:
+                    m_file = os.path.join(target_dir, f"dashboard_{m_id}.html")
+                    # If file exists and is already a full scorecard (> 50KB), do NOT overwrite
+                    if os.path.exists(m_file) and os.path.getsize(m_file) > 50000:
+                        continue
+                    with open(m_file, "w", encoding="utf-8") as f:
+                        f.write(hub_html)
 
             # Sync data directory to public/data
             src_data = os.path.join(output_dir, "data")

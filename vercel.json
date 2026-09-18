@@ -3,7 +3,7 @@
   "rewrites": [
     { "source": "/scores", "destination": "/live-scores.html" },
     { "source": "/live", "destination": "/live-scores.html" },
-    { "source": "/match/:id", "destination": "/dashboard_:id.html" },
+    { "source": "/match/:id", "destination": "/api/index.py" },
     { "source": "/api/matches", "destination": "/data/matches.json" },
     { "source": "/api/schedule", "destination": "/data/schedule.json" },
     { "source": "/api/series", "destination": "/data/series.json" },

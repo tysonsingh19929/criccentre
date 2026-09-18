@@ -1,916 +1,582 @@
 {
-  "all": [
+  "current": [
     {
-      "unique_series_id": "S-INT-2LR",
-      "series_key": "2LR",
-      "title": "Afghanistan Vs India In India 2026",
-      "slug": "afghanistan-vs-india-in-india-2026-2LR",
-      "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/afghanistan-vs-india-in-india-2026-2LR",
-      "matches_url": "https://crex.com/series/afghanistan-vs-india-in-india-2026-2LR/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-INT-2GK",
-      "series_key": "2GK",
-      "title": "Australia Tour Of Zimbabwe 2026",
-      "slug": "australia-tour-of-zimbabwe-2026-2GK",
-      "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/australia-tour-of-zimbabwe-2026-2GK",
-      "matches_url": "https://crex.com/series/australia-tour-of-zimbabwe-2026-2GK/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-LEA-2E2",
-      "series_key": "2E2",
+      "series_id": "1534175",
       "title": "Caribbean Premier League 2026",
-      "slug": "caribbean-premier-league-2026-2E2",
       "category": "league",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/caribbean-premier-league-2026-2E2",
-      "matches_url": "https://crex.com/series/caribbean-premier-league-2026-2E2/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/1534175"
     },
     {
-      "unique_series_id": "S-INT-1WT",
-      "series_key": "1WT",
-      "title": "Sri Lanka Tour Of England 2026",
-      "slug": "sri-lanka-tour-of-england-2026-1WT",
+      "series_id": "12973",
+      "title": "Afg vs Ind in India 2026",
       "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/sri-lanka-tour-of-england-2026-1WT",
-      "matches_url": "https://crex.com/series/sri-lanka-tour-of-england-2026-1WT/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/12973"
     },
     {
-      "unique_series_id": "S-WOM-2JY",
-      "series_key": "2JY",
-      "title": "Womens Asian Games T20 2026",
-      "slug": "womens-asian-games-t20-2026-2JY",
-      "category": "women",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/womens-asian-games-t20-2026-2JY",
-      "matches_url": "https://crex.com/series/womens-asian-games-t20-2026-2JY/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-INT-2IC",
-      "series_key": "2IC",
-      "title": "Australia U19 Tour Of India 2026",
-      "slug": "australia-u19-tour-of-india-2026-2IC",
+      "series_id": "10576",
+      "title": "England vs Sri Lanka, 2026",
       "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/australia-u19-tour-of-india-2026-2IC",
-      "matches_url": "https://crex.com/series/australia-u19-tour-of-india-2026-2IC/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/10576"
     },
     {
-      "unique_series_id": "S-LEA-1RN",
-      "series_key": "1RN",
-      "title": "European T20 Premier League 2026",
-      "slug": "european-t20-premier-league-2026-1RN",
-      "category": "league",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/european-t20-premier-league-2026-1RN",
-      "matches_url": "https://crex.com/series/european-t20-premier-league-2026-1RN/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-WOM-2J1",
-      "series_key": "2J1",
-      "title": "South Africa Women Tour Of Zimbabwe 2026",
-      "slug": "south-africa-women-tour-of-zimbabwe-2026-2J1",
-      "category": "women",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/south-africa-women-tour-of-zimbabwe-2026-2J1",
-      "matches_url": "https://crex.com/series/south-africa-women-tour-of-zimbabwe-2026-2J1/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-INT-2MJ",
-      "series_key": "2MJ",
-      "title": "United Arab Emirates Tour Of Malaysia 2026",
-      "slug": "united-arab-emirates-tour-of-malaysia-2026-2MJ",
-      "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/united-arab-emirates-tour-of-malaysia-2026-2MJ",
-      "matches_url": "https://crex.com/series/united-arab-emirates-tour-of-malaysia-2026-2MJ/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-WOM-2I7",
-      "series_key": "2I7",
-      "title": "Australia A Women Tour Of India 2026",
-      "slug": "australia-a-women-tour-of-india-2026-2I7",
-      "category": "women",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/australia-a-women-tour-of-india-2026-2I7",
-      "matches_url": "https://crex.com/series/australia-a-women-tour-of-india-2026-2I7/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-DOM-2KN",
-      "series_key": "2KN",
-      "title": "Australia Domestic One Day Cup 2026 27",
-      "slug": "australia-domestic-one-day-cup-2026-27-2KN",
-      "category": "domestic",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/australia-domestic-one-day-cup-2026-27-2KN",
-      "matches_url": "https://crex.com/series/australia-domestic-one-day-cup-2026-27-2KN/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-WOM-2E1",
-      "series_key": "2E1",
-      "title": "Womens Caribbean Premier League 2026",
-      "slug": "womens-caribbean-premier-league-2026-2E1",
-      "category": "women",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/womens-caribbean-premier-league-2026-2E1",
-      "matches_url": "https://crex.com/series/womens-caribbean-premier-league-2026-2E1/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-INT-2ML",
-      "series_key": "2ML",
-      "title": "Hong Kong Tour Of Japan 2026",
-      "slug": "hong-kong-tour-of-japan-2026-2ML",
-      "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/hong-kong-tour-of-japan-2026-2ML",
-      "matches_url": "https://crex.com/series/hong-kong-tour-of-japan-2026-2ML/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-DOM-2MQ",
-      "series_key": "2MQ",
-      "title": "President Trophy 2026",
-      "slug": "president-trophy-2026-2MQ",
-      "category": "domestic",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/president-trophy-2026-2MQ",
-      "matches_url": "https://crex.com/series/president-trophy-2026-2MQ/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-LEA-2N1",
-      "series_key": "2N1",
-      "title": "Oman Invitational Triangular 2026",
-      "slug": "oman-invitational-triangular-2026-2N1",
-      "category": "league",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/oman-invitational-triangular-2026-2N1",
-      "matches_url": "https://crex.com/series/oman-invitational-triangular-2026-2N1/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-INT-2MM",
-      "series_key": "2MM",
+      "series_id": "13121",
       "title": "Africa Continental Cup 2026",
-      "slug": "africa-continental-cup-2026-2MM",
       "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/africa-continental-cup-2026-2MM",
-      "matches_url": "https://crex.com/series/africa-continental-cup-2026-2MM/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/13121"
     },
     {
-      "unique_series_id": "S-WOM-2AN",
-      "series_key": "2AN",
-      "title": "England Women One Day Cup 2026",
-      "slug": "england-women-one-day-cup-2026-2AN",
-      "category": "women",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/england-women-one-day-cup-2026-2AN",
-      "matches_url": "https://crex.com/series/england-women-one-day-cup-2026-2AN/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-INT-2IN",
-      "series_key": "2IN",
-      "title": "Pakistan U19 Tour Of England 2026",
-      "slug": "pakistan-u19-tour-of-england-2026-2IN",
+      "series_id": "13080",
+      "title": "Hong Kong, China tour of Japan 2026",
       "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/pakistan-u19-tour-of-england-2026-2IN",
-      "matches_url": "https://crex.com/series/pakistan-u19-tour-of-england-2026-2IN/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/13080"
     },
     {
-      "unique_series_id": "S-WOM-2GS",
-      "series_key": "2GS",
-      "title": "England Women One Day Cup League 2 2026",
-      "slug": "england-women-one-day-cup-league-2-2026-2GS",
-      "category": "women",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/england-women-one-day-cup-league-2-2026-2GS",
-      "matches_url": "https://crex.com/series/england-women-one-day-cup-league-2-2026-2GS/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-INT-1QK",
-      "series_key": "1QK",
-      "title": "World Test Championship 2025 27",
-      "slug": "world-test-championship-2025-27-1QK",
+      "series_id": "11997",
+      "title": "Australia tour of Zimbabwe 2026",
       "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/world-test-championship-2025-27-1QK",
-      "matches_url": "https://crex.com/series/world-test-championship-2025-27-1QK/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/11997"
     },
     {
-      "unique_series_id": "S-WOM-1WP",
-      "series_key": "1WP",
-      "title": "Ireland Women Tour Of England 2026",
-      "slug": "ireland-women-tour-of-england-2026-1WP",
-      "category": "women",
-      "dates": "1 September - 6 September",
-      "crex_url": "https://crex.com/series/ireland-women-tour-of-england-2026-1WP",
-      "matches_url": "https://crex.com/series/ireland-women-tour-of-england-2026-1WP/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-LEA-2MG",
-      "series_key": "2MG",
-      "title": "Dehradun T20 League 2026",
-      "slug": "dehradun-t20-league-2026-2MG",
+      "series_id": "12123",
+      "title": "CPL 2026",
       "category": "league",
-      "dates": "1 September - 9 September",
-      "crex_url": "https://crex.com/series/dehradun-t20-league-2026-2MG",
-      "matches_url": "https://crex.com/series/dehradun-t20-league-2026-2MG/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/12123"
     },
     {
-      "unique_series_id": "S-WOM-2MB",
-      "series_key": "2MB",
-      "title": "Serbia Womens T20I Tri Series 2026",
-      "slug": "serbia-womens-t20i-tri-series-2026-2MB",
-      "category": "women",
-      "dates": "4 September - 6 September",
-      "crex_url": "https://crex.com/series/serbia-womens-t20i-tri-series-2026-2MB",
-      "matches_url": "https://crex.com/series/serbia-womens-t20i-tri-series-2026-2MB/matches",
-      "status": "Ongoing / Scheduled"
+      "series_id": "12870",
+      "title": "ETPL 2026",
+      "category": "league",
+      "url": "/series/12870"
     },
     {
-      "unique_series_id": "S-WOM-2MC",
-      "series_key": "2MC",
-      "title": "Czech Womens T20I Tri Series 2026",
-      "slug": "czech-womens-t20i-tri-series-2026-2MC",
-      "category": "women",
-      "dates": "4 September - 6 September",
-      "crex_url": "https://crex.com/series/czech-womens-t20i-tri-series-2026-2MC",
-      "matches_url": "https://crex.com/series/czech-womens-t20i-tri-series-2026-2MC/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-INT-2LQ",
-      "series_key": "2LQ",
-      "title": "South Africa Tour Of Namibia 2026",
-      "slug": "south-africa-tour-of-namibia-2026-2LQ",
-      "category": "international",
-      "dates": "9 September - 13 September",
-      "crex_url": "https://crex.com/series/south-africa-tour-of-namibia-2026-2LQ",
-      "matches_url": "https://crex.com/series/south-africa-tour-of-namibia-2026-2LQ/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-WOM-2ME",
-      "series_key": "2ME",
-      "title": "Malaysia Women Tour Of Japan 2026",
-      "slug": "malaysia-women-tour-of-japan-2026-2ME",
-      "category": "women",
-      "dates": "11 September - 13 September",
-      "crex_url": "https://crex.com/series/malaysia-women-tour-of-japan-2026-2ME",
-      "matches_url": "https://crex.com/series/malaysia-women-tour-of-japan-2026-2ME/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-DOM-2N2",
-      "series_key": "2N2",
-      "title": "Csa Provincial One Day Challenge Division Two 2026 27",
-      "slug": "csa-provincial-one-day-challenge-division-two-2026-27-2N2",
+      "series_id": "11408",
+      "title": "County Championship Division One 2026",
       "category": "domestic",
-      "dates": "13 September - 28 March",
-      "crex_url": "https://crex.com/series/csa-provincial-one-day-challenge-division-two-2026-27-2N2",
-      "matches_url": "https://crex.com/series/csa-provincial-one-day-challenge-division-two-2026-27-2N2/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/11408"
     },
     {
-      "unique_series_id": "S-INT-2AS",
-      "series_key": "2AS",
-      "title": "India Tour Of Sri Lanka 2026",
-      "slug": "india-tour-of-sri-lanka-2026-2AS",
-      "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/india-tour-of-sri-lanka-2026-2AS",
-      "matches_url": "https://crex.com/series/india-tour-of-sri-lanka-2026-2AS/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-INT-1WS",
-      "series_key": "1WS",
-      "title": "Pakistan Tour Of England 2026",
-      "slug": "pakistan-tour-of-england-2026-1WS",
-      "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/pakistan-tour-of-england-2026-1WS",
-      "matches_url": "https://crex.com/series/pakistan-tour-of-england-2026-1WS/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-INT-2BG",
-      "series_key": "2BG",
-      "title": "Bangladesh Tour Of Australia 2026",
-      "slug": "bangladesh-tour-of-australia-2026-2BG",
-      "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/bangladesh-tour-of-australia-2026-2BG",
-      "matches_url": "https://crex.com/series/bangladesh-tour-of-australia-2026-2BG/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-DOM-2KF",
-      "series_key": "2KF",
-      "title": "Duleep Trophy 2026",
-      "slug": "duleep-trophy-2026-2KF",
+      "series_id": "12723",
+      "title": "Australia Domestic One-Day Cup 2026-27",
       "category": "domestic",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/duleep-trophy-2026-2KF",
-      "matches_url": "https://crex.com/series/duleep-trophy-2026-2KF/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/12723"
     },
     {
-      "unique_series_id": "S-WOM-2LH",
-      "series_key": "2LH",
-      "title": "Womens Asia Cup 2026",
-      "slug": "womens-asia-cup-2026-2LH",
-      "category": "women",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/womens-asia-cup-2026-2LH",
-      "matches_url": "https://crex.com/series/womens-asia-cup-2026-2LH/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-INT-2JC",
-      "series_key": "2JC",
-      "title": "Asian Games Mens T20 2026",
-      "slug": "asian-games-mens-t20-2026-2JC",
-      "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/asian-games-mens-t20-2026-2JC",
-      "matches_url": "https://crex.com/series/asian-games-mens-t20-2026-2JC/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-INT-2FQ",
-      "series_key": "2FQ",
-      "title": "Afghanistan Tour Of Ireland 2026",
-      "slug": "afghanistan-tour-of-ireland-2026-2FQ",
-      "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/afghanistan-tour-of-ireland-2026-2FQ",
-      "matches_url": "https://crex.com/series/afghanistan-tour-of-ireland-2026-2FQ/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-INT-1SL",
-      "series_key": "1SL",
-      "title": "India Tour Of Bangladesh 2026",
-      "slug": "india-tour-of-bangladesh-2026-1SL",
-      "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/india-tour-of-bangladesh-2026-1SL",
-      "matches_url": "https://crex.com/series/india-tour-of-bangladesh-2026-1SL/matches",
-      "status": "Ongoing / Scheduled"
+      "series_id": "13140",
+      "title": "CSA Four-Day Series Division One 2026-27",
+      "category": "domestic",
+      "url": "/series/13140"
     }
   ],
   "international": [
     {
-      "unique_series_id": "S-INT-2LR",
-      "series_key": "2LR",
-      "title": "Afghanistan Vs India In India 2026",
-      "slug": "afghanistan-vs-india-in-india-2026-2LR",
+      "series_id": "12973",
+      "title": "Afg vs Ind in India 2026",
       "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/afghanistan-vs-india-in-india-2026-2LR",
-      "matches_url": "https://crex.com/series/afghanistan-vs-india-in-india-2026-2LR/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/12973"
     },
     {
-      "unique_series_id": "S-INT-2GK",
-      "series_key": "2GK",
-      "title": "Australia Tour Of Zimbabwe 2026",
-      "slug": "australia-tour-of-zimbabwe-2026-2GK",
+      "series_id": "10576",
+      "title": "England vs Sri Lanka, 2026",
       "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/australia-tour-of-zimbabwe-2026-2GK",
-      "matches_url": "https://crex.com/series/australia-tour-of-zimbabwe-2026-2GK/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/10576"
     },
     {
-      "unique_series_id": "S-INT-1WT",
-      "series_key": "1WT",
-      "title": "Sri Lanka Tour Of England 2026",
-      "slug": "sri-lanka-tour-of-england-2026-1WT",
-      "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/sri-lanka-tour-of-england-2026-1WT",
-      "matches_url": "https://crex.com/series/sri-lanka-tour-of-england-2026-1WT/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-INT-2IC",
-      "series_key": "2IC",
-      "title": "Australia U19 Tour Of India 2026",
-      "slug": "australia-u19-tour-of-india-2026-2IC",
-      "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/australia-u19-tour-of-india-2026-2IC",
-      "matches_url": "https://crex.com/series/australia-u19-tour-of-india-2026-2IC/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-INT-2MJ",
-      "series_key": "2MJ",
-      "title": "United Arab Emirates Tour Of Malaysia 2026",
-      "slug": "united-arab-emirates-tour-of-malaysia-2026-2MJ",
-      "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/united-arab-emirates-tour-of-malaysia-2026-2MJ",
-      "matches_url": "https://crex.com/series/united-arab-emirates-tour-of-malaysia-2026-2MJ/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-INT-2ML",
-      "series_key": "2ML",
-      "title": "Hong Kong Tour Of Japan 2026",
-      "slug": "hong-kong-tour-of-japan-2026-2ML",
-      "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/hong-kong-tour-of-japan-2026-2ML",
-      "matches_url": "https://crex.com/series/hong-kong-tour-of-japan-2026-2ML/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-INT-2MM",
-      "series_key": "2MM",
+      "series_id": "13121",
       "title": "Africa Continental Cup 2026",
-      "slug": "africa-continental-cup-2026-2MM",
       "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/africa-continental-cup-2026-2MM",
-      "matches_url": "https://crex.com/series/africa-continental-cup-2026-2MM/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/13121"
     },
     {
-      "unique_series_id": "S-INT-2IN",
-      "series_key": "2IN",
-      "title": "Pakistan U19 Tour Of England 2026",
-      "slug": "pakistan-u19-tour-of-england-2026-2IN",
+      "series_id": "13080",
+      "title": "Hong Kong, China tour of Japan 2026",
       "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/pakistan-u19-tour-of-england-2026-2IN",
-      "matches_url": "https://crex.com/series/pakistan-u19-tour-of-england-2026-2IN/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/13080"
     },
     {
-      "unique_series_id": "S-INT-1QK",
-      "series_key": "1QK",
-      "title": "World Test Championship 2025 27",
-      "slug": "world-test-championship-2025-27-1QK",
+      "series_id": "11997",
+      "title": "Australia tour of Zimbabwe 2026",
       "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/world-test-championship-2025-27-1QK",
-      "matches_url": "https://crex.com/series/world-test-championship-2025-27-1QK/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/11997"
     },
     {
-      "unique_series_id": "S-INT-2LQ",
-      "series_key": "2LQ",
-      "title": "South Africa Tour Of Namibia 2026",
-      "slug": "south-africa-tour-of-namibia-2026-2LQ",
+      "series_id": "12191",
+      "title": "Australia U19 tour of India 2026",
       "category": "international",
-      "dates": "9 September - 13 September",
-      "crex_url": "https://crex.com/series/south-africa-tour-of-namibia-2026-2LQ",
-      "matches_url": "https://crex.com/series/south-africa-tour-of-namibia-2026-2LQ/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/12191"
     },
     {
-      "unique_series_id": "S-INT-2AS",
-      "series_key": "2AS",
-      "title": "India Tour Of Sri Lanka 2026",
-      "slug": "india-tour-of-sri-lanka-2026-2AS",
+      "series_id": "13131",
+      "title": "United Arab Emirates tour of Malaysia, 2026Sep 14-Sep 17",
       "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/india-tour-of-sri-lanka-2026-2AS",
-      "matches_url": "https://crex.com/series/india-tour-of-sri-lanka-2026-2AS/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/13131"
     },
     {
-      "unique_series_id": "S-INT-1WS",
-      "series_key": "1WS",
-      "title": "Pakistan Tour Of England 2026",
-      "slug": "pakistan-tour-of-england-2026-1WS",
+      "series_id": "13053",
+      "title": "North American Cup, 2026Sep 20-Sep 28",
       "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/pakistan-tour-of-england-2026-1WS",
-      "matches_url": "https://crex.com/series/pakistan-tour-of-england-2026-1WS/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/13053"
     },
     {
-      "unique_series_id": "S-INT-2BG",
-      "series_key": "2BG",
-      "title": "Bangladesh Tour Of Australia 2026",
-      "slug": "bangladesh-tour-of-australia-2026-2BG",
+      "series_id": "12184",
+      "title": "Australia A tour of India 2026Sep 22-Oct 11",
       "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/bangladesh-tour-of-australia-2026-2BG",
-      "matches_url": "https://crex.com/series/bangladesh-tour-of-australia-2026-2BG/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/12184"
     },
     {
-      "unique_series_id": "S-INT-2JC",
-      "series_key": "2JC",
-      "title": "Asian Games Mens T20 2026",
-      "slug": "asian-games-mens-t20-2026-2JC",
+      "series_id": "13110",
+      "title": "India tour of Japan, 2026Sep 22-Sep 22",
       "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/asian-games-mens-t20-2026-2JC",
-      "matches_url": "https://crex.com/series/asian-games-mens-t20-2026-2JC/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/13110"
     },
     {
-      "unique_series_id": "S-INT-2FQ",
-      "series_key": "2FQ",
-      "title": "Afghanistan Tour Of Ireland 2026",
-      "slug": "afghanistan-tour-of-ireland-2026-2FQ",
+      "series_id": "11595",
+      "title": "Australia tour of South Africa, 2026Sep 24-Oct 31",
       "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/afghanistan-tour-of-ireland-2026-2FQ",
-      "matches_url": "https://crex.com/series/afghanistan-tour-of-ireland-2026-2FQ/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/11595"
     },
     {
-      "unique_series_id": "S-INT-1SL",
-      "series_key": "1SL",
-      "title": "India Tour Of Bangladesh 2026",
-      "slug": "india-tour-of-bangladesh-2026-1SL",
+      "series_id": "12563",
+      "title": "Asian Games 2026Sep 24-Oct 03",
       "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/india-tour-of-bangladesh-2026-1SL",
-      "matches_url": "https://crex.com/series/india-tour-of-bangladesh-2026-1SL/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/12563"
+    },
+    {
+      "series_id": "11902",
+      "title": "West Indies tour of India, 2026Sep 27-Oct 17",
+      "category": "international",
+      "url": "/series/11902"
+    },
+    {
+      "series_id": "12387",
+      "title": "Irani Cup 2026Oct 01-Oct 05",
+      "category": "international",
+      "url": "/series/12387"
+    },
+    {
+      "series_id": "13187",
+      "title": "Afghanistan vs Bangladesh in UAE, 2026Oct 09-Oct 13",
+      "category": "international",
+      "url": "/series/13187"
+    },
+    {
+      "series_id": "13037",
+      "title": "Sri Lanka tour of Pakistan, 2026Oct 09-Nov 21",
+      "category": "international",
+      "url": "/series/13037"
+    },
+    {
+      "series_id": "12747",
+      "title": "T20 Spring Challenge 2026Oct 11-Oct 21",
+      "category": "international",
+      "url": "/series/12747"
+    },
+    {
+      "series_id": "13197",
+      "title": "ODI Tri-Nation Series in UAE, 2026Oct 17-Oct 23",
+      "category": "international",
+      "url": "/series/13197"
+    },
+    {
+      "series_id": "13047",
+      "title": "Pakistan ODI Tri-Series, 2026Oct 18-Oct 31",
+      "category": "international",
+      "url": "/series/13047"
+    },
+    {
+      "series_id": "12543",
+      "title": "India tour of New Zealand 2026Oct 22-Dec 01",
+      "category": "international",
+      "url": "/series/12543"
+    },
+    {
+      "series_id": "13211",
+      "title": "West Indies tour of Bangladesh, 2026Oct 22-Nov 01",
+      "category": "international",
+      "url": "/series/13211"
+    },
+    {
+      "series_id": "13091",
+      "title": "India A tour of New Zealand, 2026Oct 24-Nov 10",
+      "category": "international",
+      "url": "/series/13091"
+    },
+    {
+      "series_id": "13201",
+      "title": "Afghanistan vs Zimbabwe in UAE, 2026Oct 27-Nov 17",
+      "category": "international",
+      "url": "/series/13201"
+    },
+    {
+      "series_id": "13020",
+      "title": "The Ford Trophy 2026-27Oct 28-Feb 21",
+      "category": "international",
+      "url": "/series/13020"
+    },
+    {
+      "series_id": "11876",
+      "title": "England tour of Australia, 2026Nov 13-Dec 02",
+      "category": "international",
+      "url": "/series/11876"
+    },
+    {
+      "series_id": "12431",
+      "title": "Syed Mushtaq Ali Trophy Plate 2026Nov 14-Nov 24",
+      "category": "international",
+      "url": "/series/12431"
+    },
+    {
+      "series_id": "12420",
+      "title": "Syed Mushtaq Ali Trophy Elite 2026Nov 14-Dec 06",
+      "category": "international",
+      "url": "/series/12420"
+    },
+    {
+      "series_id": "11606",
+      "title": "Bangladesh tour of South Africa, 2026Nov 15-Dec 13",
+      "category": "international",
+      "url": "/series/11606"
+    },
+    {
+      "series_id": "13097",
+      "title": "Plunket Shield 2026-27Nov 19-Mar 29",
+      "category": "international",
+      "url": "/series/13097"
+    },
+    {
+      "series_id": "12923",
+      "title": "India A tour of Nepal, 2026Dec 09-Dec 13",
+      "category": "international",
+      "url": "/series/12923"
+    },
+    {
+      "series_id": "11858",
+      "title": "New Zealand tour of Australia, 2026-27Dec 09-Jan 08",
+      "category": "international",
+      "url": "/series/11858"
+    },
+    {
+      "series_id": "11913",
+      "title": "Sri Lanka tour of India, 2026Dec 13-Dec 27",
+      "category": "international",
+      "url": "/series/11913"
+    },
+    {
+      "series_id": "12442",
+      "title": "Vijay Hazare Trophy Elite 2026-27Dec 14-Jan 08",
+      "category": "international",
+      "url": "/series/12442"
+    },
+    {
+      "series_id": "12444",
+      "title": "Vijay Hazare Trophy Plate 2026Dec 14-Dec 27",
+      "category": "international",
+      "url": "/series/12444"
+    },
+    {
+      "series_id": "11612",
+      "title": "England tour of South Africa, 2026-27Dec 17-Jan 15",
+      "category": "international",
+      "url": "/series/11612"
+    },
+    {
+      "series_id": "11924",
+      "title": "Zimbabwe tour of India, 2027Jan 03-Jan 09",
+      "category": "international",
+      "url": "/series/11924"
+    },
+    {
+      "series_id": "12547",
+      "title": "Sri Lanka tour of New Zealand 2027Jan 16-Feb 16",
+      "category": "international",
+      "url": "/series/12547"
+    },
+    {
+      "series_id": "12791",
+      "title": "SA20, 2027Jan 17-Feb 21",
+      "category": "international",
+      "url": "/series/12791"
+    },
+    {
+      "series_id": "11935",
+      "title": "Australia tour of India, 2027Jan 21-Mar 03",
+      "category": "international",
+      "url": "/series/11935"
+    },
+    {
+      "series_id": "11883",
+      "title": "Australia vs England, 150th Anniversary One-off Test Match, 2027Mar 11-Mar 15",
+      "category": "international",
+      "url": "/series/11883"
+    },
+    {
+      "series_id": "13213",
+      "title": "Bangladesh tour of Nepal, 2027Mar 26-Mar 30",
+      "category": "international",
+      "url": "/series/13213"
+    },
+    {
+      "series_id": "12797",
+      "title": "Pakistan tour of England 2027May 15-May 26",
+      "category": "international",
+      "url": "/series/12797"
+    },
+    {
+      "series_id": "12811",
+      "title": "Bangladesh tour of England 2027May 28-Jun 01",
+      "category": "international",
+      "url": "/series/12811"
+    },
+    {
+      "series_id": "12807",
+      "title": "The Ashes 2027Jun 07-Aug 02",
+      "category": "international",
+      "url": "/series/12807"
+    },
+    {
+      "series_id": "12801",
+      "title": "ICC World Test Championship Final 2027Jun 09-Jun 13",
+      "category": "international",
+      "url": "/series/12801"
+    },
+    {
+      "series_id": "12837",
+      "title": "New Zealand tour of England 2027Sep 07-Sep 25",
+      "category": "international",
+      "url": "/series/12837"
     }
   ],
   "league": [
     {
-      "unique_series_id": "S-LEA-2E2",
-      "series_key": "2E2",
+      "series_id": "1534175",
       "title": "Caribbean Premier League 2026",
-      "slug": "caribbean-premier-league-2026-2E2",
       "category": "league",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/caribbean-premier-league-2026-2E2",
-      "matches_url": "https://crex.com/series/caribbean-premier-league-2026-2E2/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/1534175"
     },
     {
-      "unique_series_id": "S-LEA-1RN",
-      "series_key": "1RN",
-      "title": "European T20 Premier League 2026",
-      "slug": "european-t20-premier-league-2026-1RN",
+      "series_id": "12123",
+      "title": "CPL 2026",
       "category": "league",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/european-t20-premier-league-2026-1RN",
-      "matches_url": "https://crex.com/series/european-t20-premier-league-2026-1RN/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/12123"
     },
     {
-      "unique_series_id": "S-LEA-2N1",
-      "series_key": "2N1",
-      "title": "Oman Invitational Triangular 2026",
-      "slug": "oman-invitational-triangular-2026-2N1",
+      "series_id": "12870",
+      "title": "ETPL 2026",
       "category": "league",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/oman-invitational-triangular-2026-2N1",
-      "matches_url": "https://crex.com/series/oman-invitational-triangular-2026-2N1/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/12870"
     },
     {
-      "unique_series_id": "S-LEA-2MG",
-      "series_key": "2MG",
-      "title": "Dehradun T20 League 2026",
-      "slug": "dehradun-t20-league-2026-2MG",
+      "series_id": "7572",
+      "title": "ICC Cricket World Cup League Two 2023-27Feb 15-Dec 29",
       "category": "league",
-      "dates": "1 September - 9 September",
-      "crex_url": "https://crex.com/series/dehradun-t20-league-2026-2MG",
-      "matches_url": "https://crex.com/series/dehradun-t20-league-2026-2MG/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/7572"
+    },
+    {
+      "series_id": "8993",
+      "title": "ICC CWC Challenge League A, 2024-26Sep 25-Dec 30",
+      "category": "league",
+      "url": "/series/8993"
+    },
+    {
+      "series_id": "9001",
+      "title": "ICC CWC Challenge League B, 2024-26Nov 06-Dec 30",
+      "category": "league",
+      "url": "/series/9001"
+    },
+    {
+      "series_id": "12037",
+      "title": "International League T20 2026Nov 22-Dec 20",
+      "category": "league",
+      "url": "/series/12037"
+    },
+    {
+      "series_id": "12731",
+      "title": "Big Bash League 2026-27Dec 12-Jan 26",
+      "category": "league",
+      "url": "/series/12731"
+    },
+    {
+      "series_id": "9249",
+      "title": "Indian Premier League 2027Mar 10-May 15",
+      "category": "league",
+      "url": "/series/9249"
     }
   ],
   "domestic": [
     {
-      "unique_series_id": "S-DOM-2KN",
-      "series_key": "2KN",
-      "title": "Australia Domestic One Day Cup 2026 27",
-      "slug": "australia-domestic-one-day-cup-2026-27-2KN",
+      "series_id": "11408",
+      "title": "County Championship Division One 2026",
       "category": "domestic",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/australia-domestic-one-day-cup-2026-27-2KN",
-      "matches_url": "https://crex.com/series/australia-domestic-one-day-cup-2026-27-2KN/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/11408"
     },
     {
-      "unique_series_id": "S-DOM-2MQ",
-      "series_key": "2MQ",
-      "title": "President Trophy 2026",
-      "slug": "president-trophy-2026-2MQ",
+      "series_id": "12723",
+      "title": "Australia Domestic One-Day Cup 2026-27",
       "category": "domestic",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/president-trophy-2026-2MQ",
-      "matches_url": "https://crex.com/series/president-trophy-2026-2MQ/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/12723"
     },
     {
-      "unique_series_id": "S-DOM-2N2",
-      "series_key": "2N2",
-      "title": "Csa Provincial One Day Challenge Division Two 2026 27",
-      "slug": "csa-provincial-one-day-challenge-division-two-2026-27-2N2",
+      "series_id": "13140",
+      "title": "CSA Four-Day Series Division One 2026-27",
       "category": "domestic",
-      "dates": "13 September - 28 March",
-      "crex_url": "https://crex.com/series/csa-provincial-one-day-challenge-division-two-2026-27-2N2",
-      "matches_url": "https://crex.com/series/csa-provincial-one-day-challenge-division-two-2026-27-2N2/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/13140"
     },
     {
-      "unique_series_id": "S-DOM-2KF",
-      "series_key": "2KF",
-      "title": "Duleep Trophy 2026",
-      "slug": "duleep-trophy-2026-2KF",
+      "series_id": "11416",
+      "title": "County Championship Division Two 2026",
       "category": "domestic",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/duleep-trophy-2026-2KF",
-      "matches_url": "https://crex.com/series/duleep-trophy-2026-2KF/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/11416"
+    },
+    {
+      "series_id": "13150",
+      "title": "CSA Three-Day Series Division Two 2026-27",
+      "category": "domestic",
+      "url": "/series/13150"
+    },
+    {
+      "series_id": "11418",
+      "title": "England Domestic One-Day Cup 2026Jul 21-Sep 20",
+      "category": "domestic",
+      "url": "/series/11418"
+    },
+    {
+      "series_id": "13160",
+      "title": "CSA Provincial One-Day Challenge Division Two 2026-27Sep 13-Mar 28",
+      "category": "domestic",
+      "url": "/series/13160"
+    },
+    {
+      "series_id": "13180",
+      "title": "CSA T20 Challenge 2026Sep 22-Nov 14",
+      "category": "domestic",
+      "url": "/series/13180"
+    },
+    {
+      "series_id": "12717",
+      "title": "Sheffield Shield 2026-27Oct 07-Mar 29",
+      "category": "domestic",
+      "url": "/series/12717"
+    },
+    {
+      "series_id": "12398",
+      "title": "Ranji Trophy Elite 2026-27Oct 11-Mar 02",
+      "category": "domestic",
+      "url": "/series/12398"
+    },
+    {
+      "series_id": "12409",
+      "title": "Ranji Trophy Plate 2026-27Oct 11-Jan 28",
+      "category": "domestic",
+      "url": "/series/12409"
+    },
+    {
+      "series_id": "13170",
+      "title": "CSA Provincial One-Day Challenge Division One 2027Feb 27-Mar 28",
+      "category": "domestic",
+      "url": "/series/13170"
     }
   ],
   "women": [
     {
-      "unique_series_id": "S-WOM-2JY",
-      "series_key": "2JY",
-      "title": "Womens Asian Games T20 2026",
-      "slug": "womens-asian-games-t20-2026-2JY",
+      "series_id": "12210",
+      "title": "Australia A Women tour of India 2026",
       "category": "women",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/womens-asian-games-t20-2026-2JY",
-      "matches_url": "https://crex.com/series/womens-asian-games-t20-2026-2JY/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/12210"
     },
     {
-      "unique_series_id": "S-WOM-2J1",
-      "series_key": "2J1",
-      "title": "South Africa Women Tour Of Zimbabwe 2026",
-      "slug": "south-africa-women-tour-of-zimbabwe-2026-2J1",
+      "series_id": "12602",
+      "title": "Women's Asian Games 2026",
       "category": "women",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/south-africa-women-tour-of-zimbabwe-2026-2J1",
-      "matches_url": "https://crex.com/series/south-africa-women-tour-of-zimbabwe-2026-2J1/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/12602"
     },
     {
-      "unique_series_id": "S-WOM-2I7",
-      "series_key": "2I7",
-      "title": "Australia A Women Tour Of India 2026",
-      "slug": "australia-a-women-tour-of-india-2026-2I7",
+      "series_id": "12595",
+      "title": "WCPL 2026",
       "category": "women",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/australia-a-women-tour-of-india-2026-2I7",
-      "matches_url": "https://crex.com/series/australia-a-women-tour-of-india-2026-2I7/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/12595"
     },
     {
-      "unique_series_id": "S-WOM-2E1",
-      "series_key": "2E1",
-      "title": "Womens Caribbean Premier League 2026",
-      "slug": "womens-caribbean-premier-league-2026-2E1",
+      "series_id": "12475",
+      "title": "Zimbabwe Women v South Africa Women, 2026",
       "category": "women",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/womens-caribbean-premier-league-2026-2E1",
-      "matches_url": "https://crex.com/series/womens-caribbean-premier-league-2026-2E1/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/12475"
     },
     {
-      "unique_series_id": "S-WOM-2AN",
-      "series_key": "2AN",
-      "title": "England Women One Day Cup 2026",
-      "slug": "england-women-one-day-cup-2026-2AN",
+      "series_id": "11898",
+      "title": "Bangladesh Women tour of Australia, 2026Oct 09-Oct 14",
       "category": "women",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/england-women-one-day-cup-2026-2AN",
-      "matches_url": "https://crex.com/series/england-women-one-day-cup-2026-2AN/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/11898"
     },
     {
-      "unique_series_id": "S-WOM-2GS",
-      "series_key": "2GS",
-      "title": "England Women One Day Cup League 2 2026",
-      "slug": "england-women-one-day-cup-league-2-2026-2GS",
+      "series_id": "12200",
+      "title": "Zimbabwe Women tour of India 2026Oct 16-Oct 28",
       "category": "women",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/england-women-one-day-cup-league-2-2026-2GS",
-      "matches_url": "https://crex.com/series/england-women-one-day-cup-league-2-2026-2GS/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/12200"
     },
     {
-      "unique_series_id": "S-WOM-1WP",
-      "series_key": "1WP",
-      "title": "Ireland Women Tour Of England 2026",
-      "slug": "ireland-women-tour-of-england-2026-1WP",
+      "series_id": "11859",
+      "title": "New Zealand Women tour of Australia, 2026Oct 18-Oct 22",
       "category": "women",
-      "dates": "1 September - 6 September",
-      "crex_url": "https://crex.com/series/ireland-women-tour-of-england-2026-1WP",
-      "matches_url": "https://crex.com/series/ireland-women-tour-of-england-2026-1WP/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/11859"
     },
     {
-      "unique_series_id": "S-WOM-2MB",
-      "series_key": "2MB",
-      "title": "Serbia Womens T20I Tri Series 2026",
-      "slug": "serbia-womens-t20i-tri-series-2026-2MB",
+      "series_id": "12677",
+      "title": "Womens Big Bash League 2026Oct 29-Dec 05",
       "category": "women",
-      "dates": "4 September - 6 September",
-      "crex_url": "https://crex.com/series/serbia-womens-t20i-tri-series-2026-2MB",
-      "matches_url": "https://crex.com/series/serbia-womens-t20i-tri-series-2026-2MB/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/12677"
     },
     {
-      "unique_series_id": "S-WOM-2MC",
-      "series_key": "2MC",
-      "title": "Czech Womens T20I Tri Series 2026",
-      "slug": "czech-womens-t20i-tri-series-2026-2MC",
+      "series_id": "12232",
+      "title": "England Women U19 tour of India 2026Nov 26-Dec 06",
       "category": "women",
-      "dates": "4 September - 6 September",
-      "crex_url": "https://crex.com/series/czech-womens-t20i-tri-series-2026-2MC",
-      "matches_url": "https://crex.com/series/czech-womens-t20i-tri-series-2026-2MC/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/12232"
     },
     {
-      "unique_series_id": "S-WOM-2ME",
-      "series_key": "2ME",
-      "title": "Malaysia Women Tour Of Japan 2026",
-      "slug": "malaysia-women-tour-of-japan-2026-2ME",
+      "series_id": "12221",
+      "title": "England A Women tour of India 2026Nov 30-Dec 22",
       "category": "women",
-      "dates": "11 September - 13 September",
-      "crex_url": "https://crex.com/series/malaysia-women-tour-of-japan-2026-2ME",
-      "matches_url": "https://crex.com/series/malaysia-women-tour-of-japan-2026-2ME/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/12221"
     },
     {
-      "unique_series_id": "S-WOM-2LH",
-      "series_key": "2LH",
-      "title": "Womens Asia Cup 2026",
-      "slug": "womens-asia-cup-2026-2LH",
+      "series_id": "11784",
+      "title": "India Women tour of South Africa, 2026Dec 09-Dec 30",
       "category": "women",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/womens-asia-cup-2026-2LH",
-      "matches_url": "https://crex.com/series/womens-asia-cup-2026-2LH/matches",
-      "status": "Ongoing / Scheduled"
-    }
-  ],
-  "current": [
-    {
-      "unique_series_id": "S-INT-2LR",
-      "series_key": "2LR",
-      "title": "Afghanistan Vs India In India 2026",
-      "slug": "afghanistan-vs-india-in-india-2026-2LR",
-      "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/afghanistan-vs-india-in-india-2026-2LR",
-      "matches_url": "https://crex.com/series/afghanistan-vs-india-in-india-2026-2LR/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/11784"
     },
     {
-      "unique_series_id": "S-INT-2GK",
-      "series_key": "2GK",
-      "title": "Australia Tour Of Zimbabwe 2026",
-      "slug": "australia-tour-of-zimbabwe-2026-2GK",
-      "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/australia-tour-of-zimbabwe-2026-2GK",
-      "matches_url": "https://crex.com/series/australia-tour-of-zimbabwe-2026-2GK/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-LEA-2E2",
-      "series_key": "2E2",
-      "title": "Caribbean Premier League 2026",
-      "slug": "caribbean-premier-league-2026-2E2",
-      "category": "league",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/caribbean-premier-league-2026-2E2",
-      "matches_url": "https://crex.com/series/caribbean-premier-league-2026-2E2/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-INT-1WT",
-      "series_key": "1WT",
-      "title": "Sri Lanka Tour Of England 2026",
-      "slug": "sri-lanka-tour-of-england-2026-1WT",
-      "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/sri-lanka-tour-of-england-2026-1WT",
-      "matches_url": "https://crex.com/series/sri-lanka-tour-of-england-2026-1WT/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-WOM-2JY",
-      "series_key": "2JY",
-      "title": "Womens Asian Games T20 2026",
-      "slug": "womens-asian-games-t20-2026-2JY",
+      "series_id": "12552",
+      "title": "Bangladesh Women tour of New Zealand 2026Dec 10-Dec 23",
       "category": "women",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/womens-asian-games-t20-2026-2JY",
-      "matches_url": "https://crex.com/series/womens-asian-games-t20-2026-2JY/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/12552"
     },
     {
-      "unique_series_id": "S-INT-2IC",
-      "series_key": "2IC",
-      "title": "Australia U19 Tour Of India 2026",
-      "slug": "australia-u19-tour-of-india-2026-2IC",
-      "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/australia-u19-tour-of-india-2026-2IC",
-      "matches_url": "https://crex.com/series/australia-u19-tour-of-india-2026-2IC/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-LEA-1RN",
-      "series_key": "1RN",
-      "title": "European T20 Premier League 2026",
-      "slug": "european-t20-premier-league-2026-1RN",
-      "category": "league",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/european-t20-premier-league-2026-1RN",
-      "matches_url": "https://crex.com/series/european-t20-premier-league-2026-1RN/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-WOM-2J1",
-      "series_key": "2J1",
-      "title": "South Africa Women Tour Of Zimbabwe 2026",
-      "slug": "south-africa-women-tour-of-zimbabwe-2026-2J1",
+      "series_id": "13100",
+      "title": "ICC Women\u2019s Champions Trophy 2027Feb 13-Feb 28",
       "category": "women",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/south-africa-women-tour-of-zimbabwe-2026-2J1",
-      "matches_url": "https://crex.com/series/south-africa-women-tour-of-zimbabwe-2026-2J1/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/13100"
     },
     {
-      "unique_series_id": "S-INT-2MJ",
-      "series_key": "2MJ",
-      "title": "United Arab Emirates Tour Of Malaysia 2026",
-      "slug": "united-arab-emirates-tour-of-malaysia-2026-2MJ",
-      "category": "international",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/united-arab-emirates-tour-of-malaysia-2026-2MJ",
-      "matches_url": "https://crex.com/series/united-arab-emirates-tour-of-malaysia-2026-2MJ/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-WOM-2I7",
-      "series_key": "2I7",
-      "title": "Australia A Women Tour Of India 2026",
-      "slug": "australia-a-women-tour-of-india-2026-2I7",
+      "series_id": "12701",
+      "title": "New Zealand Women tour of Australia, 2027Mar 06-Mar 11",
       "category": "women",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/australia-a-women-tour-of-india-2026-2I7",
-      "matches_url": "https://crex.com/series/australia-a-women-tour-of-india-2026-2I7/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/12701"
     },
     {
-      "unique_series_id": "S-DOM-2KN",
-      "series_key": "2KN",
-      "title": "Australia Domestic One Day Cup 2026 27",
-      "slug": "australia-domestic-one-day-cup-2026-27-2KN",
-      "category": "domestic",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/australia-domestic-one-day-cup-2026-27-2KN",
-      "matches_url": "https://crex.com/series/australia-domestic-one-day-cup-2026-27-2KN/matches",
-      "status": "Ongoing / Scheduled"
-    },
-    {
-      "unique_series_id": "S-WOM-2E1",
-      "series_key": "2E1",
-      "title": "Womens Caribbean Premier League 2026",
-      "slug": "womens-caribbean-premier-league-2026-2E1",
+      "series_id": "11792",
+      "title": "Australia Women tour of South Africa, 2027Mar 18-Apr 11",
       "category": "women",
-      "dates": "2026 Season",
-      "crex_url": "https://crex.com/series/womens-caribbean-premier-league-2026-2E1",
-      "matches_url": "https://crex.com/series/womens-caribbean-premier-league-2026-2E1/matches",
-      "status": "Ongoing / Scheduled"
+      "url": "/series/11792"
+    },
+    {
+      "series_id": "12823",
+      "title": "Womens Ashes, 2027Jun 24-Jul 20",
+      "category": "women",
+      "url": "/series/12823"
+    },
+    {
+      "series_id": "12843",
+      "title": "Bangladesh Women tour of England, 2027Sep 08-Sep 24",
+      "category": "women",
+      "url": "/series/12843"
     }
   ]
 }

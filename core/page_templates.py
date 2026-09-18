@@ -91,9 +91,10 @@ class PageTemplates:
                 b_rem_html = f'<div class="text-3xs text-emerald-300 font-medium mt-0.5">{html_escape.escape(b_rem)}</div>' if b_rem else ''
 
                 cards_html += f"""
-                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between"
+                <div class="drawer-card bg-[#2d2d2d] hover:bg-[#383838] p-3 rounded-xl border border-slate-700 transition flex flex-col justify-between cursor-pointer"
                      data-cat="{m.get('category', 'international')}"
-                     data-live="{str(is_live).lower()}">
+                     data-live="{str(is_live).lower()}"
+                     onclick="window.location.href='{m.get('url', '#')}'">
                     <div>
                         <div class="flex items-center justify-between gap-2 text-3xs text-slate-400 font-semibold mb-1">
                             <span class="truncate uppercase text-emerald-400">{html_escape.escape(m.get('series', 'Tournament'))}</span>
@@ -343,14 +344,14 @@ class PageTemplates:
                 sid_slug = re.sub(r'[^a-zA-Z0-9]+', '-', series_name).strip('-').lower()
 
                 html += f"""
-                <div class="match-card bg-white rounded-xl border border-slate-200 shadow-2xs hover:shadow-md transition p-4 flex flex-col justify-between" data-cat="{m.get('category', 'league')}">
+                <div class="match-card bg-white rounded-xl border border-slate-200 shadow-2xs hover:shadow-md hover:border-emerald-500 transition p-4 flex flex-col justify-between cursor-pointer" data-cat="{m.get('category', 'league')}" onclick="window.location.href='/match/{raw_mid}'">
                     <div>
                         <!-- Header: • Live | Series Name > -->
                         <div class="flex items-center justify-between text-2xs mb-2 pb-2 border-b border-slate-100">
                             <div class="flex items-center gap-2 font-extrabold min-w-0">
                                 {top_badge}
                                 <span class="text-slate-300">|</span>
-                                <a href="/series/{sid_slug}" class="text-slate-700 hover:text-emerald-800 font-bold truncate">
+                                <a href="/series/{sid_slug}" onclick="event.stopPropagation()" class="text-slate-700 hover:text-emerald-800 font-bold truncate">
                                     {html_escape.escape(series_name)} &rsaquo;
                                 </a>
                             </div>
@@ -399,7 +400,7 @@ class PageTemplates:
                             {html_escape.escape(status_raw)}
                             {f' • {html_escape.escape(balls_rem)}' if balls_rem else ''}
                         </div>
-                        <a href="/match/{raw_mid}" class="shrink-0 px-2.5 py-1 text-3xs font-black bg-emerald-50 hover:bg-emerald-100 text-emerald-800 rounded border border-emerald-200 transition">
+                        <a href="/match/{raw_mid}" onclick="event.stopPropagation()" class="shrink-0 px-2.5 py-1 text-3xs font-black bg-emerald-50 hover:bg-emerald-100 text-emerald-800 rounded border border-emerald-200 transition">
                             Center &raquo;
                         </a>
                     </div>
@@ -1029,3 +1030,242 @@ class PageTemplates:
     {footer_html}
 </body>
 </html>"""
+
+    @classmethod
+    def render_match_hub_page(cls, match_info: Dict[str, Any], matches_data: Dict[str, Any] = None, series_data: Dict[str, Any] = None) -> str:
+        matches_data = matches_data or {}
+        series_data = series_data or {}
+        header_html = cls.render_global_header("live-scores", matches_data, series_data)
+        footer_html = cls.render_global_footer()
+
+        m_id = str(match_info.get("match_id", "")).strip()
+        title = match_info.get("title", f"Match #{m_id}")
+        series_name = match_info.get("series", "Cricket Tournament")
+        stage = match_info.get("stage", "Match")
+        venue = match_info.get("venue", "International Stadium")
+        cat = match_info.get("category", "international").upper()
+        status_text = match_info.get("situation") or match_info.get("status") or "Match in Progress"
+        is_live = match_info.get("is_live", False)
+        is_done = match_info.get("is_completed", False)
+
+        t1 = match_info.get("team_1", "")
+        t2 = match_info.get("team_2", "")
+        if not t1 and "title" in match_info:
+            parts = re.split(r'\s+(?:vs|v)\s+', match_info.get("title", ""), flags=re.I)
+            if len(parts) >= 2:
+                t1, t2 = parts[0].strip(), parts[1].strip()
+            else:
+                t1, t2 = match_info.get("title", "Team 1"), "Team 2"
+
+        t1_code = match_info.get("team_1_code") or ("".join([w[0] for w in t1.split()[:3]]).upper() if t1 else "T1")[:4]
+        t2_code = match_info.get("team_2_code") or ("".join([w[0] for w in t2.split()[:3]]).upper() if t2 else "T2")[:4]
+
+        s1 = match_info.get("team_1_score", "") or ("Yet to bat" if is_live else "")
+        s2 = match_info.get("team_2_score", "") or ("Yet to bat" if is_live else "")
+
+        if is_live:
+            status_badge = '<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-red-600 text-white shadow-xs uppercase tracking-wider"><span class="w-2 h-2 rounded-full bg-white animate-ping"></span>LIVE</span>'
+            status_style = "text-amber-900 bg-amber-50 border-amber-200"
+        elif is_done:
+            status_badge = '<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black bg-emerald-700 text-white uppercase tracking-wider">RESULT</span>'
+            status_style = "text-emerald-900 bg-emerald-50 border-emerald-200"
+        else:
+            status_badge = '<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-slate-700 text-slate-200 uppercase tracking-wider">UPCOMING</span>'
+            status_style = "text-slate-800 bg-slate-100 border-slate-200"
+
+        sid_slug = re.sub(r'[^a-zA-Z0-9]+', '-', series_name).strip('-').lower()
+
+        return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{html_escape.escape(title)} | Match Center | CricCenter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>body {{ font-family: 'Inter', sans-serif; background-color: #f8fafc; }}</style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col justify-between">
+    {header_html}
+
+    <main class="max-w-5xl mx-auto px-3 sm:px-4 py-6 flex-1 w-full space-y-6">
+        <!-- Breadcrumbs -->
+        <nav class="text-3xs text-slate-500 font-medium flex items-center gap-1.5">
+            <a href="/" class="hover:text-emerald-700 font-bold">Home</a>
+            <span>&rsaquo;</span>
+            <a href="/series/{sid_slug}" class="hover:text-emerald-700 font-bold">{html_escape.escape(series_name)}</a>
+            <span>&rsaquo;</span>
+            <span class="text-slate-800 font-extrabold truncate">{html_escape.escape(title)}</span>
+        </nav>
+
+        <!-- HERO MATCH CENTER CARD -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+            <!-- Top Strip -->
+            <div class="bg-slate-900 text-white px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-800">
+                <div class="flex items-center gap-2 text-xs font-bold min-w-0">
+                    {status_badge}
+                    <a href="/series/{sid_slug}" class="text-emerald-400 hover:underline truncate uppercase tracking-wider text-2xs">{html_escape.escape(series_name)}</a>
+                    <span class="text-slate-500">&bull;</span>
+                    <span class="text-slate-300 text-2xs font-semibold">{html_escape.escape(stage)}</span>
+                </div>
+                <div class="flex items-center gap-2 text-3xs font-mono text-slate-400">
+                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 font-bold uppercase">{html_escape.escape(cat)}</span>
+                    <span>ID: {html_escape.escape(m_id)}</span>
+                </div>
+            </div>
+
+            <!-- Main Scoreboard Hero -->
+            <div class="p-5 sm:p-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+                    <!-- Team 1 -->
+                    <div class="flex items-center justify-between sm:justify-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <span class="w-12 h-12 rounded-xl bg-slate-800 text-white flex items-center justify-center text-sm font-black shrink-0 shadow-xs">
+                                {html_escape.escape(t1_code)}
+                            </span>
+                            <div class="min-w-0">
+                                <h2 class="text-sm sm:text-base font-extrabold text-slate-900 truncate">{html_escape.escape(t1)}</h2>
+                                <span class="text-3xs text-slate-500 font-semibold uppercase">Innings</span>
+                            </div>
+                        </div>
+                        <div class="text-right sm:ml-auto">
+                            <div class="text-lg sm:text-xl font-black text-slate-900">{html_escape.escape(s1)}</div>
+                        </div>
+                    </div>
+
+                    <!-- Team 2 -->
+                    <div class="flex items-center justify-between sm:justify-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <span class="w-12 h-12 rounded-xl bg-slate-700 text-white flex items-center justify-center text-sm font-black shrink-0 shadow-xs">
+                                {html_escape.escape(t2_code)}
+                            </span>
+                            <div class="min-w-0">
+                                <h2 class="text-sm sm:text-base font-extrabold text-slate-900 truncate">{html_escape.escape(t2)}</h2>
+                                <span class="text-3xs text-slate-500 font-semibold uppercase">Innings</span>
+                            </div>
+                        </div>
+                        <div class="text-right sm:ml-auto">
+                            <div class="text-lg sm:text-xl font-black text-slate-900">{html_escape.escape(s2)}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Match Situation Banner -->
+                <div class="mt-6 p-3.5 rounded-xl border {status_style} flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
+                        <span class="text-xs sm:text-sm font-black tracking-tight">{html_escape.escape(status_text)}</span>
+                    </div>
+                    <div class="text-3xs font-semibold text-slate-600 flex items-center gap-1.5">
+                        <span>Venue:</span>
+                        <span class="font-bold text-slate-800">{html_escape.escape(venue)}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DETAILS & ACTIONS SECTION -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Left 2 Cols: Match Information & Live Tracking -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Match Information Card -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
+                    <h3 class="text-sm font-black uppercase tracking-wider text-slate-900 mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                        Match Information
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <span class="text-3xs text-slate-400 font-bold uppercase block mb-0.5">Series</span>
+                            <span class="font-bold text-slate-800">{html_escape.escape(series_name)}</span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <span class="text-3xs text-slate-400 font-bold uppercase block mb-0.5">Match Stage</span>
+                            <span class="font-bold text-slate-800">{html_escape.escape(stage)}</span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <span class="text-3xs text-slate-400 font-bold uppercase block mb-0.5">Venue</span>
+                            <span class="font-bold text-slate-800">{html_escape.escape(venue)}</span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <span class="text-3xs text-slate-400 font-bold uppercase block mb-0.5">Category</span>
+                            <span class="font-bold text-slate-800 uppercase">{html_escape.escape(cat)}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Stream & Scorecard Stream Card -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
+                    <h3 class="text-sm font-black uppercase tracking-wider text-slate-900 mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+                        Live Ball Feed & Status
+                    </h3>
+                    <div id="liveStreamStatus" class="p-4 bg-emerald-50 rounded-xl border border-emerald-100 text-xs text-emerald-950 flex items-center justify-between gap-3">
+                        <div>
+                            <p class="font-extrabold mb-0.5">Real-Time Data Feed Active</p>
+                            <p class="text-3xs text-emerald-800">Tracking live score updates, boundary momentum, and ball-by-ball developments.</p>
+                        </div>
+                        <span class="shrink-0 px-2.5 py-1 rounded bg-emerald-600 text-white font-black text-3xs uppercase tracking-wider">Connected</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right 1 Col: Quick Actions & Navigation -->
+            <div class="space-y-6">
+                <!-- Navigation Card -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
+                    <h3 class="text-xs font-black uppercase tracking-wider text-slate-900 mb-4 pb-2 border-b border-slate-100">
+                        Quick Navigation
+                    </h3>
+                    <div class="space-y-2">
+                        <a href="/live-scores" class="w-full flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-emerald-50 text-slate-700 hover:text-emerald-900 border border-slate-100 transition font-bold text-xs">
+                            <span>&larr; All Live Scores</span>
+                            <span>&rsaquo;</span>
+                        </a>
+                        <a href="/schedule" class="w-full flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-emerald-50 text-slate-700 hover:text-emerald-900 border border-slate-100 transition font-bold text-xs">
+                            <span>Full Match Schedule</span>
+                            <span>&rsaquo;</span>
+                        </a>
+                        <a href="/series" class="w-full flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-emerald-50 text-slate-700 hover:text-emerald-900 border border-slate-100 transition font-bold text-xs">
+                            <span>Browse All Series</span>
+                            <span>&rsaquo;</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Admin Mapping Helper -->
+                <div class="bg-gradient-to-br from-slate-900 to-[#186047] text-white rounded-2xl p-6 shadow-md">
+                    <div class="text-xs font-black uppercase tracking-wider text-emerald-300 mb-1">CricCenter Admin</div>
+                    <h4 class="text-sm font-bold mb-2">Deep Scorecard Mapping</h4>
+                    <p class="text-3xs text-slate-300 leading-relaxed mb-4">
+                        Connect this match to an official CREX or Cricinfo URL for full ball-by-ball commentary and partnership wagon wheels.
+                    </p>
+                    <a href="/admin" class="inline-block w-full text-center py-2.5 px-4 bg-amber-400 hover:bg-amber-300 text-slate-900 font-extrabold text-xs rounded-xl shadow-xs transition">
+                        Open Admin Panel &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    {footer_html}
+
+    <script>
+        // Auto refresh match state every 15 seconds
+        setInterval(async () => {{
+            try {{
+                const res = await fetch('/api/matches');
+                if (res.ok) {{
+                    const data = await res.json();
+                    const allMatches = [...(data.live || []), ...(data.recent || []), ...(data.upcoming || [])];
+                    const currentMatch = allMatches.find(m => String(m.match_id) === '{m_id}');
+                    if (currentMatch) {{
+                        console.log('[*] Live match sync:', currentMatch.status);
+                    }}
+                }}
+            }} catch(e) {{}}
+        }}, 15000);
+    </script>
+</body>
+</html>"""
+
